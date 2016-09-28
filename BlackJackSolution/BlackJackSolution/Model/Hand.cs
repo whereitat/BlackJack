@@ -8,5 +8,13 @@ namespace BlackJackSolution.Model
 {
     public class Hand
     {
+        public List<Card> handCards { set; get; }
+        public int score { set; get; }
+        public int numberOfCards { set; get; }
+
+        public Hand()
+        {
+
+        }
     }
 }

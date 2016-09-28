@@ -8,5 +8,10 @@ namespace BlackJackSolution.Model
 {
     public class Deck
     {
+        public List<Card> cards { set; get; }
+        public Deck()
+        {
+            cards = new List<Card>();
+        }
     }
 }
