@@ -13,5 +13,6 @@ namespace BlackJackSolution.Model
         private double balance { set; get; }
 
 
+
     }
 }
