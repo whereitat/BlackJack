@@ -16,5 +16,11 @@ namespace BlackJackSolution
         {
             InitializeComponent();
         }
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            MainPanel.Hide();
+            LoginPanel.Show();
+        }
     }
 }
