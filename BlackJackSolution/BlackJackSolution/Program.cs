@@ -37,6 +37,13 @@ namespace BlackJackSolution
 
             Console.WriteLine(dealerhand.total);
             Console.WriteLine(accountHand.total);
+            Console.WriteLine(dealerhand.handCards[0].value);
+            Console.WriteLine(dealerhand.handCards[1].value);
+            Console.WriteLine(accountHand.handCards[0].value);
+            Console.WriteLine(accountHand.handCards[1].value);
+
+            accountHand.RemoveCard();
+            Console.WriteLine(accountHand.total);
         }
     }
 }

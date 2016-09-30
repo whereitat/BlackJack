@@ -10,7 +10,6 @@ namespace BlackJackSolution.Model
 {
     public class Hand
     {
-        //private Deck deck; //alltid null......
         public List<Card> handCards { set; get; }
         public int total { set; get; }
 
@@ -21,7 +20,7 @@ namespace BlackJackSolution.Model
         }
         public void AddCard(Deck deck)
         {
-            if(deck.cards.Count <= 1) //Om det bara finns 1 eller mindre kort kvar -> skapa nytt deck.
+            if (deck.cards.Count <= 1) //Om det bara finns 1 eller mindre kort kvar -> skapa nytt deck.
             {
                 DBAccess.CreateDeck();
             }
@@ -34,33 +33,58 @@ namespace BlackJackSolution.Model
                 total = CheckHand();
             }
         }
+        public void RemoveCard()
+        {
+            handCards.RemoveAt(1);
+            total = CheckHand();
+        }
         public int CheckHand()
         {
             int handTotal = 0;
-                for (int i = 0; i < handCards.Count; i++)
+            for (int i = 0; i < handCards.Count; i++)
+            {
+
+                handTotal += handCards[i].value;
+
+                if (handTotal > 21)
                 {
-
-                    handTotal += handCards[i].value;
-
-                    if (handTotal > 21)
+                    for (int j = 0; j < handCards.Count; j++)
                     {
-                        for (int j = 0; j < handCards.Count; j++)
+                        if (handCards[j].value == 11)
                         {
-                            if(handCards[j].value == 11)
-                            {
-                                handCards[j].value = 1;
-                                handTotal += handCards[j].value - 11;
-                                break;
-                            }
+                            handCards[j].value = 1;
+                            handTotal += handCards[j].value - 11;
+                            break;
                         }
                     }
                 }
+            }
             this.total = handTotal;
             return total;
         }
-        public int getNumberOfCards()
+        public Hand CreateSplit(Hand h)
         {
-            return handCards.Count;
+            try
+            {
+                if (h.handCards[0].value == h.handCards[1].value && h.handCards.Count == 2) //Måste vara 2 kort med samma värde.
+                {
+                    Hand splitHand = new Hand();
+                    var cardToMove = h.handCards[1];
+                    splitHand.handCards.Add(cardToMove);
+                    splitHand.total = cardToMove.value;
+                    return splitHand;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, cant split.");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
     }
 }
