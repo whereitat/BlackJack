@@ -21,13 +21,22 @@ namespace BlackJackSolution
             Application.Run(new GUI());
             **/
 
-            //Testar nedanför : Connection samt skapa shuffled deck med 52 kort. 
+            //------------------------------TEST------------------------------------ 
             Deck deckTest = DAL.DBAccess.CreateDeck();
             for(int i = 0; i < deckTest.cards.Count; i++)
             {
                 Console.WriteLine(deckTest.cards[i].value);
             }
             Console.WriteLine(" Antal kort: " + deckTest.cards.Count);
+            Hand dealerhand = new Hand();
+            Hand accountHand = new Hand();
+            dealerhand.AddCard(deckTest);
+            dealerhand.AddCard(deckTest);
+            accountHand.AddCard(deckTest);
+            accountHand.AddCard(deckTest);
+
+            Console.WriteLine(dealerhand.total);
+            Console.WriteLine(accountHand.total);
         }
     }
 }

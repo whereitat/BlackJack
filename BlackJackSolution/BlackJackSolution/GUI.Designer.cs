@@ -47,7 +47,7 @@
             // 
             // LogOutBtn
             // 
-            this.LogOutBtn.Location = new System.Drawing.Point(849, 471);
+            this.LogOutBtn.Location = new System.Drawing.Point(979, 529);
             this.LogOutBtn.Name = "LogOutBtn";
             this.LogOutBtn.Size = new System.Drawing.Size(206, 77);
             this.LogOutBtn.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // UpdateAccountBtn
             // 
-            this.UpdateAccountBtn.Location = new System.Drawing.Point(602, 471);
+            this.UpdateAccountBtn.Location = new System.Drawing.Point(703, 529);
             this.UpdateAccountBtn.Name = "UpdateAccountBtn";
             this.UpdateAccountBtn.Size = new System.Drawing.Size(206, 77);
             this.UpdateAccountBtn.TabIndex = 0;
