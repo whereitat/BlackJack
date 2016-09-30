@@ -46,6 +46,7 @@ namespace BlackJackSolution.DAL
                         {
                             Card card = new Card();
                             card.value = read.GetInt32(read.GetOrdinal("value"));
+                            card.cardId = read.GetString(read.GetOrdinal("cardId"));
                             newDeck.cards.Add(card);
                         }
                 }

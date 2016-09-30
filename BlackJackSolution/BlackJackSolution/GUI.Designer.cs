@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.UpdateAccountBtn = new System.Windows.Forms.Button();
             this.LogOutBtn = new System.Windows.Forms.Button();
+            this.UpdateAccountBtn = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.GamePanel = new System.Windows.Forms.Panel();
             this.MainPanel.SuspendLayout();
@@ -40,19 +40,10 @@
             // 
             this.MainPanel.Controls.Add(this.LogOutBtn);
             this.MainPanel.Controls.Add(this.UpdateAccountBtn);
-            this.MainPanel.Location = new System.Drawing.Point(30, 18);
+            this.MainPanel.Location = new System.Drawing.Point(6, 4);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1108, 593);
+            this.MainPanel.Size = new System.Drawing.Size(1241, 654);
             this.MainPanel.TabIndex = 0;
-            // 
-            // UpdateAccountBtn
-            // 
-            this.UpdateAccountBtn.Location = new System.Drawing.Point(602, 471);
-            this.UpdateAccountBtn.Name = "UpdateAccountBtn";
-            this.UpdateAccountBtn.Size = new System.Drawing.Size(206, 77);
-            this.UpdateAccountBtn.TabIndex = 0;
-            this.UpdateAccountBtn.Text = "Account options";
-            this.UpdateAccountBtn.UseVisualStyleBackColor = true;
             // 
             // LogOutBtn
             // 
@@ -64,18 +55,27 @@
             this.LogOutBtn.UseVisualStyleBackColor = true;
             this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
+            // UpdateAccountBtn
+            // 
+            this.UpdateAccountBtn.Location = new System.Drawing.Point(602, 471);
+            this.UpdateAccountBtn.Name = "UpdateAccountBtn";
+            this.UpdateAccountBtn.Size = new System.Drawing.Size(206, 77);
+            this.UpdateAccountBtn.TabIndex = 0;
+            this.UpdateAccountBtn.Text = "Account options";
+            this.UpdateAccountBtn.UseVisualStyleBackColor = true;
+            // 
             // LoginPanel
             // 
-            this.LoginPanel.Location = new System.Drawing.Point(44, 15);
+            this.LoginPanel.Location = new System.Drawing.Point(9, 7);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(1108, 593);
+            this.LoginPanel.Size = new System.Drawing.Size(1235, 654);
             this.LoginPanel.TabIndex = 2;
             // 
             // GamePanel
             // 
-            this.GamePanel.Location = new System.Drawing.Point(60, 12);
+            this.GamePanel.Location = new System.Drawing.Point(12, 12);
             this.GamePanel.Name = "GamePanel";
-            this.GamePanel.Size = new System.Drawing.Size(1108, 593);
+            this.GamePanel.Size = new System.Drawing.Size(1238, 649);
             this.GamePanel.TabIndex = 3;
             // 
             // GUI

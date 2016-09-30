@@ -26,8 +26,8 @@ namespace BlackJackSolution
             for(int i = 0; i < deckTest.cards.Count; i++)
             {
                 Console.WriteLine(deckTest.cards[i].value);
-                Console.WriteLine(" Antal kort: " + deckTest.cards.Count);
             }
+            Console.WriteLine(" Antal kort: " + deckTest.cards.Count);
         }
     }
 }
