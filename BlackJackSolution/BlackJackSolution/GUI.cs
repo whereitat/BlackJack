@@ -22,5 +22,10 @@ namespace BlackJackSolution
             MainPanel.Hide();
             LoginPanel.Show();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
