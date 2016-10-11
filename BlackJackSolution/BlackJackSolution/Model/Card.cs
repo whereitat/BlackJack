@@ -10,6 +10,7 @@ namespace BlackJackSolution.Model
     {
         public int value { set; get; }
         public string cardId { set; get; }
+        public String suit { set; get; }
 
         public Card()
         {

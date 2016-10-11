@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJackSolution.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace BlackJackSolution.Control
 {
     public class Controller
     {
+        public static Deck CreateDeck() //static??
+        {
+            Deck d = DAL.DBAccess.CreateDeck();
+            return d;
+        }
     }
 }
