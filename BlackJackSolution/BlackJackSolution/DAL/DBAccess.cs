@@ -47,6 +47,23 @@ namespace BlackJackSolution.DAL
                             Card card = new Card();
                             card.value = read.GetInt32(read.GetOrdinal("value"));
                             card.cardId = read.GetString(read.GetOrdinal("cardId"));
+                            String suite = read.GetString(read.GetOrdinal("cardId"));
+                                if (suite.Substring(0, 1).Equals("H"))
+                                {
+                                    card.suit = "hearts";
+                                }
+                                else if (suite.Substring(0, 1).Equals("S"))
+                                {
+                                    card.suit = "spades";
+                                }
+                                else if (suite.Substring(0, 1).Equals("C"))
+                                {
+                                    card.suit = "clubs";
+                                }
+                                else if (suite.Substring(0, 1).Equals("D"))
+                                {
+                                    card.suit = "diamonds";
+                                }
                             newDeck.cards.Add(card);
                         }
                 }

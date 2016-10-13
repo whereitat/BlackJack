@@ -35,6 +35,7 @@
             this.GamePanel = new System.Windows.Forms.Panel();
             this.InfoGroupBox = new System.Windows.Forms.GroupBox();
             this.ActionGroupBox = new System.Windows.Forms.GroupBox();
+            this.BetLabelAmount = new System.Windows.Forms.Label();
             this.BetLabel = new System.Windows.Forms.Label();
             this.BetAmountText = new System.Windows.Forms.TextBox();
             this.LeaveButton = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BetLabelAmount = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
             this.ActionGroupBox.SuspendLayout();
@@ -149,6 +149,15 @@
             this.ActionGroupBox.TabIndex = 17;
             this.ActionGroupBox.TabStop = false;
             this.ActionGroupBox.Text = "Actions";
+            // 
+            // BetLabelAmount
+            // 
+            this.BetLabelAmount.AutoSize = true;
+            this.BetLabelAmount.Location = new System.Drawing.Point(160, 64);
+            this.BetLabelAmount.Name = "BetLabelAmount";
+            this.BetLabelAmount.Size = new System.Drawing.Size(0, 17);
+            this.BetLabelAmount.TabIndex = 7;
+            this.BetLabelAmount.Visible = false;
             // 
             // BetLabel
             // 
@@ -366,15 +375,6 @@
             this.DealerPictureBox1.TabIndex = 1;
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
-            // 
-            // BetLabelAmount
-            // 
-            this.BetLabelAmount.AutoSize = true;
-            this.BetLabelAmount.Location = new System.Drawing.Point(160, 64);
-            this.BetLabelAmount.Name = "BetLabelAmount";
-            this.BetLabelAmount.Size = new System.Drawing.Size(0, 17);
-            this.BetLabelAmount.TabIndex = 7;
-            this.BetLabelAmount.Visible = false;
             // 
             // GUI
             // 

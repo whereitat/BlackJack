@@ -31,8 +31,8 @@ namespace BlackJackSolution
 
         private void DealButton_Click(object sender, EventArgs e)
         {
-            int trying;
-            if (String.IsNullOrWhiteSpace(BetAmountText.Text) && int.TryParse(BetAmountText.Text, out trying)) //Kanske för många steg att parsa och if och kolla samtidigt
+            //int trying; && int.TryParse(BetAmountText.Text, out trying)
+            if (!String.IsNullOrWhiteSpace(BetAmountText.Text)) //Kanske för många steg att parsa och if och kolla samtidigt
             {
                 HitButton.Show();
                 StandButton.Show();
@@ -48,7 +48,9 @@ namespace BlackJackSolution
                 dealerHand.AddCard(deck);
                 myHand.AddCard(deck);
                 dealerHand.AddCard(deck);
-                myHand.AddCard(deck); 
+                myHand.AddCard(deck);
+                displayMyCards(myHand);
+                displayDealerCards(dealerHand);
                 //Båda händer har 2 kort var
             }
             else
@@ -65,7 +67,6 @@ namespace BlackJackSolution
         }
         public void displayMyCards(Hand hand) //måste fixa om hur suit och value läses
         {
-            //int count = 0;
             String picture = "";
             if(hand != null && hand.handCards != null)
             {
@@ -74,23 +75,23 @@ namespace BlackJackSolution
                     //Sätta string picture till rätt image
                     if(hand.handCards[i].value < 10) 
                     {
-                        picture = "_0" + hand.handCards[i].value + hand.handCards[i].suit;
+                        picture = "_0" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
                     }
                     else if (hand.handCards[i].value == 10)
                     {
-                        picture = "_" + hand.handCards[i].value + hand.handCards[i].suit;
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
                     }
                     else if(hand.handCards[i].value == 11) //ess eller jack?
                     {
-                        picture = "_" + hand.handCards[i].value + hand.handCards[i].suit;
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
                     }
                     else if (hand.handCards[i].value == 12)
                     {
-                        picture = "_" + hand.handCards[i].value + hand.handCards[i].suit;
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
                     }
                     else if (hand.handCards[i].value == 13)
                     {
-                        picture = "_" + hand.handCards[i].value + hand.handCards[i].suit;
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
                     }
                     //Hämta samt visa korten
                     if(i == 0)
@@ -161,11 +162,97 @@ namespace BlackJackSolution
         }
         public void displayDealerCards(Hand hand)
         {
-            int count = 0;
             String picture = "";
-            if(hand != null && hand.handCards != null)
+            if (hand != null && hand.handCards != null)
             {
-                //Kommer bli samma som displayMyCards
+                for (int i = 0; i < hand.handCards.Count; i++)
+                {
+                    //Sätta string picture till rätt image
+                    if (hand.handCards[i].value < 10)
+                    {
+                        picture = "_0" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                    }
+                    else if (hand.handCards[i].value == 10)
+                    {
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                    }
+                    else if (hand.handCards[i].value == 11) //ess eller jack?
+                    {
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                    }
+                    else if (hand.handCards[i].value == 12)
+                    {
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                    }
+                    else if (hand.handCards[i].value == 13)
+                    {
+                        picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                    }
+                    //Hämta samt visa korten
+                    if (i == 0)
+                    {
+                        DealerPictureBox1.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox1.Image = pic;
+                        DealerPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox1.BringToFront();
+                    }
+                    else if (i == 1)
+                    {
+                        DealerPictureBox2.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox2.Image = pic;
+                        DealerPictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox2.BringToFront();
+                    }
+                    else if (i == 2)
+                    {
+                        DealerPictureBox3.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox3.Image = pic;
+                        DealerPictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox3.BringToFront();
+                    }
+                    else if (i == 3)
+                    {
+                        DealerPictureBox4.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox4.Image = pic;
+                        DealerPictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox4.BringToFront();
+                    }
+                    else if (i == 4)
+                    {
+                        DealerPictureBox5.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox5.Image = pic;
+                        DealerPictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox5.BringToFront();
+                    }
+                    else if (i == 5)
+                    {
+                        DealerPictureBox6.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox6.Image = pic;
+                        DealerPictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox6.BringToFront();
+                    }
+                    else if (i == 6)
+                    {
+                        DealerPictureBox7.Visible = true;
+                        System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                        Bitmap pic = (Bitmap)rm.GetObject(picture);
+                        DealerPictureBox7.Image = pic;
+                        DealerPictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DealerPictureBox7.BringToFront();
+                    }
+                }
             }
         }
     }
