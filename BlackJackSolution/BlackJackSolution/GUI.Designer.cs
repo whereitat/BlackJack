@@ -58,8 +58,10 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
+            this.InfoLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
+            this.InfoGroupBox.SuspendLayout();
             this.ActionGroupBox.SuspendLayout();
             this.YourHandGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YourHandPictureBox7)).BeginInit();
@@ -127,6 +129,8 @@
             // 
             // InfoGroupBox
             // 
+            this.InfoGroupBox.BackColor = System.Drawing.Color.White;
+            this.InfoGroupBox.Controls.Add(this.InfoLabel);
             this.InfoGroupBox.Location = new System.Drawing.Point(30, 497);
             this.InfoGroupBox.Name = "InfoGroupBox";
             this.InfoGroupBox.Size = new System.Drawing.Size(654, 124);
@@ -376,6 +380,14 @@
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
+            // InfoLabel
+            // 
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Location = new System.Drawing.Point(30, 49);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(0, 17);
+            this.InfoLabel.TabIndex = 0;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -389,6 +401,8 @@
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
             this.GamePanel.ResumeLayout(false);
+            this.InfoGroupBox.ResumeLayout(false);
+            this.InfoGroupBox.PerformLayout();
             this.ActionGroupBox.ResumeLayout(false);
             this.ActionGroupBox.PerformLayout();
             this.YourHandGroupBox.ResumeLayout(false);
@@ -443,6 +457,7 @@
         private System.Windows.Forms.Button StandButton;
         private System.Windows.Forms.Button HitButton;
         private System.Windows.Forms.Label BetLabelAmount;
+        private System.Windows.Forms.Label InfoLabel;
     }
 }
 

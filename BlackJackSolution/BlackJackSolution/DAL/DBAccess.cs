@@ -12,24 +12,29 @@ namespace BlackJackSolution.DAL
     {
         public static SqlConnection Connect()
         {
-
-            try
-            {
-                SqlConnection con = new SqlConnection("user id=test;" +
+            SqlConnection con = new SqlConnection("user id=test;" +
                 "password=test; server=localhost;" +
                 "Trusted_Connection=yes;" +
                 "database=BlackJackProject;" +
                 "connection timeout=5");
-
+            try
+            {
                 con.Open();
                 Console.WriteLine("Connection established");
                 return con;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.ToString() + e.Message);
+                String ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.ToString() + e.Message + " " + ex);
                 return null;
             }
+            /** Kanske ska användas??
+            finally
+            {
+                con.Close();
+            }
+            **/
         }
         public static Deck CreateDeck()
         {
@@ -73,9 +78,10 @@ namespace BlackJackSolution.DAL
                 }
                 return newDeck;
             }
-            catch(Exception e)
+            catch(SqlException e)
             {
-                Console.WriteLine(e.Message);
+                String ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
                 return null;
             }
             

@@ -15,30 +15,30 @@ namespace BlackJackSolution.Logic
             switch (e.Number)
             {
                 case 4060:
-                    Console.WriteLine("Fångade : invalid database");
+                    Console.WriteLine("Caught : invalid database");
                     ex = "The database is unavailable at the moment";
                     return ex;
                 case 18456:
-                    Console.WriteLine("Fångade : login failed");
+                    Console.WriteLine("Caught : login failed");
                     ex = "Failed to log on to database";
                     return ex;
                 case 547:
-                    Console.WriteLine("Fångade : foreignKey violation");
+                    Console.WriteLine("Caught : foreignKey violation");
                     ex = "It seems the information you entered was incorrect";
                     return ex;
                 case 2627:
-                    Console.WriteLine("Fångade : primarykey/constraint/uniqueKey violation");
+                    Console.WriteLine("Caught : primarykey/constraint/uniqueKey violation");
                     ex = "Account already exists";
                     return ex;
                 default:
-                    Console.WriteLine("Fångade : SqlException ");
+                    Console.WriteLine("Caught : SqlException ");
                     ex = "Something went wrong, please try again later";
                     return ex;
             }
         }
         public static string ExceptionEUtility(Exception e)
         {
-            Console.WriteLine("Fångade Exception : " + e.Message);
+            Console.WriteLine("Caught : " + e.Message);
             string exc = e.Message;
             return exc;
         }
