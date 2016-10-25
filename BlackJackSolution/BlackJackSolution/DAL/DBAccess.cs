@@ -170,6 +170,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 int s = command.ExecuteNonQuery();
+
                 if (s != 0)
                 {
                     string result = amount + " withdrawn";
