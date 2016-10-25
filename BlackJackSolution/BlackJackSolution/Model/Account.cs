@@ -19,6 +19,12 @@ namespace BlackJackSolution.Model
 
         }
 
-
+        public Account(string aname, string astatus, double balance, string password)
+        {
+            this.aname = aname;
+            this.astatus = astatus;
+            this.balance = balance;
+            this.password = password;
+        }
     }
 }
