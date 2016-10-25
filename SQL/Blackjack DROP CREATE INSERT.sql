@@ -13,7 +13,7 @@ accountId INTEGER IDENTITY(0,1) NOT NULL,
 aname VARCHAR(20) NOT NULL,
 astatus VARCHAR(20) NOT NULL,
 balance FLOAT NOT NULL,
-password VARCHAR(128),
+password VARCHAR(128) NOT NULL,
 PRIMARY KEY (AccountId)
 UNIQUE(aname);
 
@@ -44,11 +44,11 @@ FOREIGN KEY (sessionId) REFERENCES BlackjackGame
 ON DELETE CASCADE);
 
 --INSERT VALUES--
-INSERT INTO Account VALUES ('BANK', 'BANK', 1000000.00);
-INSERT INTO Account VALUES ('Mattias West', 'VIP', 10000.00);
-INSERT INTO Account VALUES ('Johan Csirmaz', 'VIP', 10000.00);
-INSERT INTO Account VALUES ('Gustav Hedin', 'STANDARD', 10000.00);
-INSERT INTO Account VALUES ('Erik Hallkvist', 'STANDARD', 10000.00);
+INSERT INTO Account VALUES ('BANK', 'BANK', 1000000.00, 'GOD');
+INSERT INTO Account VALUES ('Mattias West', 'VIP', 10000.00, 'matte');
+INSERT INTO Account VALUES ('Johan Csirmaz', 'VIP', 10000.00, 'jc');
+INSERT INTO Account VALUES ('Gustav Hedin', 'STANDARD', 10000.00, 'gurra');
+INSERT INTO Account VALUES ('Erik Hallkvist', 'STANDARD', 10000.00, 'erik');
 
 INSERT INTO Deck VALUES ('D.A', 11);
 INSERT INTO Deck VALUES ('D.2', 2);
