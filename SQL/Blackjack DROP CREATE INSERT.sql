@@ -13,9 +13,9 @@ accountId INTEGER IDENTITY(0,1) NOT NULL,
 aname VARCHAR(20) NOT NULL,
 astatus VARCHAR(20) NOT NULL,
 balance FLOAT NOT NULL,
-password VARCHAR(128) NOT NULL,
-PRIMARY KEY (AccountId)
-UNIQUE(aname);
+[password] VARCHAR(128) NOT NULL,
+PRIMARY KEY (accountId),
+UNIQUE(aname));
 
 CREATE TABLE Deck (
 cardId VARCHAR(20) NOT NULL,

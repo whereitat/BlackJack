@@ -13,5 +13,12 @@ namespace BlackJackSolution.Model
         {
             cards = new List<Card>();
         }
+        public void updateDeck(Deck d)
+        {
+            if(d.cards.Count < 1)
+            {
+                d = Control.Controller.CreateDeck();
+            }
+        }
     }
 }

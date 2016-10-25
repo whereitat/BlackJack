@@ -89,11 +89,11 @@ namespace BlackJackSolution
                         }
                     }
                 }
-                else if(!String.IsNullOrWhiteSpace(BetAmountText.Text))
+                else if (!String.IsNullOrWhiteSpace(BetAmountText.Text))
                 {
                     InfoLabel.Text = "Please place a bet";
                 }
-                else if(tryParse == false)
+                else if (tryParse == false)
                 {
                     InfoLabel.Text = "Please enter a number as your bet";
                 }
@@ -221,7 +221,7 @@ namespace BlackJackSolution
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error : " + ex.Message);
             }
@@ -330,80 +330,90 @@ namespace BlackJackSolution
 
         private void HitButton_Click(object sender, EventArgs e)
         {
-            if(myHand.total < 21)
-            {
-                myHand.AddCard(deck);
-                displayMyCards(myHand);
-                if(myHand.total < 21)
+            try {
+                if (myHand.total < 21)
                 {
-                    myTotal = "Your handtotal is : " + myHand.total + "\n";
-                    dealerTotal = "Dealer handtotal is : " + dealerHand.total;
-                    bet = "You bet " + BetLabelAmount.Text + "\n";
-                    InfoLabel.Text = bet + myTotal + dealerTotal;
-                }else if(myHand.total > 21)
-                {
-                    InfoLabel.Text = "You are bust, dealer wins " + BetLabelAmount.Text + "\n" + "Please enter a new bet to play again";
-                    HitButton.Hide();
-                    StandButton.Hide();
-                    DealButton.Show();
-                    LeaveButton.Show();
-                    BetAmountText.Clear();
-                    BetAmountText.Show();
-                    BetLabelAmount.Hide();
-                    //UPDATE SALDO FÖR USER / BANK -user + dealer
-                    myHand.clearHand();
-                    dealerHand.clearHand();
-                }else if(myHand.total == 21)
-                {
-                    InfoLabel.Text = "You have 21";
-                    HitButton.Hide();
+                    myHand.AddCard(deck);
+                    displayMyCards(myHand);
+                    if (myHand.total < 21)
+                    {
+                        myTotal = "Your handtotal is : " + myHand.total + "\n";
+                        dealerTotal = "Dealer handtotal is : " + dealerHand.total;
+                        bet = "You bet " + BetLabelAmount.Text + "\n";
+                        InfoLabel.Text = bet + myTotal + dealerTotal;
+                    } else if (myHand.total > 21)
+                    {
+                        InfoLabel.Text = "You are bust, dealer wins " + BetLabelAmount.Text + "\n" + "Please enter a new bet to play again";
+                        HitButton.Hide();
+                        StandButton.Hide();
+                        DealButton.Show();
+                        LeaveButton.Show();
+                        BetAmountText.Clear();
+                        BetAmountText.Show();
+                        BetLabelAmount.Hide();
+                        //UPDATE SALDO FÖR USER / BANK -user + dealer
+                        myHand.clearHand();
+                        dealerHand.clearHand();
+                    } else if (myHand.total == 21)
+                    {
+                        InfoLabel.Text = "You have 21";
+                        HitButton.Hide();
+                    }
                 }
+            }
+            catch (Exception e1)
+            {
+
             }
         }
 
         private void StandButton_Click(object sender, EventArgs e)
         {
-            while (true)
-            {
-                if(dealerHand.total < 17)
+            try {
+                while (true)
                 {
-                    dealerHand.AddCard(deck);
-                    displayDealerCards(dealerHand);
+                    if (dealerHand.total < 17)
+                    {
+                        dealerHand.AddCard(deck);
+                        displayDealerCards(dealerHand);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
+                if (dealerHand.total >= myHand.total && dealerHand.total < 22)
                 {
-                    break;
+                    InfoLabel.Text = "The dealer has : " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "The dealer wins : " + BetAmountText.Text;
+                    myHand.clearHand();
+                    dealerHand.clearHand();
+                    //UPDATE SALDO FÖR USER/BANK dealer + user -
                 }
-            }
-            if(dealerHand.total >= myHand.total && dealerHand.total < 22)
+                else if (dealerHand.total > 21)
+                {
+                    InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
+                    myHand.clearHand();
+                    dealerHand.clearHand();
+                    //UPDATE SALDO FÖR USER/BANK dealer - user +
+                }
+                else if (myHand.total > dealerHand.total)
+                {
+                    InfoLabel.Text = "The dealer has " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
+                    myHand.clearHand();
+                    dealerHand.clearHand();
+                    //UPDATE SALDO FÖR USER/BANK dealer - user +
+                }
+                HitButton.Hide();
+                StandButton.Hide();
+                LeaveButton.Show();
+                DealButton.Show();
+                BetAmountText.Clear();
+                BetAmountText.Show();
+                BetLabelAmount.Hide();
+            } catch (Exception exp)
             {
-                InfoLabel.Text = "The dealer has : " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "The dealer wins : " + BetAmountText.Text;
-                myHand.clearHand();
-                dealerHand.clearHand();
-                //UPDATE SALDO FÖR USER/BANK dealer + user -
-            }
-            else if (dealerHand.total > 21)
-            {
-                InfoLabel.Text = "The dealer is bust " + "\n" +  "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
-                myHand.clearHand();
-                dealerHand.clearHand();
-                //UPDATE SALDO FÖR USER/BANK dealer - user +
-            }
-            else if (myHand.total > dealerHand.total)
-            {
-                InfoLabel.Text = "The dealer has " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
-                myHand.clearHand();
-                dealerHand.clearHand();
-                //UPDATE SALDO FÖR USER/BANK dealer - user +
-            }
-            HitButton.Hide();
-            StandButton.Hide();
-            LeaveButton.Show();
-            DealButton.Show();
-            BetAmountText.Clear();
-            BetAmountText.Show();
-            BetLabelAmount.Hide();
 
+            }
         }
     }
 }
