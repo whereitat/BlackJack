@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlackJackSolution.Model;
+using BlackJackSolution.DAL;
 
 namespace BlackJackSolution
 {
@@ -12,15 +13,24 @@ namespace BlackJackSolution
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
-        static void Main()
-        {
+        //[STAThread]
+        private static DBAccess db = new DBAccess();
+       
             
+
+       
+
+        static void Main(string[] args)
+        {
+            string s = db.WithdrawFunds(1, 200);
+            Console.WriteLine(s);
+
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI());
-            
-            
+
+
             //------------------------------TEST------------------------------------ 
             /*
             Deck deckTest = DAL.DBAccess.CreateDeck();
@@ -28,7 +38,7 @@ namespace BlackJackSolution
             {
                 Console.WriteLine(deckTest.cards[i].value);
             }
-            
+
             Console.WriteLine(" Antal kort: " + deckTest.cards.Count);
             Hand dealerhand = new Hand();
             Hand accountHand = new Hand();
@@ -36,7 +46,7 @@ namespace BlackJackSolution
             dealerhand.AddCard(deckTest);
             accountHand.AddCard(deckTest);
             accountHand.AddCard(deckTest);
-            
+
             Console.WriteLine(dealerhand.total);
             Console.WriteLine(accountHand.total);
             Console.WriteLine(dealerhand.handCards[0].value);
@@ -48,5 +58,6 @@ namespace BlackJackSolution
             Console.WriteLine(accountHand.total);
             **/
         }
+
     }
 }

@@ -15,7 +15,7 @@ namespace BlackJackSolution.DAL
             SqlConnection con = new SqlConnection("user id=test;" +
                 "password=test; server=localhost;" +
                 "Trusted_Connection=yes;" +
-                "database=BlackJackProject;" +
+                "database=Blackjack;" +
                 "connection timeout=5");
             try
             {
@@ -41,7 +41,7 @@ namespace BlackJackSolution.DAL
             try {
                 Deck newDeck = new Deck();
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC dbo.ShuffleCards", connection);
+                SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
@@ -52,7 +52,7 @@ namespace BlackJackSolution.DAL
                             Card card = new Card();
                             card.value = read.GetInt32(read.GetOrdinal("value"));
                             card.cardId = read.GetString(read.GetOrdinal("cardId"));
-                            String suite = read.GetString(read.GetOrdinal("cardId"));
+                            string suite = read.GetString(read.GetOrdinal("cardId"));
                                 if (suite.Substring(0, 1).Equals("H"))
                                 {
                                     card.suit = "hearts";
@@ -80,11 +80,115 @@ namespace BlackJackSolution.DAL
             }
             catch(SqlException e)
             {
-                String ex = Logic.Utils.SqlExceptionUtility(e);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
                 Console.WriteLine(e.Message + " " + ex);
                 return null;
             }
             
+        }
+
+        public bool CreateAccount(string aname, string password)
+        {
+            try
+            {
+                Account account = new Account();
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = " + aname + ", @PASSWORD = " + password, connection);
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+                return true;         
+            }
+            catch(SqlException e)
+            {               
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return false;
+            }
+        }
+
+        public bool DeleteAccount(string aname, string password)
+        {
+            try
+            {
+                Account account = new Account();
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = " + aname + ", @PASSWORD = " + password, connection);
+                int result = command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+
+                if (result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return false;
+            }
+        }
+
+        public Account GetAccount(string aname)
+        {
+            try
+            {
+                Account account = new Account();
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = " + aname, connection);
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+
+                if (read != null)
+                {
+                    account.aname = read.GetString(read.GetOrdinal("aname"));
+                    account.astatus = read.GetString(read.GetOrdinal("astatus"));
+                    account.balance = read.GetDouble(read.GetOrdinal("balance"));
+                    account.password = read.GetString(read.GetOrdinal("password"));
+                    return account;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return null;
+            }
+        }
+
+        public string WithdrawFunds(int accountId, double amount)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERID = " + accountId + ", @AMOUNT = " + amount, connection);
+                int s = command.ExecuteNonQuery();
+                Console.WriteLine(s);
+                if (s != 0)
+                {
+                    string result = amount + " withdrawn";
+                    return result;
+                }
+                else
+                {
+                    return "else";
+                }
+                
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return "catch";
+            }
         }
     }
 }

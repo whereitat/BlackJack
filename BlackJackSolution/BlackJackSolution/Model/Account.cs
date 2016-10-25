@@ -8,10 +8,16 @@ namespace BlackJackSolution.Model
 {
     public class Account
     {
-        private int accountId { set; get; }
-        private string name { set; get; }
-        private double balance { set; get; }
 
+        public string aname { set; get; }
+        public string astatus { set; get; }
+        public double balance { set; get; }
+        public string password { set; get; }
+
+        public Account ()
+        {
+
+        }
 
 
     }

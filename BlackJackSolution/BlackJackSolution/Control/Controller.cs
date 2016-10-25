@@ -13,6 +13,11 @@ namespace BlackJackSolution.Control
         {
             Deck d = DAL.DBAccess.CreateDeck();
             return d;
+
+            public bool Login(string aname, string pwd)
+        {
+            
+        }
         }
     }
 }
