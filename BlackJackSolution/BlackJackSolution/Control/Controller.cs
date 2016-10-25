@@ -9,10 +9,14 @@ namespace BlackJackSolution.Control
 {
     public class Controller
     {
-        public static Deck CreateDeck() //static??
+        public Deck CreateDeck() //static??
         {
             Deck d = DAL.DBAccess.CreateDeck();
             return d;
+        }
+        public void AddCard(Deck d, Hand h)
+        {
+            h.AddCard(d);
         }
     }
 }
