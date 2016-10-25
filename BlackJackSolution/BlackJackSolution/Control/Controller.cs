@@ -31,7 +31,7 @@ namespace BlackJackSolution.Control
             {
                 return false;
             }
-            if (a.aname.Equals(accname) && a.password.Equals(pwd))
+            if (a.aname.Equals(accname) && a.password.Equals(Hash(pwd)))
             {
                 return true;
             }
@@ -44,12 +44,12 @@ namespace BlackJackSolution.Control
         //Behöver commit på nya procedures för test
         public bool CreateAccount(string aname, string password)
         {
-            return db.CreateAccount(aname, Crypt(password));
+            return db.CreateAccount(aname, Hash(password));
         }
-        public string Crypt(string input)
+        public string Hash(string input)
         {
             SHA512 alg = SHA512.Create();
-            return Convert.ToBase64String(alg.ComputeHash(Encoding.Unicode.GetBytes(input)));
+            return Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
         }
     }
 }
