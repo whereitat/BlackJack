@@ -13,7 +13,7 @@ namespace BlackJackSolution
 {
     public partial class GUI : Form
     {
-        private static Deck deck = new Deck();
+        private static Deck deck = Control.Controller.CreateDeck();
         private static Hand myHand = new Hand();
         private static Hand dealerHand = new Hand();
         private String bet;
@@ -49,7 +49,6 @@ namespace BlackJackSolution
                     BetLabelAmount.Text = BetAmountText.Text;
                     BetLabelAmount.Show();
                     //Börjar dela kort
-                    deck = Control.Controller.CreateDeck();
                     dealerHand.AddCard(deck);
                     myHand.AddCard(deck);
                     myHand.AddCard(deck);

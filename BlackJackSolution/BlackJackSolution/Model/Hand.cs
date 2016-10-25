@@ -20,9 +20,9 @@ namespace BlackJackSolution.Model
         }
         public void AddCard(Deck deck)
         {
-            if (deck.cards.Count <= 1) //Om det bara finns 1 eller mindre kort kvar -> skapa nytt deck.
+            if (deck.cards.Count < 1) //Om det bara finns 1 eller mindre kort kvar -> skapa nytt deck.
             {
-                DBAccess.CreateDeck();
+                deck = Control.Controller.CreateDeck(); //returnerar EJJJ!!!!!!!!!!!!
             }
 
             if (total < 21) //Om totalen är mindre än 21 lägg till nytt kort och kolla efter ess.
@@ -41,7 +41,7 @@ namespace BlackJackSolution.Model
         public void clearHand()
         {
             handCards.Clear();
-            total = 0;
+            this.total = 0;
         }
         public int CheckHand()
         {
