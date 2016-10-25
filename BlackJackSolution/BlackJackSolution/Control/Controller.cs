@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlackJackSolution.DAL;
+using System.Security.Cryptography;
 
 
 namespace BlackJackSolution.Control
@@ -38,6 +39,14 @@ namespace BlackJackSolution.Control
             }
             
         }
-        public bool CreateAccount(string accname, string )
+        public bool CreateAccount(string aname, string password)
+        {
+            return db.CreateAccount(aname, Crypt(password));
+        }
+        public string Crypt(string input)
+        {
+            SHA512 alg = SHA512.Create();
+            return Convert.ToBase64String(alg.ComputeHash(Encoding.Unicode.GetBytes(input)));
+        }
     }
 }

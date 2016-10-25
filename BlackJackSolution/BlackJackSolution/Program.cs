@@ -15,15 +15,16 @@ namespace BlackJackSolution
         /// </summary>
         //[STAThread]
         private static DBAccess db = new DBAccess();
-       
+        private static Control.Controller c = new Control.Controller();
             
 
        
 
         static void Main(string[] args)
         {
-            string s = db.WithdrawFunds(1, 200);
-            Console.WriteLine(s);
+            //string s = db.WithdrawFunds(1, 200);
+            //Console.WriteLine(s);
+            Console.WriteLine(c.CreateAccount("Pleb", "secret")); 
 
             /*
             Application.EnableVisualStyles();

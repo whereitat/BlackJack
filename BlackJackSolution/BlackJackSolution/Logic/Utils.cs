@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,14 +43,5 @@ namespace BlackJackSolution.Logic
             string exc = e.Message;
             return exc;
         }
-
-        /** Hash to byte[] and convert by base64 to 88 char string
-        public string GetCrypt(string input)
-        {
-            SHA512 alg = SHA512.Create();
-            byte[] result = alg.ComputeHash(Encoding.Unicode.GetBytes(input));
-            return Convert.ToBase64String(result);
-        }
-        **/
     }
 }
