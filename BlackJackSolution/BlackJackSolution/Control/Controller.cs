@@ -29,7 +29,7 @@ namespace BlackJackSolution.Control
             {
                 return false;
             }
-            if (a.aname.Equals(accname) && a.password.Equals(pwd))
+            if (a.getAname().Equals(accname) && a.getPassword().Equals(pwd))
             {
                 return true;
             }
