@@ -138,7 +138,7 @@ namespace BlackJackSolution.DAL
             {
                 Account account = new Account();
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = " + aname, connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "'", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
