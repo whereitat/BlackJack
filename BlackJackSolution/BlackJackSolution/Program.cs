@@ -22,10 +22,13 @@ namespace BlackJackSolution
 
         static void Main(string[] args)
         {
-            //string s = db.WithdrawFunds("Gustav Hedin", 200); funkar
-            //string a = db.DepositFunds("Mattias West", 5000); funkar
-            //db.CreateAccount("Alex Eiring", "lol");           funkar
-            //db.DeleteAccount("Alex Eiring", "lol");           funkar
+            //Console.WriteLine("test");
+            string s = db.WithdrawFunds("Gustav Hedin", 20000);
+            //Console.WriteLine(s);
+
+            //string a = db.DepositFunds("Mattias West", 5000); 
+            //db.CreateAccount("Alex Eiring", "lol");             //funkar
+            //db.DeleteAccount("Alex Eiring", "lol");           //funkar
 
             /*
             Application.EnableVisualStyles();
