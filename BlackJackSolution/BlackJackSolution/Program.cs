@@ -22,8 +22,10 @@ namespace BlackJackSolution
 
         static void Main(string[] args)
         {
-            string s = db.WithdrawFunds(1, 200);
-            Console.WriteLine(s);
+            //string s = db.WithdrawFunds("Gustav Hedin", 200); funkar
+            //string a = db.DepositFunds("Mattias West", 5000); funkar
+            //db.CreateAccount("Alex Eiring", "lol");           funkar
+            //db.DeleteAccount("Alex Eiring", "lol");           funkar
 
             /*
             Application.EnableVisualStyles();

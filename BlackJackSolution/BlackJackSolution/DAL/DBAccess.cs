@@ -84,7 +84,6 @@ namespace BlackJackSolution.DAL
                 Console.WriteLine(e.Message + " " + ex);
                 return null;
             }
-            
         }
 
         public bool CreateAccount(string aname, string password)
@@ -93,7 +92,7 @@ namespace BlackJackSolution.DAL
             {
                 Account account = new Account();
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = " + aname + ", @PASSWORD = " + password, connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                 return true;         
@@ -112,7 +111,7 @@ namespace BlackJackSolution.DAL
             {
                 Account account = new Account();
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = " + aname + ", @PASSWORD = " + password, connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 int result = command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
@@ -164,14 +163,13 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public string WithdrawFunds(int accountId, double amount)
+        public string WithdrawFunds(string aname, double amount)
         {
             try
             {
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERID = " + accountId + ", @AMOUNT = " + amount, connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 int s = command.ExecuteNonQuery();
-                Console.WriteLine(s);
                 if (s != 0)
                 {
                     string result = amount + " withdrawn";
@@ -182,6 +180,31 @@ namespace BlackJackSolution.DAL
                     return "else";
                 }
                 
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return "catch";
+            }
+        }
+        public string DepositFunds(string aname, double amount)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
+                int s = command.ExecuteNonQuery();
+                if (s != 0)
+                {
+                    string result = amount + " inserted!";
+                    return result;
+                }
+                else
+                {
+                    return "else"; //what
+                }
+
             }
             catch (SqlException e)
             {
