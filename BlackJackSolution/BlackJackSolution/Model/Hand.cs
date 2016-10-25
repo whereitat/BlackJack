@@ -35,8 +35,13 @@ namespace BlackJackSolution.Model
         }
         public void RemoveCard()
         {
-            handCards.RemoveAt(1);
+            handCards.RemoveAt(handCards.Count-1);
             total = CheckHand();
+        }
+        public void clearHand()
+        {
+            handCards.Clear();
+            total = 0;
         }
         public int CheckHand()
         {

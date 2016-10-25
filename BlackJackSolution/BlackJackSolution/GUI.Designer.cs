@@ -34,6 +34,7 @@
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.GamePanel = new System.Windows.Forms.Panel();
             this.InfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.InfoLabel = new System.Windows.Forms.Label();
             this.ActionGroupBox = new System.Windows.Forms.GroupBox();
             this.BetLabelAmount = new System.Windows.Forms.Label();
             this.BetLabel = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.InfoLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
             this.InfoGroupBox.SuspendLayout();
@@ -138,6 +138,14 @@
             this.InfoGroupBox.TabStop = false;
             this.InfoGroupBox.Text = "Information";
             // 
+            // InfoLabel
+            // 
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Location = new System.Drawing.Point(30, 49);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(0, 17);
+            this.InfoLabel.TabIndex = 0;
+            // 
             // ActionGroupBox
             // 
             this.ActionGroupBox.Controls.Add(this.BetLabelAmount);
@@ -210,6 +218,7 @@
             this.StandButton.Text = "Stand";
             this.StandButton.UseVisualStyleBackColor = true;
             this.StandButton.Visible = false;
+            this.StandButton.Click += new System.EventHandler(this.StandButton_Click);
             // 
             // HitButton
             // 
@@ -220,6 +229,7 @@
             this.HitButton.Text = "Hit";
             this.HitButton.UseVisualStyleBackColor = true;
             this.HitButton.Visible = false;
+            this.HitButton.Click += new System.EventHandler(this.HitButton_Click);
             // 
             // YourHandGroupBox
             // 
@@ -379,14 +389,6 @@
             this.DealerPictureBox1.TabIndex = 1;
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
-            // 
-            // InfoLabel
-            // 
-            this.InfoLabel.AutoSize = true;
-            this.InfoLabel.Location = new System.Drawing.Point(30, 49);
-            this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(0, 17);
-            this.InfoLabel.TabIndex = 0;
             // 
             // GUI
             // 
