@@ -22,7 +22,7 @@ namespace BlackJackSolution
         private String myTotal;
         private String dealerTotal;
         private Account player;
-        private Account Bank;
+        private Account bank;
         public GUI()
         {
             InitializeComponent();
@@ -30,8 +30,15 @@ namespace BlackJackSolution
 
         private void LogOutBtn_Click(object sender, EventArgs e)
         {
-            MainPanel.Hide();
-            LoginPanel.Show();
+            try
+            {
+                MainPanel.Hide();
+                LoginPanel.Show();
+            }
+            catch (Exception eLOB)
+            {
+                //Fattas
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -72,8 +79,8 @@ namespace BlackJackSolution
                             int winnings = Int32.Parse(BetLabelAmount.Text);
                             InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
                             //UPDATE SALDO +user*1.5 -bank
-                            myHand.clearHand(); //-----------------
-                            dealerHand.clearHand(); //------------------
+                            control.ClearHand(myHand);//----------------------------------
+                            control.ClearHand(dealerHand); //------------------
                             HitButton.Hide();
                             StandButton.Hide();
                             DealButton.Show();
@@ -107,25 +114,39 @@ namespace BlackJackSolution
         }
         private void LeaveButton_Click(object sender, EventArgs e)
         {
-            GamePanel.Hide();
-            MainPanel.Show();
+            try
+            {
+                GamePanel.Hide();
+                MainPanel.Show();
+            }
+            catch(Exception eLB)
+            {
+                //Fattas
+            }
         }
         public void clearCards()
         {
-            YourHandPictureBox1.Image = null;
-            YourHandPictureBox2.Image = null;
-            YourHandPictureBox3.Image = null;
-            YourHandPictureBox4.Image = null;
-            YourHandPictureBox5.Image = null;
-            YourHandPictureBox6.Image = null;
-            YourHandPictureBox7.Image = null;
-            DealerPictureBox1.Image = null;
-            DealerPictureBox2.Image = null;
-            DealerPictureBox3.Image = null;
-            DealerPictureBox4.Image = null;
-            DealerPictureBox5.Image = null;
-            DealerPictureBox6.Image = null;
-            DealerPictureBox7.Image = null;
+            try
+            {
+                YourHandPictureBox1.Image = null;
+                YourHandPictureBox2.Image = null;
+                YourHandPictureBox3.Image = null;
+                YourHandPictureBox4.Image = null;
+                YourHandPictureBox5.Image = null;
+                YourHandPictureBox6.Image = null;
+                YourHandPictureBox7.Image = null;
+                DealerPictureBox1.Image = null;
+                DealerPictureBox2.Image = null;
+                DealerPictureBox3.Image = null;
+                DealerPictureBox4.Image = null;
+                DealerPictureBox5.Image = null;
+                DealerPictureBox6.Image = null;
+                DealerPictureBox7.Image = null;
+            }
+            catch(Exception eCC)
+            {
+                //Fattas
+            }
         }
         public void displayMyCards(Hand hand) //måste fixa om hur suit och value läses
         {
@@ -223,9 +244,9 @@ namespace BlackJackSolution
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception eDMH)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                Console.WriteLine("Error : " + eDMH.Message);
             }
         }
         public void displayDealerCards(Hand hand)
@@ -324,9 +345,9 @@ namespace BlackJackSolution
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception eDDH)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                Console.WriteLine("Error : " + eDDH.Message);
             }
         }
 
@@ -354,8 +375,8 @@ namespace BlackJackSolution
                         BetAmountText.Show();
                         BetLabelAmount.Hide();
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
-                        myHand.clearHand();//-----------------------
-                        dealerHand.clearHand();//--------------------
+                        control.ClearHand(myHand);//----------------------------------
+                        control.ClearHand(dealerHand);//--------------------
                     } else if (myHand.getTotal() == 21)
                     {
                         InfoLabel.Text = "You have 21";
@@ -387,22 +408,22 @@ namespace BlackJackSolution
                 if (dealerHand.getTotal() >= myHand.getTotal() && dealerHand.getTotal() < 22)
                 {
                     InfoLabel.Text = "The dealer has : " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "The dealer wins : " + BetAmountText.Text;
-                    myHand.clearHand();//----------------------------
-                    dealerHand.clearHand();//----------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//----------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer + user -
                 }
                 else if (dealerHand.getTotal() > 21)
                 {
                     InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    myHand.clearHand();//---------------------------
-                    dealerHand.clearHand();//--------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//--------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +
                 }
                 else if (myHand.getTotal() > dealerHand.getTotal())
                 {
                     InfoLabel.Text = "The dealer has " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    myHand.clearHand();//----------------------------------
-                    dealerHand.clearHand();//------------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//------------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +
                 }
                 HitButton.Hide();
@@ -412,9 +433,9 @@ namespace BlackJackSolution
                 BetAmountText.Clear();
                 BetAmountText.Show();
                 BetLabelAmount.Hide();
-            } catch (Exception exp)
+            } catch (Exception eSB)
             {
-
+                //Fattas
             }
         }
     }

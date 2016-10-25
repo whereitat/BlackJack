@@ -22,7 +22,10 @@ namespace BlackJackSolution.Control
         {
             h.AddCard(d);
         }
-
+        public void ClearHand(Hand h)
+        {
+            h.clearHand();
+        }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
