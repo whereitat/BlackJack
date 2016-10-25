@@ -12,6 +12,7 @@ CREATE TABLE Account (
 aname VARCHAR(20) NOT NULL,
 astatus VARCHAR(20) NOT NULL,
 balance FLOAT NOT NULL,
+CHECK(balance >= 0),
 [password] VARCHAR(128) NOT NULL,
 PRIMARY KEY (aname));
 

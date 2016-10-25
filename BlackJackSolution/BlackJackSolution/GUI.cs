@@ -21,6 +21,8 @@ namespace BlackJackSolution
         private String bet;
         private String myTotal;
         private String dealerTotal;
+        private Account player;
+        private Account Bank;
         public GUI()
         {
             InitializeComponent();
@@ -65,7 +67,7 @@ namespace BlackJackSolution
                         control.AddCard(deck, myHand);
                         displayMyCards(myHand);
                         displayDealerCards(dealerHand);
-                        if (myHand.total == 21)
+                        if (myHand.getTotal() == 21)
                         {
                             int winnings = Int32.Parse(BetLabelAmount.Text);
                             InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
@@ -82,8 +84,8 @@ namespace BlackJackSolution
                         }
                         else
                         {
-                            myTotal = "Your handtotal is : " + myHand.total + "\n";
-                            dealerTotal = "Dealer handtotal is : " + dealerHand.total;
+                            myTotal = "Your handtotal is : " + myHand.getTotal() + "\n";
+                            dealerTotal = "Dealer handtotal is : " + dealerHand.getTotal();
                             bet = "You bet " + BetLabelAmount.Text + "\n";
                             InfoLabel.Text = bet + myTotal + dealerTotal;
                         }
@@ -134,25 +136,25 @@ namespace BlackJackSolution
                     for (int i = 0; i < hand.handCards.Count; i++)
                     {
                         //Sätta string picture till rätt image
-                        if (hand.handCards[i].value < 10)
+                        if (hand.handCards[i].getValue() < 10)
                         {
-                            picture = "_0" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_0" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 10)
+                        else if (hand.handCards[i].getValue() == 10)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 11) //ess eller jack?
+                        else if (hand.handCards[i].getValue() == 11) //ess eller jack?
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 12)
+                        else if (hand.handCards[i].getValue() == 12)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 13)
+                        else if (hand.handCards[i].getValue() == 13)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
                         //Hämta samt visa korten
                         if (i == 0)
@@ -235,25 +237,25 @@ namespace BlackJackSolution
                     for (int i = 0; i < hand.handCards.Count; i++)
                     {
                         //Sätta string picture till rätt image
-                        if (hand.handCards[i].value < 10)
+                        if (hand.handCards[i].getValue() < 10)
                         {
-                            picture = "_0" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_0" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 10)
+                        else if (hand.handCards[i].getValue() == 10)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 11) //ess eller jack?
+                        else if (hand.handCards[i].getValue() == 11) //ess eller jack?
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 12)
+                        else if (hand.handCards[i].getValue() == 12)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
-                        else if (hand.handCards[i].value == 13)
+                        else if (hand.handCards[i].getValue() == 13)
                         {
-                            picture = "_" + hand.handCards[i].value + "_" + hand.handCards[i].suit;
+                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
                         }
                         //Hämta samt visa korten
                         if (i == 0)
@@ -331,17 +333,17 @@ namespace BlackJackSolution
         private void HitButton_Click(object sender, EventArgs e)
         {
             try {
-                if (myHand.total < 21)
+                if (myHand.getTotal() < 21)
                 {
                     control.AddCard(deck, myHand);
                     control.AddCard(deck, dealerHand);
-                    if (myHand.total < 21)
+                    if (myHand.getTotal() < 21)
                     {
-                        myTotal = "Your handtotal is : " + myHand.total + "\n";
-                        dealerTotal = "Dealer handtotal is : " + dealerHand.total;
+                        myTotal = "Your handtotal is : " + myHand.getTotal() + "\n";
+                        dealerTotal = "Dealer handtotal is : " + dealerHand.getTotal();
                         bet = "You bet " + BetLabelAmount.Text + "\n";
                         InfoLabel.Text = bet + myTotal + dealerTotal;
-                    } else if (myHand.total > 21)
+                    } else if (myHand.getTotal() > 21)
                     {
                         InfoLabel.Text = "You are bust, dealer wins " + BetLabelAmount.Text + "\n" + "Please enter a new bet to play again";
                         HitButton.Hide();
@@ -354,7 +356,7 @@ namespace BlackJackSolution
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
                         myHand.clearHand();//-----------------------
                         dealerHand.clearHand();//--------------------
-                    } else if (myHand.total == 21)
+                    } else if (myHand.getTotal() == 21)
                     {
                         InfoLabel.Text = "You have 21";
                         HitButton.Hide();
@@ -372,7 +374,7 @@ namespace BlackJackSolution
             try {
                 while (true)
                 {
-                    if (dealerHand.total < 17)
+                    if (dealerHand.getTotal() < 17)
                     {
                         control.AddCard(deck, dealerHand);
                         displayDealerCards(dealerHand);
@@ -382,23 +384,23 @@ namespace BlackJackSolution
                         break;
                     }
                 }
-                if (dealerHand.total >= myHand.total && dealerHand.total < 22)
+                if (dealerHand.getTotal() >= myHand.getTotal() && dealerHand.getTotal() < 22)
                 {
-                    InfoLabel.Text = "The dealer has : " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "The dealer wins : " + BetAmountText.Text;
+                    InfoLabel.Text = "The dealer has : " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "The dealer wins : " + BetAmountText.Text;
                     myHand.clearHand();//----------------------------
                     dealerHand.clearHand();//----------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer + user -
                 }
-                else if (dealerHand.total > 21)
+                else if (dealerHand.getTotal() > 21)
                 {
-                    InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
+                    InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
                     myHand.clearHand();//---------------------------
                     dealerHand.clearHand();//--------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +
                 }
-                else if (myHand.total > dealerHand.total)
+                else if (myHand.getTotal() > dealerHand.getTotal())
                 {
-                    InfoLabel.Text = "The dealer has " + dealerHand.total + "\n" + "You have : " + myHand.total + "\n" + "You win : " + BetAmountText.Text;
+                    InfoLabel.Text = "The dealer has " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
                     myHand.clearHand();//----------------------------------
                     dealerHand.clearHand();//------------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +

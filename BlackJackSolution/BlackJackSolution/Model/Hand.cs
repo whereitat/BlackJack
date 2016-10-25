@@ -10,13 +10,22 @@ namespace BlackJackSolution.Model
 {
     public class Hand
     {
+        private int total;
         public List<Card> handCards { set; get; }
-        public int total { set; get; }
+        //public int total { set; get; }
 
         public Hand()
         {
             handCards = new List<Card>();
             total = 0;
+        }
+        public void setTotal(int amount)
+        {
+            this.total = amount;
+        }
+        public int getTotal()
+        {
+            return this.total;
         }
         public void AddCard(Deck deck)
         {
@@ -44,16 +53,16 @@ namespace BlackJackSolution.Model
             for (int i = 0; i < handCards.Count; i++)
             {
 
-                handTotal += handCards[i].value;
+                handTotal += handCards[i].getValue();
 
                 if (handTotal > 21)
                 {
                     for (int j = 0; j < handCards.Count; j++)
                     {
-                        if (handCards[j].value == 11)
+                        if (handCards[j].getValue() == 11)
                         {
-                            handCards[j].value = 1;
-                            handTotal += handCards[j].value - 11;
+                            handCards[j].setValue(1);
+                            handTotal += handCards[j].getValue() - 11;
                             break;
                         }
                     }
@@ -62,6 +71,7 @@ namespace BlackJackSolution.Model
             this.total = handTotal;
             return total;
         }
+        /**
         public Hand CreateSplit(Hand h)
         {
             try
@@ -86,5 +96,6 @@ namespace BlackJackSolution.Model
                 return null;
             }
         }
+    **/
     }
 }

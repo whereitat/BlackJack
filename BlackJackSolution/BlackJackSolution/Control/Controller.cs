@@ -22,6 +22,8 @@ namespace BlackJackSolution.Control
         {
             h.AddCard(d);
         }
+
+        //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
             Account a = db.GetAccount(accname);
@@ -29,7 +31,7 @@ namespace BlackJackSolution.Control
             {
                 return false;
             }
-            if (a.aname.Equals(accname) && a.password.Equals(pwd))
+            if (a.getAname().Equals(accname) && a.getPassword().Equals(pwd))
             {
                 return true;
             }
@@ -39,6 +41,7 @@ namespace BlackJackSolution.Control
             }
             
         }
+        //Behöver commit på nya procedures för test
         public bool CreateAccount(string aname, string password)
         {
             return db.CreateAccount(aname, Crypt(password));

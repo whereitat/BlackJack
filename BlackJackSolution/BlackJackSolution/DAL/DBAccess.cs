@@ -50,24 +50,24 @@ namespace BlackJackSolution.DAL
                         while (read.Read())
                         {
                             Card card = new Card();
-                            card.value = read.GetInt32(read.GetOrdinal("value"));
-                            card.cardId = read.GetString(read.GetOrdinal("cardId"));
+                            card.setValue(read.GetInt32(read.GetOrdinal("value")));
+                            card.setCardId(read.GetString(read.GetOrdinal("cardId")));
                             string suite = read.GetString(read.GetOrdinal("cardId"));
                                 if (suite.Substring(0, 1).Equals("H"))
                                 {
-                                    card.suit = "hearts";
+                                    card.SetSuit("hearts");
                                 }
                                 else if (suite.Substring(0, 1).Equals("S"))
                                 {
-                                    card.suit = "spades";
+                                    card.SetSuit("spades");
                                 }
                                 else if (suite.Substring(0, 1).Equals("C"))
                                 {
-                                    card.suit = "clubs";
+                                    card.SetSuit("clubs");
                                 }
                                 else if (suite.Substring(0, 1).Equals("D"))
                                 {
-                                    card.suit = "diamonds";
+                                    card.SetSuit("diamonds");
                                 }
                             newDeck.cards.Add(card);
                         }
@@ -144,10 +144,10 @@ namespace BlackJackSolution.DAL
 
                 if (read != null)
                 {
-                    account.aname = read.GetString(read.GetOrdinal("aname"));
-                    account.astatus = read.GetString(read.GetOrdinal("astatus"));
-                    account.balance = read.GetDouble(read.GetOrdinal("balance"));
-                    account.password = read.GetString(read.GetOrdinal("password"));
+                    account.setAname(read.GetString(read.GetOrdinal("aname")));
+                    account.setAstatus(read.GetString(read.GetOrdinal("astatus")));
+                    account.setBalance(read.GetDouble(read.GetOrdinal("balance")));
+                    account.setPassword(read.GetString(read.GetOrdinal("password")));
                     return account;
                 }
                 else
