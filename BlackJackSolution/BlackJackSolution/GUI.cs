@@ -39,58 +39,70 @@ namespace BlackJackSolution
         {
             try {
                 clearCards();
-                if (!String.IsNullOrWhiteSpace(BetAmountText.Text)) //Kanske för många steg att parsa och if och kolla samtidigt
+                int betInt = 0;
+                bool tryParse = Int32.TryParse(BetAmountText.Text, out betInt);
+                if (tryParse == true)
                 {
-                    HitButton.Show();
-                    StandButton.Show();
-                    DealButton.Hide();
-                    LeaveButton.Hide();
-                    BetAmountText.Hide();
-                    BetLabelAmount.Text = BetAmountText.Text;
-                    BetLabelAmount.Show();
-                    //Börjar dela kort
-                    dealerHand.AddCard(deck);
-                    myHand.AddCard(deck);
-                    myHand.AddCard(deck);
-                    displayMyCards(myHand);
-                    displayDealerCards(dealerHand);
-                    myHand.CheckHand();
-                    dealerHand.CheckHand();
-                    if(myHand.total == 21)
+                    betInt = Int32.Parse(BetAmountText.Text);
+                    if (betInt <= 0)
                     {
-                        int winnings = Int32.Parse(BetLabelAmount.Text);
-                        InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
-                        //UPDATE SALDO +user*1.5 -bank
-                        myHand.clearHand();
-                        dealerHand.clearHand();
-                        HitButton.Hide();
-                        StandButton.Hide();
-                        DealButton.Show();
-                        LeaveButton.Show();
-                        BetAmountText.Clear();
-                        BetAmountText.Show();
-                        BetLabelAmount.Hide();
+                        InfoLabel.Text = "Please enter a valid bet (Not 0 or negative numbers)";
                     }
                     else
                     {
-                        myTotal = "Your handtotal is : " + myHand.total + "\n";
-                        dealerTotal = "Dealer handtotal is : " + dealerHand.total;
-                        bet = "You bet " + BetLabelAmount.Text + "\n";
-                        InfoLabel.Text = bet + myTotal + dealerTotal;
+                        HitButton.Show();
+                        StandButton.Show();
+                        DealButton.Hide();
+                        LeaveButton.Hide();
+                        BetAmountText.Hide();
+                        BetLabelAmount.Text = BetAmountText.Text;
+                        BetLabelAmount.Show();
+                        //Börjar dela kort
+                        dealerHand.AddCard(deck);
+                        myHand.AddCard(deck);
+                        myHand.AddCard(deck);
+                        displayMyCards(myHand);
+                        displayDealerCards(dealerHand);
+                        myHand.CheckHand();
+                        dealerHand.CheckHand();
+                        if (myHand.total == 21)
+                        {
+                            int winnings = Int32.Parse(BetLabelAmount.Text);
+                            InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
+                            //UPDATE SALDO +user*1.5 -bank
+                            myHand.clearHand();
+                            dealerHand.clearHand();
+                            HitButton.Hide();
+                            StandButton.Hide();
+                            DealButton.Show();
+                            LeaveButton.Show();
+                            BetAmountText.Clear();
+                            BetAmountText.Show();
+                            BetLabelAmount.Hide();
+                        }
+                        else
+                        {
+                            myTotal = "Your handtotal is : " + myHand.total + "\n";
+                            dealerTotal = "Dealer handtotal is : " + dealerHand.total;
+                            bet = "You bet " + BetLabelAmount.Text + "\n";
+                            InfoLabel.Text = bet + myTotal + dealerTotal;
+                        }
                     }
                 }
-                else
+                else if(!String.IsNullOrWhiteSpace(BetAmountText.Text))
                 {
                     InfoLabel.Text = "Please place a bet";
+                }
+                else if(tryParse == false)
+                {
+                    InfoLabel.Text = "Please enter a number as your bet";
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error : " + ex.Message);
             }
-          
         }
-
         private void LeaveButton_Click(object sender, EventArgs e)
         {
             GamePanel.Hide();
