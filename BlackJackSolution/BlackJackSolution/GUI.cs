@@ -437,15 +437,22 @@ namespace BlackJackSolution
 
         private void LoginCreateCreateBtn_Click(object sender, EventArgs e)
         {
-            bool acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
-            if(acc == true)
+            if (LoginCreatePWTextBox.Text.Length > 2)
             {
-                LoginInfoLabel.Text = "Account created";
-                LoginCreateGroupBox.Hide();
+                bool acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
+                if (acc == true)
+                {
+                    LoginInfoLabel.Text = "Account created";
+                    LoginCreateGroupBox.Hide();
+                }
+                else
+                {
+                    LoginInfoLabel.Text = "Account name already in use";
+                }
             }
             else
             {
-                LoginInfoLabel.Text = "Account name already in use";
+                LoginInfoLabel.Text = "For your safety" + "\n" + "your password must be atleast 3 characters";
             }
         }
 
