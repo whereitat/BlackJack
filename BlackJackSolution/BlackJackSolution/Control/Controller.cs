@@ -16,6 +16,7 @@ namespace BlackJackSolution.Control
         private static Hand myHand = new Hand();
         private static Hand dealerHand = new Hand();
         private static DBAccess db = new DBAccess();
+        private static Account user = new Account();
         public int CheckMyHand()
         {
             int value = myHand.getTotal();
@@ -84,6 +85,40 @@ namespace BlackJackSolution.Control
 
             }
         }
+        public List<String> GetDealerPictureStrings()
+        {
+            List<String> picList = new List<string>();
+            String picture;
+            for (int i = 0; i < dealerHand.handCards.Count; i++)
+            {
+                if (dealerHand.handCards[i].getValue() < 10)
+                {
+                    picture = "_0" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+                else if (dealerHand.handCards[i].getValue() == 10)
+                {
+                    picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+                else if (dealerHand.handCards[i].getValue() == 11)
+                {
+                    picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+                else if (dealerHand.handCards[i].getValue() == 12)
+                {
+                    picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+                else if (dealerHand.handCards[i].getValue() == 13)
+                {
+                    picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+            }
+            return picList;
+        }
         public List<String> GetMyPictureStrings()
         {
             List<String> picList = new List<string>();
@@ -118,26 +153,34 @@ namespace BlackJackSolution.Control
                 }
             return picList;
         }
+        public void GetUser(string uname, string pw)
+        {
+            string[] dbData = db.GetAccount(uname);
+            if (Crypt(pw ).Equals(dbData[3]))
+            {
+                
+            }
+        }
+        public void HitBtnPush()
+        {
+            myHand.AddCard(deck);
+        }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
-        {
-            
+        {   
             string[] dbData = db.GetAccount(accname);
-            
-            
             if (dbData == null)
             {
                 return false;
-            } else
+            }
+            else
             {
-                Account a = new Account();
-                a.setAname(dbData[0]);
-                a.setAstatus(dbData[1]);
-                a.setBalance(double.Parse(dbData[2]));
-                a.setPassword(dbData[3]);
-
-                if (a.getAname().Equals(accname) && a.getPassword().Equals(Crypt(pwd)))
+                if (dbData[3].Equals(Crypt(pwd)))
                 {
+                    user.setAname(dbData[0]);
+                    user.setAstatus(dbData[1]);
+                    user.setBalance(double.Parse(dbData[2]));
+                    user.setPassword(dbData[3]);
                     return true;
                 }
                 else
@@ -145,8 +188,17 @@ namespace BlackJackSolution.Control
                     return false;
                 }
             }
-           
-            
+        }
+        public void LogOut()
+        {
+            user = new Account();
+        }
+        public void StandBtnPush()
+        {
+            while(dealerHand.getTotal() < 17)
+            {
+                dealerHand.AddCard(deck);
+            }
         }
         //Behöver commit på nya procedures för test
     }

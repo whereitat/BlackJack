@@ -16,9 +16,9 @@ namespace BlackJackSolution
     {
         private static Controller control = new Controller();
         private double bet;
-        private String betString;
-        private String myTotal;
-        private String dealerTotal;
+        private string betString;
+        private string myTotal;
+        private string dealerTotal;
         public GUI()
         {
             InitializeComponent();
@@ -30,6 +30,11 @@ namespace BlackJackSolution
             {
                 MainPanel.Hide();
                 LoginPanel.Show();
+                control.LogOut();
+                bet = 0;
+                betString = "";
+                myTotal = "";
+                dealerTotal = "";
             }
             catch (Exception eLOB)
             {
@@ -55,7 +60,8 @@ namespace BlackJackSolution
                     LeaveButton.Hide();
                     MinBetBtn.Hide();
                     MaxBetBtn.Hide();
-                    //Fattas visa kort
+                    displayMyCards(control.GetMyPictureStrings());
+                    displayDealerCards(control.GetDealerPictureStrings());
                     int myHandCheck = control.CheckMyHand();
                     int dealerHandCheck = control.CheckDealerHand();
                     if (myHandCheck == 21)
@@ -126,38 +132,17 @@ namespace BlackJackSolution
                 //Fattas
             }
         }
-        public void displayMyCards(Hand hand) //måste fixa om hur suit och value läses
+        public void displayMyCards(List<string> list) //måste fixa om hur suit och value läses
         {
             try {
-                String picture = "";
-                if (hand != null && hand.handCards != null)
+                string picture;
+                if (list != null && list.Count > 0)
                 {
-                    for (int i = 0; i < hand.handCards.Count; i++)
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        //Sätta string picture till rätt image
-                        if (hand.handCards[i].getValue() < 10)
-                        {
-                            picture = "_0" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 10)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 11) //ess eller jack?
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 12)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 13)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        //Hämta samt visa korten
                         if (i == 0)
                         {
+                            picture = list[i];
                             YourHandPictureBox1.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -167,6 +152,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 1)
                         {
+                            picture = list[i];
                             YourHandPictureBox2.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -176,6 +162,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 2)
                         {
+                            picture = list[i];
                             YourHandPictureBox3.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -185,6 +172,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 3)
                         {
+                            picture = list[i];
                             YourHandPictureBox4.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -194,6 +182,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 4)
                         {
+                            picture = list[i];
                             YourHandPictureBox5.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -203,6 +192,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 5)
                         {
+                            picture = list[i];
                             YourHandPictureBox6.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -212,6 +202,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 6)
                         {
+                            picture = list[i];
                             YourHandPictureBox7.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -227,38 +218,17 @@ namespace BlackJackSolution
                 Console.WriteLine("Error : " + eDMH.Message);
             }
         }
-        public void displayDealerCards(Hand hand)
+        public void displayDealerCards(List<string> list)
         {
             try {
-                String picture = "";
-                if (hand != null && hand.handCards != null)
+                string picture;
+                if (list != null && list.Count > 0)
                 {
-                    for (int i = 0; i < hand.handCards.Count; i++)
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        //Sätta string picture till rätt image
-                        if (hand.handCards[i].getValue() < 10)
-                        {
-                            picture = "_0" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 10)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 11) //ess eller jack?
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 12)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        else if (hand.handCards[i].getValue() == 13)
-                        {
-                            picture = "_" + hand.handCards[i].getValue() + "_" + hand.handCards[i].getSuit();
-                        }
-                        //Hämta samt visa korten
                         if (i == 0)
                         {
+                            picture = list[i];
                             DealerPictureBox1.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -268,6 +238,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 1)
                         {
+                            picture = list[i];
                             DealerPictureBox2.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -277,6 +248,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 2)
                         {
+                            picture = list[i];
                             DealerPictureBox3.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -286,6 +258,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 3)
                         {
+                            picture = list[i];
                             DealerPictureBox4.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -295,6 +268,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 4)
                         {
+                            picture = list[i];
                             DealerPictureBox5.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -304,6 +278,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 5)
                         {
+                            picture = list[i];
                             DealerPictureBox6.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -313,6 +288,7 @@ namespace BlackJackSolution
                         }
                         else if (i == 6)
                         {
+                            picture = list[i];
                             DealerPictureBox7.Visible = true;
                             System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                             Bitmap pic = (Bitmap)rm.GetObject(picture);
@@ -332,30 +308,31 @@ namespace BlackJackSolution
         private void HitButton_Click(object sender, EventArgs e)
         {
             try {
-                if (myHand.getTotal() < 21)
+                int myHandTot = control.CheckMyHand();
+                if (myHandTot < 21)
                 {
-                    control.AddCard(deck, myHand);
-                    control.AddCard(deck, dealerHand);
-                    if (myHand.getTotal() < 21)
+                    control.HitBtnPush();
+                    myHandTot = control.CheckMyHand();
+                    int dealerHandTot = control.CheckDealerHand();
+                    if (myHandTot < 21)
                     {
-                        myTotal = "Your handtotal is : " + myHand.getTotal() + "\n";
-                        dealerTotal = "Dealer handtotal is : " + dealerHand.getTotal();
-                        bet = "You bet " + BetLabelAmount.Text + "\n";
-                        InfoLabel.Text = bet + myTotal + dealerTotal;
-                    } else if (myHand.getTotal() > 21)
+                        myTotal = "Your handtotal is : " + myHandTot + "\n";
+                        dealerTotal = "Dealer handtotal is : " + dealerHandTot;
+                        betString = "You bet " + bet + "\n";
+                        InfoLabel.Text = betString + myTotal + dealerTotal;
+                    } else if (myHandTot > 21)
                     {
-                        InfoLabel.Text = "You are bust, dealer wins " + BetLabelAmount.Text + "\n" + "Please enter a new bet to play again";
+                        InfoLabel.Text = "You are bust, dealer wins " + bet + "\n" + "Please enter a new bet to play again";
                         HitButton.Hide();
                         StandButton.Hide();
                         DealButton.Show();
                         LeaveButton.Show();
-                        BetAmountText.Clear();
-                        BetAmountText.Show();
-                        BetLabelAmount.Hide();
+                        MinBetBtn.Show();
+                        MaxBetBtn.Show();
+                        control.ClearHands();
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
-                        control.ClearHand(myHand);//----------------------------------
-                        control.ClearHand(dealerHand);//--------------------
-                    } else if (myHand.getTotal() == 21)
+                        
+                    } else if (myHandTot == 21)
                     {
                         InfoLabel.Text = "You have 21";
                         HitButton.Hide();
@@ -371,46 +348,26 @@ namespace BlackJackSolution
         private void StandButton_Click(object sender, EventArgs e)
         {
             try {
-                while (true)
+                int Htot = control.CheckMyHand();
+                control.StandBtnPush();
+                int Dtot = control.CheckDealerHand();
+                if(Htot > Dtot && Htot < 22)
                 {
-                    if (dealerHand.getTotal() < 17)
-                    {
-                        control.AddCard(deck, dealerHand);
-                        displayDealerCards(dealerHand);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
+                    //UPDATE SALDO +user - bank
                 }
-                if (dealerHand.getTotal() >= myHand.getTotal() && dealerHand.getTotal() < 22)
+                else if(Dtot > Htot && Dtot < 22)
                 {
-                    InfoLabel.Text = "The dealer has : " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "The dealer wins : " + BetAmountText.Text;
-                    control.ClearHand(myHand);//----------------------------------
-                    control.ClearHand(dealerHand);//----------------------------
-                    //UPDATE SALDO FÖR USER/BANK dealer + user -
+                    InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
+                    //UPDATE SALDO -Bank +user
                 }
-                else if (dealerHand.getTotal() > 21)
-                {
-                    InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    control.ClearHand(myHand);//----------------------------------
-                    control.ClearHand(dealerHand);//--------------------------
-                    //UPDATE SALDO FÖR USER/BANK dealer - user +
-                }
-                else if (myHand.getTotal() > dealerHand.getTotal())
-                {
-                    InfoLabel.Text = "The dealer has " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    control.ClearHand(myHand);//----------------------------------
-                    control.ClearHand(dealerHand);//------------------------------
-                    //UPDATE SALDO FÖR USER/BANK dealer - user +
-                }
+                control.ClearHands();
                 HitButton.Hide();
                 StandButton.Hide();
                 LeaveButton.Show();
                 DealButton.Show();
-                BetAmountText.Clear();
-                BetAmountText.Show();
-                BetLabelAmount.Hide();
+                MinBetBtn.Show();
+                MaxBetBtn.Show();
             } catch (Exception eSB)
             {
                 //Fattas
@@ -419,28 +376,44 @@ namespace BlackJackSolution
 
         private void LoginLoginButton_Click(object sender, EventArgs e)
         {
-            MainPanel.Show();
-            LoginPanel.Hide();
-            MainTableGroupBox.Show();
+            try {
+                bool loginOK;
+                loginOK = control.Login(LoginUsernameTextBox.Text, LoginPasswordTextBox.Text);
+                if (loginOK == true)
+                {
+                    MainPanel.Show();
+                    LoginPanel.Hide();
+                    MainTableGroupBox.Show();
 
-            MainTableOnePictureBox.Visible = true;
-            System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
-            Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
-            MainTableOnePictureBox.Image = picSt;
-            MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableOnePictureBox.BringToFront();
+                    MainTableOnePictureBox.Visible = true;
+                    System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                    Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    MainTableOnePictureBox.Image = picSt;
+                    MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableOnePictureBox.BringToFront();
 
-            MainTableTwoPictureBox.Visible = true;
-            Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
-            MainTableTwoPictureBox.Image = picSt2;
-            MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableTwoPictureBox.BringToFront();
+                    MainTableTwoPictureBox.Visible = true;
+                    Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    MainTableTwoPictureBox.Image = picSt2;
+                    MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableTwoPictureBox.BringToFront();
 
-            MainTableThreePictureBox.Visible = true;
-            Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
-            MainTableThreePictureBox.Image = picVIP;
-            MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableThreePictureBox.BringToFront();
+                    MainTableThreePictureBox.Visible = true;
+                    Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
+                    MainTableThreePictureBox.Image = picVIP;
+                    MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableThreePictureBox.BringToFront();
+                }
+                else
+                {
+                    LoginInfoLabel.Text = "Username or Password incorrect";
+                }
+            }
+            catch(Exception loginE)
+            {
+
+            }
+            
         }
 
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
@@ -465,6 +438,32 @@ namespace BlackJackSolution
             bet = double.Parse(MaxBetBtn.Text);
             MinBetBtn.Hide();
             MaxBetBtn.Hide();
+        }
+
+        private void LoginCreateCreateBtn_Click(object sender, EventArgs e)
+        {
+            if (LoginCreatePWTextBox.Text.Length > 2)
+            {
+                bool acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
+                if (acc == true)
+                {
+                    LoginInfoLabel.Text = "Account created";
+                    LoginCreateGroupBox.Hide();
+                }
+                else
+                {
+                    LoginInfoLabel.Text = "Account name already in use";
+                }
+            }
+            else
+            {
+                LoginInfoLabel.Text = "For your safety" + "\n" + "your password must be atleast 3 characters";
+            }
+        }
+
+        private void LoginCreateAccBtn_Click(object sender, EventArgs e)
+        {
+            LoginCreateGroupBox.Show();
         }
     }
 }
