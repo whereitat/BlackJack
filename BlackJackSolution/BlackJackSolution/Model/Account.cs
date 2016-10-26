@@ -12,10 +12,6 @@ namespace BlackJackSolution.Model
         private String astatus;
         private Double balance;
         private String password;
-        //public string aname { set; get; }
-        //public string astatus { set; get; }
-        //public double balance { set; get; }
-        //public string password { set; get; }
 
         public Account ()
         {

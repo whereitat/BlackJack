@@ -82,7 +82,7 @@ namespace BlackJackSolution
                     {
                         myTotal = "Your handtotal is : " + myHandCheck + "\n";
                         dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
-                        betString = "You bet " + bet + "\n"; //ÄNDRA TILL KNAPP
+                        betString = "You bet " + bet + "\n"; 
                         InfoLabel.Text = betString + myTotal + dealerTotal;
                     }
                 }
@@ -384,6 +384,11 @@ namespace BlackJackSolution
                     MainPanel.Show();
                     LoginPanel.Hide();
                     MainTableGroupBox.Show();
+                    LoginPasswordTextBox.Clear();
+                    LoginUsernameTextBox.Clear();
+                    LoginCreatePWTextBox.Clear();
+                    LoginCreateUnameTextBox.Clear();
+                    LoginInfoLabel.Text = "";
 
                     MainTableOnePictureBox.Visible = true;
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
@@ -449,21 +454,34 @@ namespace BlackJackSolution
                 {
                     LoginInfoLabel.Text = "Account created";
                     LoginCreateGroupBox.Hide();
+                    LoginCreatePWTextBox.Clear();
+                    LoginCreateUnameTextBox.Clear();
                 }
                 else
                 {
                     LoginInfoLabel.Text = "Account name already in use";
+                    LoginCreatePWTextBox.Clear();
+                    LoginCreateUnameTextBox.Clear();
                 }
             }
             else
             {
                 LoginInfoLabel.Text = "For your safety" + "\n" + "your password must be atleast 3 characters";
+                LoginCreatePWTextBox.Clear();
             }
         }
 
         private void LoginCreateAccBtn_Click(object sender, EventArgs e)
         {
             LoginCreateGroupBox.Show();
+        }
+
+        private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
+        {
+            //ta bort konto
+            //rensa user
+            MainPanel.Hide();
+            LoginPanel.Show();
         }
     }
 }
