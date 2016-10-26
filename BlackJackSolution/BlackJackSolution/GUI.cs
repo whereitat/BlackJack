@@ -576,5 +576,10 @@ namespace BlackJackSolution
             MainAccountBLabel.Text = control.GetBalance().ToString();
             MainAccountFundsTF.Clear();
         }
+
+        private void LoginPasswordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
