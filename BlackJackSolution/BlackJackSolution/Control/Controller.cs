@@ -64,7 +64,7 @@ namespace BlackJackSolution.Control
         public string Crypt(string input)
         {
             SHA512 alg = SHA512.Create();
-            return Convert.ToBase64String(alg.ComputeHash(Encoding.Unicode.GetBytes(input)));
+            return Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
         }
         public void DealButtonPush()
         {
