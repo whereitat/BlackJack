@@ -99,19 +99,31 @@ namespace BlackJackSolution.Control
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
-            Account a = db.GetAccount(accname);
-            if (a == null)
+            
+            string[] dbData = db.GetAccount(accname);
+            
+            
+            if (dbData == null)
             {
                 return false;
-            }
-            if (a.getAname().Equals(accname) && a.getPassword().Equals(pwd))
+            } else
             {
-                return true;
+                Account a = new Account();
+                a.setAname(dbData[0]);
+                a.setAstatus(dbData[1]);
+                a.setBalance(double.Parse(dbData[2]));
+                a.setPassword(dbData[3]);
+
+                if (a.getAname().Equals(accname) && a.getPassword().Equals(Crypt(pwd)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else 
-            {
-                return false;
-            }
+           
             
         }
         //Behöver commit på nya procedures för test
