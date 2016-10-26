@@ -217,8 +217,8 @@ namespace BlackJackSolution.DAL
                     {
                         string[] game = new string[4];
                         game[0] = read.GetInt32(read.GetOrdinal("sessionId")).ToString();
-                        game[1] = read.GetInt32(read.GetOrdinal("minBet")).ToString();
-                        game[2] = read.GetInt32(read.GetOrdinal("maxBet")).ToString();
+                        game[1] = read.GetDouble(read.GetOrdinal("minBet")).ToString();
+                        game[2] = read.GetDouble(read.GetOrdinal("maxBet")).ToString();
                         game[3] = read.GetString(read.GetOrdinal("gstatus"));
                         setOfGames.Add(game);
                     }

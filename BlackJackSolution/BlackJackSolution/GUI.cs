@@ -423,7 +423,11 @@ namespace BlackJackSolution
 
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Erik heja heja");
+            MainPanel.Hide();
+            GamePanel.Show();
+            control.InitiateTable(0);
+            MaxBetBtn.Text = control.GetMaxBet().ToString();
+            MinBetBtn.Text = control.GetMinBet().ToString();
         }
 
         private void LoginExitBtn_Click(object sender, EventArgs e)

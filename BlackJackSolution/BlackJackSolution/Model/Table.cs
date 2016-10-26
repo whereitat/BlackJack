@@ -12,7 +12,10 @@ namespace BlackJackSolution.Model
         private int maxBet;
         private int minBet;
         private string gstatus;
+        public Table()
+        {
 
+        }
         public Table(int sessionId, int maxBet, int minBet, string gstatus)
         {
             this.sessionId = sessionId;
