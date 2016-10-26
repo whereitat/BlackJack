@@ -36,7 +36,7 @@ namespace BlackJackSolution.DAL
             }
             **/
         }
-        public static List<string[]> CreateDeck()
+        public static List<string[]> CreateDeck() 
         {
             try {
                 List<string[]> newDeck = new List<string[]>();
