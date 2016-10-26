@@ -69,9 +69,9 @@ namespace BlackJackSolution
                         double winnings = bet * 1.5; 
                         InfoLabel.Text = "BLACKJACK! You win : " + winnings + "\n" + "Please enter a new bet to play again";
                         //UPDATE SALDO +user*1.5 -bank
-                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet*2.5));
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(winnings));
                         control.ClearHands();
-                        bet = 0;//Måste skicka till DB först
+                        bet = 0;
                         HitButton.Hide();
                         StandButton.Hide();
                         DealButton.Show();
@@ -79,6 +79,7 @@ namespace BlackJackSolution
                         MinBetBtn.Show();
                         MaxBetBtn.Show();
                         BetLabel.Show();
+                        GameBalanceLabel.Text = control.GetBalance().ToString();
                     }
                     else
                     {
@@ -336,6 +337,7 @@ namespace BlackJackSolution
                         BetLabel.Show();
                         control.ClearHands();
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet-bet*2));
+                        GameBalanceLabel.Text = control.GetBalance().ToString();
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
 
                     } else if (myHandTot == 21)
@@ -365,7 +367,8 @@ namespace BlackJackSolution
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
-                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet * 2));
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet));
+                        GameBalanceLabel.Text = control.GetBalance().ToString();
                         //UPDATE SALDO +user - bank
                     }
                     else if (Dtot > Htot)
@@ -374,6 +377,7 @@ namespace BlackJackSolution
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
+                        GameBalanceLabel.Text = control.GetBalance().ToString();
                         //UPDATE SALDO -Bank +user
                     }
                     else if (Dtot == Htot)
@@ -382,6 +386,7 @@ namespace BlackJackSolution
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
+                        GameBalanceLabel.Text = control.GetBalance().ToString();
                         //UPDATE SALDO -user +bank
                     }
                 }
@@ -390,7 +395,8 @@ namespace BlackJackSolution
                     InfoLabel.Text = "The dealer is bust: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
                     displayMyCards(control.GetMyPictureStrings());
                     displayDealerCards(control.GetDealerPictureStrings());
-                    control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet * 2));
+                    control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet));
+                    GameBalanceLabel.Text = control.GetBalance().ToString();
                     //UPDATE SALDO +user -bank
                 }
                 control.ClearHands();
@@ -416,6 +422,7 @@ namespace BlackJackSolution
                 {
                     MainPanel.Show();
                     LoginPanel.Hide();
+                    GamePanel.Hide();
                     MainTableGroupBox.Show();
                     LoginPasswordTextBox.Clear();
                     LoginUsernameTextBox.Clear();
@@ -461,6 +468,7 @@ namespace BlackJackSolution
             control.InitiateTable(0);
             MaxBetBtn.Text = control.GetMaxBet().ToString();
             MinBetBtn.Text = control.GetMinBet().ToString();
+            GameBalanceLabel.Text = control.GetBalance().ToString();
         }
 
         private void LoginExitBtn_Click(object sender, EventArgs e)
@@ -476,6 +484,9 @@ namespace BlackJackSolution
             BetLabel.Hide();
             clearCards();
             InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
+            double bal = Double.Parse(GameBalanceLabel.Text);
+            bal -= bet;
+            GameBalanceLabel.Text = bal.ToString();
         }
 
         private void MaxBetBtn_Click(object sender, EventArgs e)
@@ -486,6 +497,9 @@ namespace BlackJackSolution
             BetLabel.Hide();
             clearCards();
             InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
+            double bal = Double.Parse(GameBalanceLabel.Text);
+            bal -= bet;
+            GameBalanceLabel.Text = bal.ToString();
         }
 
         private void LoginCreateCreateBtn_Click(object sender, EventArgs e)

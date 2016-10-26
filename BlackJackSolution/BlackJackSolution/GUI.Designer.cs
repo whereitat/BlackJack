@@ -91,6 +91,8 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GameInfoBalLab = new System.Windows.Forms.Label();
+            this.GameBalanceLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.MainInfoGroupBox.SuspendLayout();
             this.MainAccountGroupBox.SuspendLayout();
@@ -485,6 +487,8 @@
             // InfoGroupBox
             // 
             this.InfoGroupBox.BackColor = System.Drawing.Color.White;
+            this.InfoGroupBox.Controls.Add(this.GameBalanceLabel);
+            this.InfoGroupBox.Controls.Add(this.GameInfoBalLab);
             this.InfoGroupBox.Controls.Add(this.InfoLabel);
             this.InfoGroupBox.Location = new System.Drawing.Point(30, 497);
             this.InfoGroupBox.Name = "InfoGroupBox";
@@ -747,6 +751,23 @@
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
+            // GameInfoBalLab
+            // 
+            this.GameInfoBalLab.AutoSize = true;
+            this.GameInfoBalLab.Location = new System.Drawing.Point(482, 56);
+            this.GameInfoBalLab.Name = "GameInfoBalLab";
+            this.GameInfoBalLab.Size = new System.Drawing.Size(63, 17);
+            this.GameInfoBalLab.TabIndex = 1;
+            this.GameInfoBalLab.Text = "Balance:";
+            // 
+            // GameBalanceLabel
+            // 
+            this.GameBalanceLabel.AutoSize = true;
+            this.GameBalanceLabel.Location = new System.Drawing.Point(548, 56);
+            this.GameBalanceLabel.Name = "GameBalanceLabel";
+            this.GameBalanceLabel.Size = new System.Drawing.Size(0, 17);
+            this.GameBalanceLabel.TabIndex = 2;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -754,8 +775,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.LoginPanel);
-            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.GamePanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
@@ -867,6 +888,8 @@
         private System.Windows.Forms.PictureBox MainTableThreePictureBox;
         private System.Windows.Forms.PictureBox MainTableTwoPictureBox;
         private System.Windows.Forms.PictureBox MainTableOnePictureBox;
+        private System.Windows.Forms.Label GameBalanceLabel;
+        private System.Windows.Forms.Label GameInfoBalLab;
     }
 }
 

@@ -73,7 +73,7 @@ namespace BlackJackSolution.Control
             }
             else
             {
-                Console.WriteLine("Fel");
+                Console.WriteLine("Fel" + gameId);
             }
         }
         public string Crypt(string input)
@@ -111,6 +111,20 @@ namespace BlackJackSolution.Control
                 returnList.Add(t);
             }
             return returnList;
+        }
+        public int GetBalance()
+        {
+            int retvalue = 0;
+            string[] accB = db.GetAccount(user.getAname(), user.getPassword());
+            if (accB[2] != null)
+            {
+                retvalue = Int32.Parse(accB[2]);
+                return retvalue;
+            }
+            else
+            {
+                return retvalue;
+            }
         }
         public Table GetBlackJackGameById(int sessionId)
         {

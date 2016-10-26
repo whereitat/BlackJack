@@ -230,10 +230,10 @@ namespace BlackJackSolution.DAL
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
                 int gameid = 0;
-                if(read.GetInt32(read.GetOrdinal("ERROR")) > 0)
-                {
-                    return gameid;
-                }
+                //if(read.GetInt32(read.GetOrdinal("ERROR")) > 0)
+                //{
+                //    return gameid;
+                //}
                 if (read.HasRows)
                 {
                     while (read.Read())
