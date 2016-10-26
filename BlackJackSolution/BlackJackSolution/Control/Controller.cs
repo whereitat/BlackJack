@@ -221,6 +221,17 @@ namespace BlackJackSolution.Control
                 
             }
         }
+        public bool GetUserStatus()
+        {
+            if (user.getAstatus().Equals("VIP"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void HitBtnPush()
         {
             myHand.AddCard(deck);

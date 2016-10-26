@@ -448,6 +448,10 @@ namespace BlackJackSolution
                     MainTableThreePictureBox.Image = picVIP;
                     MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableThreePictureBox.BringToFront();
+                    if (control.GetUserStatus() == false)
+                    {
+                        MainTableThreePictureBox.Visible = false;
+                    }
                 }
                 else
                 {
@@ -540,5 +544,7 @@ namespace BlackJackSolution
             MainPanel.Hide();
             LoginPanel.Show();
         }
+
+       
     }
 }
