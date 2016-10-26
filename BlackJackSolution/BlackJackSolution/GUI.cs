@@ -30,6 +30,11 @@ namespace BlackJackSolution
             {
                 MainPanel.Hide();
                 LoginPanel.Show();
+                control.LogOut();
+                bet = 0;
+                betString = "";
+                myTotal = "";
+                dealerTotal = "";
             }
             catch (Exception eLOB)
             {

@@ -189,6 +189,10 @@ namespace BlackJackSolution.Control
                 }
             }
         }
+        public void LogOut()
+        {
+            user = new Account();
+        }
         public void StandBtnPush()
         {
             while(dealerHand.getTotal() < 17)
