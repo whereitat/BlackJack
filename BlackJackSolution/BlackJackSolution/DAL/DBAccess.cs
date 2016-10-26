@@ -36,7 +36,7 @@ namespace BlackJackSolution.DAL
             }
             **/
         }
-        public static List<string[]> CreateDeck() 
+        public List<string[]> CreateDeck() 
         {
             try {
                 List<string[]> newDeck = new List<string[]>();
@@ -49,10 +49,9 @@ namespace BlackJackSolution.DAL
                 {                
                         while (read.Read())
                         {
-                            string[] card = new string[3];
+                            string[] card = new string[2];
                             card[0] = read.GetInt32(read.GetOrdinal("value")).ToString();
                             card[1] = read.GetString(read.GetOrdinal("cardId"));
-                            card[2] = read.GetString(read.GetOrdinal("cardId"));
                         newDeck.Add(card);
                         }
                 }

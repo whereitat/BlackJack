@@ -33,7 +33,29 @@ namespace BlackJackSolution.Control
         }
         public void CreateDeck()
         {
-            deck = db.CreateDeck();
+            Deck newDeck = new Deck();
+            List<string[]> dbData = new List<string[]>();
+            dbData = db.CreateDeck();
+
+            foreach (string[] dataRow in dbData)
+            {
+                Card card = new Card();
+
+                card.setValue(Int32.Parse(dataRow[0]));
+                card.setCardId(dataRow[1]);
+
+                if (dataRow[1].Substring(0, 1).Equals("H")){
+                    card.SetSuit("hearts");
+                } else if (dataRow[1].Substring(0, 1).Equals("S")) {
+                    card.SetSuit("spades");
+                } else if (dataRow[1].Substring(0, 1).Equals("C")) {
+                    card.SetSuit("clubs");
+                } else if (dataRow[1].Substring(0, 1).Equals("D")) {
+                    card.SetSuit("diamonds");
+                }
+                newDeck.cards.Add(card);
+            }
+            deck = newDeck;
         }
         public bool CreateAccount(string aname, string password)
         {
