@@ -37,7 +37,6 @@ namespace BlackJackSolution.DAL
                 List<string[]> newDeck = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
-                command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
@@ -56,10 +55,9 @@ namespace BlackJackSolution.DAL
                 }
                 return newDeck;
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -70,31 +68,28 @@ namespace BlackJackSolution.DAL
             {
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
-                int update = command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                 string a = "User created";
 
-                if (update != 1)
+                
+                if (read.HasRows)
                 {
-                    if (read.HasRows)
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
-                            a = read.GetInt32(0).ToString();
-                        }
+                        a = read.GetInt32(0).ToString();
                     }
-                    return a;
+                    
+                return a;
                 }
                 else
                 {
                     return a;
                 }
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                return null;
             }
         }
 
@@ -104,30 +99,28 @@ namespace BlackJackSolution.DAL
             {
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
-                int update = command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                 string a = "User deleted";
 
-                if (update != 1)
+                
+                if (read.HasRows)
                 {
-                    if (read.HasRows)
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
-                            a = read.GetString(0);
-                        }
+                        a = read.GetString(0);
                     }
-                    return a;
+                    
+                return a;
                 }
                 else
                 {
                     return a;
                 }
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
@@ -137,7 +130,6 @@ namespace BlackJackSolution.DAL
             {
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
-                command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                 string[] result = new string[4];
 
@@ -163,9 +155,9 @@ namespace BlackJackSolution.DAL
                 }
                 return result;
             }
-            catch (SqlException e) //KOLLA DENNA SEN, VAD DEN SKA RETURNA
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -176,33 +168,8 @@ namespace BlackJackSolution.DAL
             {
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
-                int s = command.ExecuteNonQuery();
-
-                if (s != 0)
-                {
-                    string result = amount + " withdrawn";
-                    return result;
-                }
-                else
-                {
-                    return "else";
-                }
-
-            }
-            catch (SqlException e)
-            {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
-            }
-        }
-        public string DepositFunds(string aname, double amount)
-        {
-            try
-            {
-                SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "fel i metoden";
+                string a = "Fel i WithdrawFunds";
 
                 if (read.HasRows)
                 {
@@ -218,10 +185,39 @@ namespace BlackJackSolution.DAL
                 }
                 return a;
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public string DepositFunds(string aname, double amount)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
+                SqlDataReader read = command.ExecuteReader();
+                string a = "Fel i DepositFunds";
+
+                if (read.HasRows)
+                {
+                    while (read.Read())
+                    {
+                        a = read.GetString(0);
+                    }
+                }
+                else
+                {
+                    a = "Balance updated";
+                    return a;
+                }
+                return a;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
@@ -233,7 +229,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string gameid = "fel i metoden";
+                string gameid = "Fel i CreateGameRound";
 
                 if (read.HasRows)
                 {
@@ -248,10 +244,10 @@ namespace BlackJackSolution.DAL
                 }
                 return gameid;
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
@@ -262,7 +258,6 @@ namespace BlackJackSolution.DAL
                 List<string[]> setOfGames = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.GETBLACKJACKGAME", connection);
-                command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
@@ -291,32 +286,35 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public bool GameTransaction(string aname, int gameid)
+        public string GameTransaction(string aname, int gameid)
         {
             try
             {
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.GAMETRANSACTION @USERNAME = '" + aname + "', @GAMEID = " + gameid, connection);
-                int update = command.ExecuteNonQuery();
-                bool a;
+                SqlDataReader read = command.ExecuteReader();
+                string a = "Transaction completed";
 
-                Console.WriteLine(update);
-                if (update == 0)
+                if (read.HasRows)
                 {
-                    a = false;
+                    while (read.Read())
+                    {
+                        a = read.GetString(0);
+                    }
+
+                    return a;
                 }
                 else
                 {
-                    a = true;
+                    return a;
                 }
-                return a;
 
 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return null;
             }
         }
     }
