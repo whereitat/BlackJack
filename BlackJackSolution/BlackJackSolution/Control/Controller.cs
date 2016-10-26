@@ -60,9 +60,21 @@ namespace BlackJackSolution.Control
             }
             deck = newDeck;
         }
-        public bool CreateAccount(string aname, string password)
+        public string CreateAccount(string aname, string password)
         {
             return db.CreateAccount(aname, Crypt(password));
+        }
+        public void Transaction(int bet, int result)
+        {
+            int gameId = db.CreateGameRound(bet, result, user.getAname(), currentTable.SessionId);
+            if(gameId > 0)
+            {
+                db.GameTransaction(user.getAname(), gameId);
+            }
+            else
+            {
+                Console.WriteLine("Fel");
+            }
         }
         public string Crypt(string input)
         {
@@ -251,6 +263,6 @@ namespace BlackJackSolution.Control
                 dealerHand.AddCard(deck);
             }
         }
-        //Behöver commit på nya procedures för test
+        
     } 
 }
