@@ -17,6 +17,7 @@ namespace BlackJackSolution.Control
         private static Hand dealerHand = new Hand();
         private static DBAccess db = new DBAccess();
         private static Account user = new Account();
+        private string bikini;
         public int CheckMyHand()
         {
             int value = myHand.getTotal();

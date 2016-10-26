@@ -199,41 +199,39 @@ namespace BlackJackSolution.DAL
         {
             try
             {
+                List<string[]> setOfGames = new List<string[]>();
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[GETBLACKJACKGAME] ", connection);
+                SqlCommand command = new SqlCommand("EXEC dbo.GETBLACKJACKGAME", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
-                string[] result = new string[3];
 
                 if (read.HasRows)
                 {
-                    if (read.FieldCount > 1)
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
-                            result[0] = read.GetString(0);
-                            result[1] = read.GetString(1);
-                            result[2] = read.GetDouble(2).ToString();
-                            result[3] = read.GetString(3);
-                        }
-                    }
-                    else if (read.FieldCount == 1)
-                    {
-                        while (read.Read())
-                        {
-                            result[0] = read.GetString(0);
-                        }
+                        string[] game = new string[4];
+                        game[0] = read.GetInt32(read.GetOrdinal("sessionId")).ToString();
+                        game[1] = read.GetInt32(read.GetOrdinal("minBet")).ToString();
+                        game[2] = read.GetInt32(read.GetOrdinal("maxBet")).ToString();
+                        game[3] = read.GetString(read.GetOrdinal("gstatus"));
+                        setOfGames.Add(game);
                     }
                 }
-                return result;
+                else
+                {
+                    Console.WriteLine("Something went wrong, no objects found.");
+                }
+                return setOfGames;
             }
-            catch (SqlException e) //KOLLA DENNA SEN, VAD DEN SKA RETURNA
+            catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
                 return null;
             }
         }
-        
+
+
         public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try {
