@@ -77,6 +77,7 @@ namespace BlackJackSolution
                         LeaveButton.Show();
                         MinBetBtn.Show();
                         MaxBetBtn.Show();
+                        BetLabel.Show();
                     }
                     else
                     {
@@ -320,21 +321,25 @@ namespace BlackJackSolution
                         dealerTotal = "Dealer handtotal is : " + dealerHandTot;
                         betString = "You bet " + bet + "\n";
                         InfoLabel.Text = betString + myTotal + dealerTotal;
+                        displayMyCards(control.GetMyPictureStrings());
                     } else if (myHandTot > 21)
                     {
                         InfoLabel.Text = "You are bust, dealer wins " + bet + "\n" + "Please enter a new bet to play again";
+                        displayMyCards(control.GetMyPictureStrings());
                         HitButton.Hide();
                         StandButton.Hide();
                         DealButton.Show();
                         LeaveButton.Show();
                         MinBetBtn.Show();
                         MaxBetBtn.Show();
+                        BetLabel.Show();
                         control.ClearHands();
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
                         
                     } else if (myHandTot == 21)
                     {
                         InfoLabel.Text = "You have 21";
+                        displayMyCards(control.GetMyPictureStrings());
                         HitButton.Hide();
                     }
                 }
@@ -351,15 +356,36 @@ namespace BlackJackSolution
                 int Htot = control.CheckMyHand();
                 control.StandBtnPush();
                 int Dtot = control.CheckDealerHand();
-                if(Htot > Dtot && Htot < 22)
+                if (Dtot < 22)
                 {
-                    InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
-                    //UPDATE SALDO +user - bank
+                    if (Htot > Dtot)
+                    {
+                        InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
+                        displayMyCards(control.GetMyPictureStrings());
+                        displayDealerCards(control.GetDealerPictureStrings());
+                        //UPDATE SALDO +user - bank
+                    }
+                    else if (Dtot > Htot)
+                    {
+                        InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
+                        displayMyCards(control.GetMyPictureStrings());
+                        displayDealerCards(control.GetDealerPictureStrings());
+                        //UPDATE SALDO -Bank +user
+                    }
+                    else if (Dtot == Htot)
+                    {
+                        InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
+                        displayMyCards(control.GetMyPictureStrings());
+                        displayDealerCards(control.GetDealerPictureStrings());
+                        //UPDATE SALDO -user +bank
+                    }
                 }
-                else if(Dtot > Htot && Dtot < 22)
+                else
                 {
-                    InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
-                    //UPDATE SALDO -Bank +user
+                    InfoLabel.Text = "The dealer is bust: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
+                    displayMyCards(control.GetMyPictureStrings());
+                    displayDealerCards(control.GetDealerPictureStrings());
+                    //UPDATE SALDO +user -bank
                 }
                 control.ClearHands();
                 HitButton.Hide();
@@ -368,6 +394,7 @@ namespace BlackJackSolution
                 DealButton.Show();
                 MinBetBtn.Show();
                 MaxBetBtn.Show();
+                BetLabel.Show();
             } catch (Exception eSB)
             {
                 //Fattas
@@ -437,16 +464,22 @@ namespace BlackJackSolution
 
         private void MinBetBtn_Click(object sender, EventArgs e)
         {
-            bet = double.Parse(MinBetBtn.Text);
+            bet = control.GetMinBet();
             MinBetBtn.Hide();
             MaxBetBtn.Hide();
+            BetLabel.Hide();
+            clearCards();
+            InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
         }
 
         private void MaxBetBtn_Click(object sender, EventArgs e)
         {
-            bet = double.Parse(MaxBetBtn.Text);
+            bet = control.GetMaxBet();
             MinBetBtn.Hide();
             MaxBetBtn.Hide();
+            BetLabel.Hide();
+            clearCards();
+            InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
         }
 
         private void LoginCreateCreateBtn_Click(object sender, EventArgs e)

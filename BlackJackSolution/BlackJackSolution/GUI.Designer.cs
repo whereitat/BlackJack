@@ -753,8 +753,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.GamePanel);
+            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.LoginPanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
