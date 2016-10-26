@@ -300,7 +300,7 @@ namespace BlackJackSolution.DAL
                 {
                     while (read.Read())
                 {
-                        a = read.GetString(0);
+                        a = read.GetInt32(0).ToString();
                     }
 
                     return a;
