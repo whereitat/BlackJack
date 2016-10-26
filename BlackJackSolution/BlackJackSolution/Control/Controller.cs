@@ -65,7 +65,9 @@ namespace BlackJackSolution.Control
         public string Crypt(string input)
         {
             SHA512 alg = SHA512.Create();
-            return Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
+            string cryptedInChar = Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
+            alg.Dispose();
+            return cryptedInChar;
         }
         public void DealButtonPush()
         {
@@ -167,15 +169,20 @@ namespace BlackJackSolution.Control
         }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
-        {   
-            string[] dbData = db.GetAccount(accname, pwd);
+        {
+            Console.WriteLine(Crypt(pwd));
+            string[] dbData = db.GetAccount(accname, Crypt(pwd));
             if (dbData == null)
             {
                 return false;
             }
             else
             {
-                if (dbData[3].Equals(Crypt(pwd)))
+                if (dbData[3] == null)
+                {
+                    return false;
+                }
+                else if (dbData[3] == Crypt(pwd))
                 {
                     user.setAname(dbData[0]);
                     user.setAstatus(dbData[1]);
