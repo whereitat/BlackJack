@@ -19,6 +19,11 @@ namespace BlackJackSolution.Control
         private static Account user = new Account();
         private static Table currentTable = new Table();
         
+        public string AddFunds(double amount)
+        {
+            string check = db.DepositFunds(user.getAname(), amount);
+            return check;
+        }
         public int CheckMyHand()
         {
             int value = myHand.getTotal();
@@ -87,7 +92,7 @@ namespace BlackJackSolution.Control
         {
             try
             {
-                if(deck.cards.Count < 1)
+                if(deck.cards.Count < 4)
                 {
                     CreateDeck();
                 }
@@ -234,6 +239,10 @@ namespace BlackJackSolution.Control
         }
         public void HitBtnPush()
         {
+            if(deck.cards.Count < 1)
+            {
+                CreateDeck();
+            }
             myHand.AddCard(deck);
         }
         public void InitiateTable(int nr)
@@ -283,11 +292,20 @@ namespace BlackJackSolution.Control
         }
         public void StandBtnPush()
         {
+            
             while(dealerHand.getTotal() < 17)
             {
+                if(deck.cards.Count < 1)
+                {
+                    CreateDeck();
+                }
                 dealerHand.AddCard(deck);
             }
         }
-        
+        public string WithdrawFunds(double amount)
+        {
+            string check = db.WithdrawFunds(user.getAname(), amount);
+            return check;
+        }
     } 
 }
