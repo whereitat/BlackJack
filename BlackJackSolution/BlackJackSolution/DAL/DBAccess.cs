@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJackSolution.Model;
+
 
 namespace BlackJackSolution.DAL
 {
@@ -47,6 +47,7 @@ namespace BlackJackSolution.DAL
 
                 if (read.HasRows)
                 {
+                    
                         while (read.Read())
                         {
                             Card card = new Card();
@@ -132,11 +133,11 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public Account GetAccount(string aname)
+        public string[] GetAccount(string aname)
         {
             try
             {
-                Account account = new Account();
+                string[] result = new string[4];
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "'", connection);
                 command.ExecuteNonQuery();
@@ -144,11 +145,11 @@ namespace BlackJackSolution.DAL
 
                 if (read != null)
                 {
-                    account.setAname(read.GetString(read.GetOrdinal("aname")));
-                    account.setAstatus(read.GetString(read.GetOrdinal("astatus")));
-                    account.setBalance(read.GetDouble(read.GetOrdinal("balance")));
-                    account.setPassword(read.GetString(read.GetOrdinal("password")));
-                    return account;
+                    result[0] = read.GetString(read.GetOrdinal("aname"));
+                    result[1] = read.GetString(read.GetOrdinal("astatus"));
+                    result[2] = read.GetDouble(read.GetOrdinal("balance")).ToString();
+                    result[3] = read.GetString(read.GetOrdinal("password"));
+                    return result;
                 }
                 else
                 {
