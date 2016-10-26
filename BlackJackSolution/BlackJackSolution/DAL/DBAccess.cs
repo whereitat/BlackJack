@@ -29,12 +29,6 @@ namespace BlackJackSolution.DAL
                 Console.WriteLine(e.ToString() + e.Message + " " + ex);
                 return null;
             }
-            /** Kanske ska användas??
-            finally
-            {
-                con.Close();
-            }
-            **/
         }
         public List<string[]> CreateDeck() 
         {
@@ -108,38 +102,45 @@ namespace BlackJackSolution.DAL
             catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
                 return false;
             }
         }
 
-        public string[] GetAccount(string aname)
+        public string[] GetAccount(string aname, string password)
         {
             try
             {
-                string[] result = new string[4];
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "'", connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
+                string[] result = new string[4];
 
-                if (read != null)
+                if (read.HasRows)
                 {
-                    result[0] = read.GetString(read.GetOrdinal("aname"));
-                    result[1] = read.GetString(read.GetOrdinal("astatus"));
-                    result[2] = read.GetDouble(read.GetOrdinal("balance")).ToString();
-                    result[3] = read.GetString(read.GetOrdinal("password"));
-                    return result;
+                   if (read.FieldCount > 1)
+                   {
+                        while (read.Read())
+                        {
+                            result[0] = read.GetString(0);
+                            result[1] = read.GetString(1);
+                            result[2] = read.GetDouble(2).ToString();
+                            result[3] = read.GetString(3);
+                        }
+                    }
+                   else if(read.FieldCount == 1)
+                    {
+                        while (read.Read())
+                        {
+                            result[0] = read.GetString(0);
+                        }
+                    }
                 }
-                else
-                {
-                    return null;
-                }
+                return result;
             }
-            catch (SqlException e)
+            catch (SqlException e) //KOLLA DENNA SEN, VAD DEN SKA RETURNA
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
                 return null;
             }
         }
@@ -166,8 +167,7 @@ namespace BlackJackSolution.DAL
             catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
-                return "catch";
+                return ex;
             }
         }
         public string DepositFunds(string aname, double amount)
@@ -191,8 +191,41 @@ namespace BlackJackSolution.DAL
             catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
-                return "catch";
+                return ex;
+            }
+        }
+
+        public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
+        {
+            try {
+            
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
+                int update = command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+                string a = "Gameround recorded";
+            
+
+                if (update == 0 )
+                {
+                    if (read.HasRows)
+                    {
+                        while (read.Read())
+                        {
+                            a = read.GetInt32(0).ToString();
+                        }
+                    }
+                    return a;
+                }
+                else
+                {
+                    return a;
+                }
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                return ex;
             }
         }
     }
