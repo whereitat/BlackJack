@@ -99,6 +99,17 @@ namespace BlackJackSolution.Control
             }
             return returnList;
         }
+        public Table GetBlackJackGameById(int sessionId)
+        {
+            foreach (Table t in GetAllBlackJackGames())
+            {
+                if(t.SessionId == sessionId)
+                {
+                    return t;
+                }
+            }
+            return null;
+        }
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();
