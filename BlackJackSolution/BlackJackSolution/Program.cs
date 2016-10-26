@@ -27,7 +27,7 @@ namespace BlackJackSolution
             //Console.WriteLine(s);
 
             //string a = db.DepositFunds("Mattias West", 5000); 
-            //db.CreateAccount("Alex Eiring", "lol");             //funkar
+            //db.CreateAccount("1234567890123456789012345", "lol");             //funkar
             //db.DeleteAccount("Alex Eiring", "lol");           //funkar
 
             
