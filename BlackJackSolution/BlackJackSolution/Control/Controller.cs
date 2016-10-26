@@ -155,7 +155,7 @@ namespace BlackJackSolution.Control
         }
         public void GetUser(string uname, string pw)
         {
-            string[] dbData = db.GetAccount(uname);
+            string[] dbData = db.GetAccount(uname, pw);
             if (Crypt(pw ).Equals(dbData[3]))
             {
                 
@@ -168,7 +168,7 @@ namespace BlackJackSolution.Control
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {   
-            string[] dbData = db.GetAccount(accname);
+            string[] dbData = db.GetAccount(accname, pwd);
             if (dbData == null)
             {
                 return false;
