@@ -170,7 +170,6 @@ namespace BlackJackSolution.Control
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
-            Console.WriteLine(Crypt(pwd));
             string[] dbData = db.GetAccount(accname, Crypt(pwd));
             if (dbData == null)
             {
