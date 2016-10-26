@@ -17,6 +17,8 @@ namespace BlackJackSolution.Control
         private static Hand dealerHand = new Hand();
         private static DBAccess db = new DBAccess();
         private static Account user = new Account();
+        private static Table currentTable = new Table();
+        
         public int CheckMyHand()
         {
             int value = myHand.getTotal();
@@ -65,7 +67,9 @@ namespace BlackJackSolution.Control
         public string Crypt(string input)
         {
             SHA512 alg = SHA512.Create();
-            return Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
+            string cryptedInChar = Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(input)));
+            alg.Dispose();
+            return cryptedInChar;
         }
         public void DealButtonPush()
         {
@@ -85,6 +89,28 @@ namespace BlackJackSolution.Control
 
             }
         }
+        public List<Table> GetAllBlackJackGames()
+        {
+            List<string[]> dbData = db.GetBlackJackGames();
+            List<Table> returnList = new List<Table>();
+            foreach (string[] datarow in dbData)
+            {
+                Table t = new Table(Int32.Parse(datarow[0]), Int32.Parse(datarow[1]), Int32.Parse(datarow[2]), datarow[3]);
+                returnList.Add(t);
+            }
+            return returnList;
+        }
+        public Table GetBlackJackGameById(int sessionId)
+        {
+            foreach (Table t in GetAllBlackJackGames())
+            {
+                if(t.SessionId == sessionId)
+                {
+                    return t;
+                }
+            }
+            return null;
+        }    
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();
@@ -118,6 +144,14 @@ namespace BlackJackSolution.Control
                 }
             }
             return picList;
+        }
+        public int GetMaxBet()
+        {
+            return currentTable.MaxBet;
+        }
+        public int GetMinBet()
+        {
+            return currentTable.MinBet;
         }
         public List<String> GetMyPictureStrings()
         {
@@ -155,7 +189,7 @@ namespace BlackJackSolution.Control
         }
         public void GetUser(string uname, string pw)
         {
-            string[] dbData = db.GetAccount(uname);
+            string[] dbData = db.GetAccount(uname, pw);
             if (Crypt(pw ).Equals(dbData[3]))
             {
                 
@@ -165,17 +199,34 @@ namespace BlackJackSolution.Control
         {
             myHand.AddCard(deck);
         }
-        //Behöver commit på nya procedures för test
+        public void InitiateTable(int nr)
+        {
+            int i = new int();
+            switch (nr)
+            {
+                case 0: i = 200;
+                    break;
+                case 1: i = 201;
+                    break;
+                case 2: i = 202;
+                    break;
+            }
+            currentTable = GetBlackJackGameById(i);
+        }
         public bool Login(string accname, string pwd)
-        {   
-            string[] dbData = db.GetAccount(accname);
+        {
+            string[] dbData = db.GetAccount(accname, Crypt(pwd));
             if (dbData == null)
             {
                 return false;
             }
             else
             {
-                if (dbData[3].Equals(Crypt(pwd)))
+                if (dbData[3] == null)
+                {
+                    return false;
+                }
+                else if (dbData[3] == Crypt(pwd))
                 {
                     user.setAname(dbData[0]);
                     user.setAstatus(dbData[1]);
@@ -201,5 +252,5 @@ namespace BlackJackSolution.Control
             }
         }
         //Behöver commit på nya procedures för test
-    }
+    } 
 }
