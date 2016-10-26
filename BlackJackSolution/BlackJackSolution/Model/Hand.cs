@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using BlackJackSolution.Model;
 using BlackJackSolution.DAL;
+using BlackJackSolution.Control;
 
 namespace BlackJackSolution.Model
 {
     public class Hand
     {
         private int total;
+        private static Controller control = new Controller();
         public List<Card> handCards { set; get; }
         //public int total { set; get; }
 
@@ -29,6 +31,10 @@ namespace BlackJackSolution.Model
         }
         public void AddCard(Deck deck)
         {
+            if(deck.cards.Count < 1)
+            {
+                deck = control.CreateDeck();
+            }
             if (total < 21) //Om totalen är mindre än 21 lägg till nytt kort och kolla efter ess.
             {               //Om total är 21 ska det inte kunna gå att lägga till kort
                 Card cardToAdd = deck.cards[0];

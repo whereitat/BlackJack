@@ -59,7 +59,22 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LoginUsernameTextBox = new System.Windows.Forms.TextBox();
+            this.LoginPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.LoginLoginButton = new System.Windows.Forms.Button();
+            this.LoginInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.LoginInfoLabel = new System.Windows.Forms.Label();
+            this.LoginUsernameLabel = new System.Windows.Forms.Label();
+            this.LoginPasswordLabel = new System.Windows.Forms.Label();
+            this.LoginCreateAccBtn = new System.Windows.Forms.Button();
+            this.LoginCreateGroupBox = new System.Windows.Forms.GroupBox();
+            this.LoginCreateUnameTextBox = new System.Windows.Forms.TextBox();
+            this.LoginCreatePWTextBox = new System.Windows.Forms.TextBox();
+            this.LoginCreateUsernameLabel = new System.Windows.Forms.Label();
+            this.LoginCreatePWLabel = new System.Windows.Forms.Label();
+            this.LoginCreateCreateBtn = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
+            this.LoginPanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
             this.InfoGroupBox.SuspendLayout();
             this.ActionGroupBox.SuspendLayout();
@@ -79,13 +94,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).BeginInit();
+            this.LoginInfoGroupBox.SuspendLayout();
+            this.LoginCreateGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
             this.MainPanel.Controls.Add(this.LogOutBtn);
             this.MainPanel.Controls.Add(this.UpdateAccountBtn);
-            this.MainPanel.Location = new System.Drawing.Point(6, 4);
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1241, 654);
             this.MainPanel.TabIndex = 0;
@@ -111,6 +128,14 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.LoginCreateGroupBox);
+            this.LoginPanel.Controls.Add(this.LoginCreateAccBtn);
+            this.LoginPanel.Controls.Add(this.LoginPasswordLabel);
+            this.LoginPanel.Controls.Add(this.LoginUsernameLabel);
+            this.LoginPanel.Controls.Add(this.LoginInfoGroupBox);
+            this.LoginPanel.Controls.Add(this.LoginLoginButton);
+            this.LoginPanel.Controls.Add(this.LoginPasswordTextBox);
+            this.LoginPanel.Controls.Add(this.LoginUsernameTextBox);
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(1235, 654);
@@ -390,6 +415,132 @@
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
+            // LoginUsernameTextBox
+            // 
+            this.LoginUsernameTextBox.Location = new System.Drawing.Point(466, 235);
+            this.LoginUsernameTextBox.Name = "LoginUsernameTextBox";
+            this.LoginUsernameTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginUsernameTextBox.TabIndex = 0;
+            // 
+            // LoginPasswordTextBox
+            // 
+            this.LoginPasswordTextBox.Location = new System.Drawing.Point(467, 284);
+            this.LoginPasswordTextBox.Name = "LoginPasswordTextBox";
+            this.LoginPasswordTextBox.Size = new System.Drawing.Size(175, 22);
+            this.LoginPasswordTextBox.TabIndex = 1;
+            // 
+            // LoginLoginButton
+            // 
+            this.LoginLoginButton.Location = new System.Drawing.Point(467, 347);
+            this.LoginLoginButton.Name = "LoginLoginButton";
+            this.LoginLoginButton.Size = new System.Drawing.Size(175, 47);
+            this.LoginLoginButton.TabIndex = 2;
+            this.LoginLoginButton.Text = "Login";
+            this.LoginLoginButton.UseVisualStyleBackColor = true;
+            // 
+            // LoginInfoGroupBox
+            // 
+            this.LoginInfoGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginInfoGroupBox.Controls.Add(this.LoginInfoLabel);
+            this.LoginInfoGroupBox.Location = new System.Drawing.Point(725, 235);
+            this.LoginInfoGroupBox.Name = "LoginInfoGroupBox";
+            this.LoginInfoGroupBox.Size = new System.Drawing.Size(377, 99);
+            this.LoginInfoGroupBox.TabIndex = 3;
+            this.LoginInfoGroupBox.TabStop = false;
+            this.LoginInfoGroupBox.Text = "Info";
+            // 
+            // LoginInfoLabel
+            // 
+            this.LoginInfoLabel.AutoSize = true;
+            this.LoginInfoLabel.Location = new System.Drawing.Point(29, 46);
+            this.LoginInfoLabel.Name = "LoginInfoLabel";
+            this.LoginInfoLabel.Size = new System.Drawing.Size(46, 17);
+            this.LoginInfoLabel.TabIndex = 0;
+            this.LoginInfoLabel.Text = "label1";
+            // 
+            // LoginUsernameLabel
+            // 
+            this.LoginUsernameLabel.AutoSize = true;
+            this.LoginUsernameLabel.Location = new System.Drawing.Point(467, 215);
+            this.LoginUsernameLabel.Name = "LoginUsernameLabel";
+            this.LoginUsernameLabel.Size = new System.Drawing.Size(73, 17);
+            this.LoginUsernameLabel.TabIndex = 4;
+            this.LoginUsernameLabel.Text = "Username";
+            // 
+            // LoginPasswordLabel
+            // 
+            this.LoginPasswordLabel.AutoSize = true;
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(467, 263);
+            this.LoginPasswordLabel.Name = "LoginPasswordLabel";
+            this.LoginPasswordLabel.Size = new System.Drawing.Size(69, 17);
+            this.LoginPasswordLabel.TabIndex = 5;
+            this.LoginPasswordLabel.Text = "Password";
+            // 
+            // LoginCreateAccBtn
+            // 
+            this.LoginCreateAccBtn.Location = new System.Drawing.Point(466, 416);
+            this.LoginCreateAccBtn.Name = "LoginCreateAccBtn";
+            this.LoginCreateAccBtn.Size = new System.Drawing.Size(175, 47);
+            this.LoginCreateAccBtn.TabIndex = 6;
+            this.LoginCreateAccBtn.Text = "Create account";
+            this.LoginCreateAccBtn.UseVisualStyleBackColor = true;
+            // 
+            // LoginCreateGroupBox
+            // 
+            this.LoginCreateGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateCreateBtn);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWLabel);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUsernameLabel);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWTextBox);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUnameTextBox);
+            this.LoginCreateGroupBox.Location = new System.Drawing.Point(63, 142);
+            this.LoginCreateGroupBox.Name = "LoginCreateGroupBox";
+            this.LoginCreateGroupBox.Size = new System.Drawing.Size(307, 321);
+            this.LoginCreateGroupBox.TabIndex = 7;
+            this.LoginCreateGroupBox.TabStop = false;
+            this.LoginCreateGroupBox.Text = "Create";
+            // 
+            // LoginCreateUnameTextBox
+            // 
+            this.LoginCreateUnameTextBox.Location = new System.Drawing.Point(59, 104);
+            this.LoginCreateUnameTextBox.Name = "LoginCreateUnameTextBox";
+            this.LoginCreateUnameTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginCreateUnameTextBox.TabIndex = 1;
+            // 
+            // LoginCreatePWTextBox
+            // 
+            this.LoginCreatePWTextBox.Location = new System.Drawing.Point(59, 180);
+            this.LoginCreatePWTextBox.Name = "LoginCreatePWTextBox";
+            this.LoginCreatePWTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginCreatePWTextBox.TabIndex = 2;
+            // 
+            // LoginCreateUsernameLabel
+            // 
+            this.LoginCreateUsernameLabel.AutoSize = true;
+            this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(56, 84);
+            this.LoginCreateUsernameLabel.Name = "LoginCreateUsernameLabel";
+            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(73, 17);
+            this.LoginCreateUsernameLabel.TabIndex = 3;
+            this.LoginCreateUsernameLabel.Text = "Username";
+            // 
+            // LoginCreatePWLabel
+            // 
+            this.LoginCreatePWLabel.AutoSize = true;
+            this.LoginCreatePWLabel.Location = new System.Drawing.Point(56, 160);
+            this.LoginCreatePWLabel.Name = "LoginCreatePWLabel";
+            this.LoginCreatePWLabel.Size = new System.Drawing.Size(69, 17);
+            this.LoginCreatePWLabel.TabIndex = 4;
+            this.LoginCreatePWLabel.Text = "Password";
+            // 
+            // LoginCreateCreateBtn
+            // 
+            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(102, 241);
+            this.LoginCreateCreateBtn.Name = "LoginCreateCreateBtn";
+            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(75, 23);
+            this.LoginCreateCreateBtn.TabIndex = 5;
+            this.LoginCreateCreateBtn.Text = "Create";
+            this.LoginCreateCreateBtn.UseVisualStyleBackColor = true;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,11 +548,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.GamePanel);
-            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.LoginPanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
+            this.LoginPanel.ResumeLayout(false);
+            this.LoginPanel.PerformLayout();
             this.GamePanel.ResumeLayout(false);
             this.InfoGroupBox.ResumeLayout(false);
             this.InfoGroupBox.PerformLayout();
@@ -423,6 +576,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).EndInit();
+            this.LoginInfoGroupBox.ResumeLayout(false);
+            this.LoginInfoGroupBox.PerformLayout();
+            this.LoginCreateGroupBox.ResumeLayout(false);
+            this.LoginCreateGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,6 +617,20 @@
         private System.Windows.Forms.Button HitButton;
         private System.Windows.Forms.Label BetLabelAmount;
         private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.GroupBox LoginCreateGroupBox;
+        private System.Windows.Forms.Label LoginCreatePWLabel;
+        private System.Windows.Forms.Label LoginCreateUsernameLabel;
+        private System.Windows.Forms.TextBox LoginCreatePWTextBox;
+        private System.Windows.Forms.TextBox LoginCreateUnameTextBox;
+        private System.Windows.Forms.Button LoginCreateAccBtn;
+        private System.Windows.Forms.Label LoginPasswordLabel;
+        private System.Windows.Forms.Label LoginUsernameLabel;
+        private System.Windows.Forms.GroupBox LoginInfoGroupBox;
+        private System.Windows.Forms.Label LoginInfoLabel;
+        private System.Windows.Forms.Button LoginLoginButton;
+        private System.Windows.Forms.TextBox LoginPasswordTextBox;
+        private System.Windows.Forms.TextBox LoginUsernameTextBox;
+        private System.Windows.Forms.Button LoginCreateCreateBtn;
     }
 }
 
