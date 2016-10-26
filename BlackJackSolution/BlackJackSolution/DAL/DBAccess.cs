@@ -169,7 +169,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "Fel i WithdrawFunds";
+                string a = "False";
 
                 if (read.HasRows)
                 {
@@ -180,7 +180,7 @@ namespace BlackJackSolution.DAL
                 }
                 else
                 {
-                    a = "Balance updated";
+                    a = "True";
                     return a;
                 }
                 return a;
@@ -198,7 +198,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "Fel i DepositFunds";
+                string a = "False";
 
                 if (read.HasRows)
                 {
@@ -209,7 +209,7 @@ namespace BlackJackSolution.DAL
                 }
                 else
                 {
-                    a = "Balance updated";
+                    a = "True";
                     return a;
                 }
                 return a;
@@ -300,7 +300,7 @@ namespace BlackJackSolution.DAL
                 {
                     while (read.Read())
                 {
-                        a = read.GetInt32(0).ToString();
+                        a = read.GetString(0);
                     }
 
                     return a;

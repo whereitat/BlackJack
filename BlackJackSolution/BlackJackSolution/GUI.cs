@@ -338,6 +338,7 @@ namespace BlackJackSolution
                         control.ClearHands();
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet-bet*2));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
+                        bet = 0;
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
 
                     } else if (myHandTot == 21)
@@ -407,6 +408,7 @@ namespace BlackJackSolution
                 MinBetBtn.Show();
                 MaxBetBtn.Show();
                 BetLabel.Show();
+                bet = 0;
             } catch (Exception eSB)
             {
                 //Fattas
@@ -545,7 +547,34 @@ namespace BlackJackSolution
             MainPanel.Hide();
             LoginPanel.Show();
         }
+        private void MainAccountFundAddBtn_Click(object sender, EventArgs e)
+        {
+            string check = control.AddFunds(Double.Parse(MainAccountFundsTF.Text));
+            if (check.Equals("True"))
+            {
+                MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
+            }
+            else
+            {
+                MainInfoLabel.Text = "Could not add funds" + check;
+            }
+            MainAccountBLabel.Text = control.GetBalance().ToString();
+            MainAccountFundsTF.Clear();
+        }
 
-       
+        private void MainAccountWithdrawBtn_Click(object sender, EventArgs e)
+        {
+            string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
+            if (check.Equals("True"))
+            {
+                MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
+            }
+            else
+            {
+                MainInfoLabel.Text = "Could not withdraw funds " + check;
+            }
+            MainAccountBLabel.Text = control.GetBalance().ToString();
+            MainAccountFundsTF.Clear();
+        }
     }
 }
