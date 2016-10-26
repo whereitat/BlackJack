@@ -69,7 +69,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "User created";
+                string a = "True";
 
                 
                     if (read.HasRows)
@@ -230,7 +230,7 @@ namespace BlackJackSolution.DAL
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
                 int gameid = 0;
-                if(read.GetInt32(read.GetOrdinal("ERROR")) < 1)
+                if(read.GetInt32(read.GetOrdinal("ERROR")) > 0)
                 {
                     return gameid;
                 }
@@ -246,8 +246,9 @@ namespace BlackJackSolution.DAL
             }
             catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                //string ex = Logic.Utils.SqlExceptionUtility(e);
+                //return ex;
+                return 0;
             }
         }
 

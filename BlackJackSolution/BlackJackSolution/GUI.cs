@@ -69,6 +69,7 @@ namespace BlackJackSolution
                         double winnings = bet * 1.5; 
                         InfoLabel.Text = "BLACKJACK! You win : " + winnings + "\n" + "Please enter a new bet to play again";
                         //UPDATE SALDO +user*1.5 -bank
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet*2.5));
                         control.ClearHands();
                         bet = 0;//Måste skicka till DB först
                         HitButton.Hide();
@@ -334,8 +335,9 @@ namespace BlackJackSolution
                         MaxBetBtn.Show();
                         BetLabel.Show();
                         control.ClearHands();
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet-bet*2));
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
-                        
+
                     } else if (myHandTot == 21)
                     {
                         InfoLabel.Text = "You have 21";
@@ -363,6 +365,7 @@ namespace BlackJackSolution
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet * 2));
                         //UPDATE SALDO +user - bank
                     }
                     else if (Dtot > Htot)
@@ -370,6 +373,7 @@ namespace BlackJackSolution
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         //UPDATE SALDO -Bank +user
                     }
                     else if (Dtot == Htot)
@@ -377,6 +381,7 @@ namespace BlackJackSolution
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
                         displayMyCards(control.GetMyPictureStrings());
                         displayDealerCards(control.GetDealerPictureStrings());
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         //UPDATE SALDO -user +bank
                     }
                 }
@@ -385,6 +390,7 @@ namespace BlackJackSolution
                     InfoLabel.Text = "The dealer is bust: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
                     displayMyCards(control.GetMyPictureStrings());
                     displayDealerCards(control.GetDealerPictureStrings());
+                    control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet * 2));
                     //UPDATE SALDO +user -bank
                 }
                 control.ClearHands();
@@ -486,8 +492,8 @@ namespace BlackJackSolution
         {
             if (LoginCreatePWTextBox.Text.Length > 2)
             {
-                bool acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
-                if (acc == true)
+                string acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
+                if (acc.Equals("True"))
                 {
                     LoginInfoLabel.Text = "Account created";
                     LoginCreateGroupBox.Hide();
