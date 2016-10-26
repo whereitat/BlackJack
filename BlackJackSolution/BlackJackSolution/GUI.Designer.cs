@@ -29,16 +29,38 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainInfoLabel = new System.Windows.Forms.Label();
+            this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainTableGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableOnePictureBox = new System.Windows.Forms.PictureBox();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.UpdateAccountBtn = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.LoginExitBtn = new System.Windows.Forms.Button();
+            this.LoginCreateGroupBox = new System.Windows.Forms.GroupBox();
+            this.LoginCreateCreateBtn = new System.Windows.Forms.Button();
+            this.LoginCreatePWLabel = new System.Windows.Forms.Label();
+            this.LoginCreateUsernameLabel = new System.Windows.Forms.Label();
+            this.LoginCreatePWTextBox = new System.Windows.Forms.TextBox();
+            this.LoginCreateUnameTextBox = new System.Windows.Forms.TextBox();
+            this.LoginCreateAccBtn = new System.Windows.Forms.Button();
+            this.LoginPasswordLabel = new System.Windows.Forms.Label();
+            this.LoginUsernameLabel = new System.Windows.Forms.Label();
+            this.LoginInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.LoginInfoLabel = new System.Windows.Forms.Label();
+            this.LoginLoginButton = new System.Windows.Forms.Button();
+            this.LoginPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.LoginUsernameTextBox = new System.Windows.Forms.TextBox();
             this.GamePanel = new System.Windows.Forms.Panel();
             this.InfoGroupBox = new System.Windows.Forms.GroupBox();
             this.InfoLabel = new System.Windows.Forms.Label();
             this.ActionGroupBox = new System.Windows.Forms.GroupBox();
-            this.BetLabelAmount = new System.Windows.Forms.Label();
+            this.MinBetBtn = new System.Windows.Forms.Button();
+            this.MaxBetBtn = new System.Windows.Forms.Button();
             this.BetLabel = new System.Windows.Forms.Label();
-            this.BetAmountText = new System.Windows.Forms.TextBox();
             this.LeaveButton = new System.Windows.Forms.Button();
             this.DealButton = new System.Windows.Forms.Button();
             this.StandButton = new System.Windows.Forms.Button();
@@ -60,6 +82,14 @@
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
+            this.MainInfoGroupBox.SuspendLayout();
+            this.MainTableGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).BeginInit();
+            this.LoginPanel.SuspendLayout();
+            this.LoginCreateGroupBox.SuspendLayout();
+            this.LoginInfoGroupBox.SuspendLayout();
             this.GamePanel.SuspendLayout();
             this.InfoGroupBox.SuspendLayout();
             this.ActionGroupBox.SuspendLayout();
@@ -83,12 +113,80 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.MainInfoGroupBox);
+            this.MainPanel.Controls.Add(this.MainAccountGroupBox);
+            this.MainPanel.Controls.Add(this.MainTableGroupBox);
             this.MainPanel.Controls.Add(this.LogOutBtn);
             this.MainPanel.Controls.Add(this.UpdateAccountBtn);
-            this.MainPanel.Location = new System.Drawing.Point(6, 4);
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1241, 654);
             this.MainPanel.TabIndex = 0;
+            // 
+            // MainInfoGroupBox
+            // 
+            this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
+            this.MainInfoGroupBox.Location = new System.Drawing.Point(703, 340);
+            this.MainInfoGroupBox.Name = "MainInfoGroupBox";
+            this.MainInfoGroupBox.Size = new System.Drawing.Size(512, 97);
+            this.MainInfoGroupBox.TabIndex = 4;
+            this.MainInfoGroupBox.TabStop = false;
+            this.MainInfoGroupBox.Text = "Info";
+            // 
+            // MainInfoLabel
+            // 
+            this.MainInfoLabel.AutoSize = true;
+            this.MainInfoLabel.Location = new System.Drawing.Point(27, 45);
+            this.MainInfoLabel.Name = "MainInfoLabel";
+            this.MainInfoLabel.Size = new System.Drawing.Size(46, 17);
+            this.MainInfoLabel.TabIndex = 0;
+            this.MainInfoLabel.Text = "label1";
+            // 
+            // MainAccountGroupBox
+            // 
+            this.MainAccountGroupBox.Location = new System.Drawing.Point(84, 322);
+            this.MainAccountGroupBox.Name = "MainAccountGroupBox";
+            this.MainAccountGroupBox.Size = new System.Drawing.Size(577, 300);
+            this.MainAccountGroupBox.TabIndex = 3;
+            this.MainAccountGroupBox.TabStop = false;
+            this.MainAccountGroupBox.Text = "Account Options";
+            // 
+            // MainTableGroupBox
+            // 
+            this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
+            this.MainTableGroupBox.Controls.Add(this.MainTableTwoPictureBox);
+            this.MainTableGroupBox.Controls.Add(this.MainTableOnePictureBox);
+            this.MainTableGroupBox.Location = new System.Drawing.Point(84, 39);
+            this.MainTableGroupBox.Name = "MainTableGroupBox";
+            this.MainTableGroupBox.Size = new System.Drawing.Size(1131, 267);
+            this.MainTableGroupBox.TabIndex = 2;
+            this.MainTableGroupBox.TabStop = false;
+            this.MainTableGroupBox.Text = "Tables";
+            // 
+            // MainTableThreePictureBox
+            // 
+            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
+            this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
+            this.MainTableThreePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableThreePictureBox.TabIndex = 2;
+            this.MainTableThreePictureBox.TabStop = false;
+            // 
+            // MainTableTwoPictureBox
+            // 
+            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(446, 41);
+            this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
+            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableTwoPictureBox.TabIndex = 1;
+            this.MainTableTwoPictureBox.TabStop = false;
+            // 
+            // MainTableOnePictureBox
+            // 
+            this.MainTableOnePictureBox.Location = new System.Drawing.Point(90, 41);
+            this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
+            this.MainTableOnePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableOnePictureBox.TabIndex = 0;
+            this.MainTableOnePictureBox.TabStop = false;
+            this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
             // 
             // LogOutBtn
             // 
@@ -111,10 +209,156 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.LoginExitBtn);
+            this.LoginPanel.Controls.Add(this.LoginCreateGroupBox);
+            this.LoginPanel.Controls.Add(this.LoginCreateAccBtn);
+            this.LoginPanel.Controls.Add(this.LoginPasswordLabel);
+            this.LoginPanel.Controls.Add(this.LoginUsernameLabel);
+            this.LoginPanel.Controls.Add(this.LoginInfoGroupBox);
+            this.LoginPanel.Controls.Add(this.LoginLoginButton);
+            this.LoginPanel.Controls.Add(this.LoginPasswordTextBox);
+            this.LoginPanel.Controls.Add(this.LoginUsernameTextBox);
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(1235, 654);
             this.LoginPanel.TabIndex = 2;
+            // 
+            // LoginExitBtn
+            // 
+            this.LoginExitBtn.Location = new System.Drawing.Point(465, 486);
+            this.LoginExitBtn.Name = "LoginExitBtn";
+            this.LoginExitBtn.Size = new System.Drawing.Size(176, 45);
+            this.LoginExitBtn.TabIndex = 8;
+            this.LoginExitBtn.Text = "Exit";
+            this.LoginExitBtn.UseVisualStyleBackColor = true;
+            this.LoginExitBtn.Click += new System.EventHandler(this.LoginExitBtn_Click);
+            // 
+            // LoginCreateGroupBox
+            // 
+            this.LoginCreateGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateCreateBtn);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWLabel);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUsernameLabel);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWTextBox);
+            this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUnameTextBox);
+            this.LoginCreateGroupBox.Location = new System.Drawing.Point(63, 142);
+            this.LoginCreateGroupBox.Name = "LoginCreateGroupBox";
+            this.LoginCreateGroupBox.Size = new System.Drawing.Size(307, 321);
+            this.LoginCreateGroupBox.TabIndex = 7;
+            this.LoginCreateGroupBox.TabStop = false;
+            this.LoginCreateGroupBox.Text = "Create";
+            // 
+            // LoginCreateCreateBtn
+            // 
+            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(102, 241);
+            this.LoginCreateCreateBtn.Name = "LoginCreateCreateBtn";
+            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(75, 23);
+            this.LoginCreateCreateBtn.TabIndex = 5;
+            this.LoginCreateCreateBtn.Text = "Create";
+            this.LoginCreateCreateBtn.UseVisualStyleBackColor = true;
+            // 
+            // LoginCreatePWLabel
+            // 
+            this.LoginCreatePWLabel.AutoSize = true;
+            this.LoginCreatePWLabel.Location = new System.Drawing.Point(56, 160);
+            this.LoginCreatePWLabel.Name = "LoginCreatePWLabel";
+            this.LoginCreatePWLabel.Size = new System.Drawing.Size(69, 17);
+            this.LoginCreatePWLabel.TabIndex = 4;
+            this.LoginCreatePWLabel.Text = "Password";
+            // 
+            // LoginCreateUsernameLabel
+            // 
+            this.LoginCreateUsernameLabel.AutoSize = true;
+            this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(56, 84);
+            this.LoginCreateUsernameLabel.Name = "LoginCreateUsernameLabel";
+            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(73, 17);
+            this.LoginCreateUsernameLabel.TabIndex = 3;
+            this.LoginCreateUsernameLabel.Text = "Username";
+            // 
+            // LoginCreatePWTextBox
+            // 
+            this.LoginCreatePWTextBox.Location = new System.Drawing.Point(59, 180);
+            this.LoginCreatePWTextBox.Name = "LoginCreatePWTextBox";
+            this.LoginCreatePWTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginCreatePWTextBox.TabIndex = 2;
+            // 
+            // LoginCreateUnameTextBox
+            // 
+            this.LoginCreateUnameTextBox.Location = new System.Drawing.Point(59, 104);
+            this.LoginCreateUnameTextBox.Name = "LoginCreateUnameTextBox";
+            this.LoginCreateUnameTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginCreateUnameTextBox.TabIndex = 1;
+            // 
+            // LoginCreateAccBtn
+            // 
+            this.LoginCreateAccBtn.Location = new System.Drawing.Point(466, 416);
+            this.LoginCreateAccBtn.Name = "LoginCreateAccBtn";
+            this.LoginCreateAccBtn.Size = new System.Drawing.Size(175, 47);
+            this.LoginCreateAccBtn.TabIndex = 6;
+            this.LoginCreateAccBtn.Text = "Create account";
+            this.LoginCreateAccBtn.UseVisualStyleBackColor = true;
+            // 
+            // LoginPasswordLabel
+            // 
+            this.LoginPasswordLabel.AutoSize = true;
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(467, 263);
+            this.LoginPasswordLabel.Name = "LoginPasswordLabel";
+            this.LoginPasswordLabel.Size = new System.Drawing.Size(69, 17);
+            this.LoginPasswordLabel.TabIndex = 5;
+            this.LoginPasswordLabel.Text = "Password";
+            // 
+            // LoginUsernameLabel
+            // 
+            this.LoginUsernameLabel.AutoSize = true;
+            this.LoginUsernameLabel.Location = new System.Drawing.Point(467, 215);
+            this.LoginUsernameLabel.Name = "LoginUsernameLabel";
+            this.LoginUsernameLabel.Size = new System.Drawing.Size(73, 17);
+            this.LoginUsernameLabel.TabIndex = 4;
+            this.LoginUsernameLabel.Text = "Username";
+            // 
+            // LoginInfoGroupBox
+            // 
+            this.LoginInfoGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginInfoGroupBox.Controls.Add(this.LoginInfoLabel);
+            this.LoginInfoGroupBox.Location = new System.Drawing.Point(725, 235);
+            this.LoginInfoGroupBox.Name = "LoginInfoGroupBox";
+            this.LoginInfoGroupBox.Size = new System.Drawing.Size(377, 99);
+            this.LoginInfoGroupBox.TabIndex = 3;
+            this.LoginInfoGroupBox.TabStop = false;
+            this.LoginInfoGroupBox.Text = "Info";
+            // 
+            // LoginInfoLabel
+            // 
+            this.LoginInfoLabel.AutoSize = true;
+            this.LoginInfoLabel.Location = new System.Drawing.Point(29, 46);
+            this.LoginInfoLabel.Name = "LoginInfoLabel";
+            this.LoginInfoLabel.Size = new System.Drawing.Size(46, 17);
+            this.LoginInfoLabel.TabIndex = 0;
+            this.LoginInfoLabel.Text = "label1";
+            // 
+            // LoginLoginButton
+            // 
+            this.LoginLoginButton.Location = new System.Drawing.Point(467, 347);
+            this.LoginLoginButton.Name = "LoginLoginButton";
+            this.LoginLoginButton.Size = new System.Drawing.Size(175, 47);
+            this.LoginLoginButton.TabIndex = 2;
+            this.LoginLoginButton.Text = "Login";
+            this.LoginLoginButton.UseVisualStyleBackColor = true;
+            this.LoginLoginButton.Click += new System.EventHandler(this.LoginLoginButton_Click);
+            // 
+            // LoginPasswordTextBox
+            // 
+            this.LoginPasswordTextBox.Location = new System.Drawing.Point(467, 284);
+            this.LoginPasswordTextBox.Name = "LoginPasswordTextBox";
+            this.LoginPasswordTextBox.Size = new System.Drawing.Size(175, 22);
+            this.LoginPasswordTextBox.TabIndex = 1;
+            // 
+            // LoginUsernameTextBox
+            // 
+            this.LoginUsernameTextBox.Location = new System.Drawing.Point(466, 235);
+            this.LoginUsernameTextBox.Name = "LoginUsernameTextBox";
+            this.LoginUsernameTextBox.Size = new System.Drawing.Size(176, 22);
+            this.LoginUsernameTextBox.TabIndex = 0;
             // 
             // GamePanel
             // 
@@ -148,9 +392,9 @@
             // 
             // ActionGroupBox
             // 
-            this.ActionGroupBox.Controls.Add(this.BetLabelAmount);
+            this.ActionGroupBox.Controls.Add(this.MinBetBtn);
+            this.ActionGroupBox.Controls.Add(this.MaxBetBtn);
             this.ActionGroupBox.Controls.Add(this.BetLabel);
-            this.ActionGroupBox.Controls.Add(this.BetAmountText);
             this.ActionGroupBox.Controls.Add(this.LeaveButton);
             this.ActionGroupBox.Controls.Add(this.DealButton);
             this.ActionGroupBox.Controls.Add(this.StandButton);
@@ -162,30 +406,34 @@
             this.ActionGroupBox.TabStop = false;
             this.ActionGroupBox.Text = "Actions";
             // 
-            // BetLabelAmount
+            // MinBetBtn
             // 
-            this.BetLabelAmount.AutoSize = true;
-            this.BetLabelAmount.Location = new System.Drawing.Point(160, 64);
-            this.BetLabelAmount.Name = "BetLabelAmount";
-            this.BetLabelAmount.Size = new System.Drawing.Size(0, 17);
-            this.BetLabelAmount.TabIndex = 7;
-            this.BetLabelAmount.Visible = false;
+            this.MinBetBtn.Location = new System.Drawing.Point(147, 38);
+            this.MinBetBtn.Name = "MinBetBtn";
+            this.MinBetBtn.Size = new System.Drawing.Size(75, 30);
+            this.MinBetBtn.TabIndex = 9;
+            this.MinBetBtn.UseVisualStyleBackColor = true;
+            this.MinBetBtn.Visible = false;
+            this.MinBetBtn.Click += new System.EventHandler(this.MinBetBtn_Click);
+            // 
+            // MaxBetBtn
+            // 
+            this.MaxBetBtn.Location = new System.Drawing.Point(147, 79);
+            this.MaxBetBtn.Name = "MaxBetBtn";
+            this.MaxBetBtn.Size = new System.Drawing.Size(75, 30);
+            this.MaxBetBtn.TabIndex = 8;
+            this.MaxBetBtn.UseVisualStyleBackColor = true;
+            this.MaxBetBtn.Visible = false;
+            this.MaxBetBtn.Click += new System.EventHandler(this.MaxBetBtn_Click);
             // 
             // BetLabel
             // 
             this.BetLabel.AutoSize = true;
-            this.BetLabel.Location = new System.Drawing.Point(168, 36);
+            this.BetLabel.Location = new System.Drawing.Point(168, 17);
             this.BetLabel.Name = "BetLabel";
             this.BetLabel.Size = new System.Drawing.Size(29, 17);
             this.BetLabel.TabIndex = 6;
             this.BetLabel.Text = "Bet";
-            // 
-            // BetAmountText
-            // 
-            this.BetAmountText.Location = new System.Drawing.Point(148, 84);
-            this.BetAmountText.Name = "BetAmountText";
-            this.BetAmountText.Size = new System.Drawing.Size(75, 22);
-            this.BetAmountText.TabIndex = 5;
             // 
             // LeaveButton
             // 
@@ -402,6 +650,18 @@
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
+            this.MainInfoGroupBox.ResumeLayout(false);
+            this.MainInfoGroupBox.PerformLayout();
+            this.MainTableGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).EndInit();
+            this.LoginPanel.ResumeLayout(false);
+            this.LoginPanel.PerformLayout();
+            this.LoginCreateGroupBox.ResumeLayout(false);
+            this.LoginCreateGroupBox.PerformLayout();
+            this.LoginInfoGroupBox.ResumeLayout(false);
+            this.LoginInfoGroupBox.PerformLayout();
             this.GamePanel.ResumeLayout(false);
             this.InfoGroupBox.ResumeLayout(false);
             this.InfoGroupBox.PerformLayout();
@@ -453,13 +713,35 @@
         private System.Windows.Forms.GroupBox YourHandGroupBox;
         private System.Windows.Forms.GroupBox InfoGroupBox;
         private System.Windows.Forms.Label BetLabel;
-        private System.Windows.Forms.TextBox BetAmountText;
         private System.Windows.Forms.Button LeaveButton;
         private System.Windows.Forms.Button DealButton;
         private System.Windows.Forms.Button StandButton;
         private System.Windows.Forms.Button HitButton;
-        private System.Windows.Forms.Label BetLabelAmount;
         private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.GroupBox LoginCreateGroupBox;
+        private System.Windows.Forms.Label LoginCreatePWLabel;
+        private System.Windows.Forms.Label LoginCreateUsernameLabel;
+        private System.Windows.Forms.TextBox LoginCreatePWTextBox;
+        private System.Windows.Forms.TextBox LoginCreateUnameTextBox;
+        private System.Windows.Forms.Button LoginCreateAccBtn;
+        private System.Windows.Forms.Label LoginPasswordLabel;
+        private System.Windows.Forms.Label LoginUsernameLabel;
+        private System.Windows.Forms.GroupBox LoginInfoGroupBox;
+        private System.Windows.Forms.Label LoginInfoLabel;
+        private System.Windows.Forms.Button LoginLoginButton;
+        private System.Windows.Forms.TextBox LoginPasswordTextBox;
+        private System.Windows.Forms.TextBox LoginUsernameTextBox;
+        private System.Windows.Forms.Button LoginCreateCreateBtn;
+        private System.Windows.Forms.GroupBox MainInfoGroupBox;
+        private System.Windows.Forms.Label MainInfoLabel;
+        private System.Windows.Forms.GroupBox MainAccountGroupBox;
+        private System.Windows.Forms.GroupBox MainTableGroupBox;
+        private System.Windows.Forms.PictureBox MainTableThreePictureBox;
+        private System.Windows.Forms.PictureBox MainTableTwoPictureBox;
+        private System.Windows.Forms.PictureBox MainTableOnePictureBox;
+        private System.Windows.Forms.Button LoginExitBtn;
+        private System.Windows.Forms.Button MinBetBtn;
+        private System.Windows.Forms.Button MaxBetBtn;
     }
 }
 

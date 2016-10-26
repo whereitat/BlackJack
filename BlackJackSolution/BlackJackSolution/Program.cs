@@ -30,7 +30,7 @@ namespace BlackJackSolution
             //db.CreateAccount("1234567890123456789012345", "lol");             //funkar
             //db.DeleteAccount("Alex Eiring", "lol");           //funkar
 
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI());

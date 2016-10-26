@@ -53,13 +53,5 @@ namespace BlackJackSolution.Model
         {
             return this.password;
         }
-
-        public Account(string aname, string astatus, double balance, string password)
-        {
-            this.aname = aname;
-            this.astatus = astatus;
-            this.balance = balance;
-            this.password = password;
-        }
     }
 }

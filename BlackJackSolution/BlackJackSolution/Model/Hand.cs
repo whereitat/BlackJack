@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BlackJackSolution.Model;
 using BlackJackSolution.DAL;
+using BlackJackSolution.Control;
 
 namespace BlackJackSolution.Model
 {
@@ -71,31 +72,5 @@ namespace BlackJackSolution.Model
             this.total = handTotal;
             return total;
         }
-        /**
-        public Hand CreateSplit(Hand h)
-        {
-            try
-            {
-                if (h.handCards[0].value == h.handCards[1].value && h.handCards.Count == 2) //Måste vara 2 kort med samma värde.
-                {
-                    Hand splitHand = new Hand();
-                    var cardToMove = h.handCards[1];
-                    splitHand.handCards.Add(cardToMove);
-                    splitHand.total = cardToMove.value;
-                    return splitHand;
-                }
-                else
-                {
-                    Console.WriteLine("Sorry, cant split.");
-                    return null;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-        }
-    **/
     }
 }

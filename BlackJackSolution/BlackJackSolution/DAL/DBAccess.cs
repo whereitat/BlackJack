@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJackSolution.Model;
+
 
 namespace BlackJackSolution.DAL
 {
@@ -36,40 +36,23 @@ namespace BlackJackSolution.DAL
             }
             **/
         }
-        public static Deck CreateDeck()
+        public List<string[]> CreateDeck() 
         {
             try {
-                Deck newDeck = new Deck();
+                List<string[]> newDeck = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
-                {
+                {                
                         while (read.Read())
                         {
-                            Card card = new Card();
-                            card.setValue(read.GetInt32(read.GetOrdinal("value")));
-                            card.setCardId(read.GetString(read.GetOrdinal("cardId")));
-                            string suite = read.GetString(read.GetOrdinal("cardId"));
-                                if (suite.Substring(0, 1).Equals("H"))
-                                {
-                                    card.SetSuit("hearts");
-                                }
-                                else if (suite.Substring(0, 1).Equals("S"))
-                                {
-                                    card.SetSuit("spades");
-                                }
-                                else if (suite.Substring(0, 1).Equals("C"))
-                                {
-                                    card.SetSuit("clubs");
-                                }
-                                else if (suite.Substring(0, 1).Equals("D"))
-                                {
-                                    card.SetSuit("diamonds");
-                                }
-                            newDeck.cards.Add(card);
+                            string[] card = new string[2];
+                            card[0] = read.GetInt32(read.GetOrdinal("value")).ToString();
+                            card[1] = read.GetString(read.GetOrdinal("cardId"));
+                        newDeck.Add(card);
                         }
                 }
                 else
@@ -90,7 +73,6 @@ namespace BlackJackSolution.DAL
         {
             try
             {
-                Account account = new Account();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 command.ExecuteNonQuery();
@@ -109,7 +91,6 @@ namespace BlackJackSolution.DAL
         {
             try
             {
-                Account account = new Account();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 int result = command.ExecuteNonQuery();
@@ -132,11 +113,11 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public Account GetAccount(string aname)
+        public string[] GetAccount(string aname)
         {
             try
             {
-                Account account = new Account();
+                string[] result = new string[4];
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "'", connection);
                 command.ExecuteNonQuery();
@@ -144,11 +125,11 @@ namespace BlackJackSolution.DAL
 
                 if (read != null)
                 {
-                    account.setAname(read.GetString(read.GetOrdinal("aname")));
-                    account.setAstatus(read.GetString(read.GetOrdinal("astatus")));
-                    account.setBalance(read.GetDouble(read.GetOrdinal("balance")));
-                    account.setPassword(read.GetString(read.GetOrdinal("password")));
-                    return account;
+                    result[0] = read.GetString(read.GetOrdinal("aname"));
+                    result[1] = read.GetString(read.GetOrdinal("astatus"));
+                    result[2] = read.GetDouble(read.GetOrdinal("balance")).ToString();
+                    result[3] = read.GetString(read.GetOrdinal("password"));
+                    return result;
                 }
                 else
                 {

@@ -15,14 +15,10 @@ namespace BlackJackSolution
     public partial class GUI : Form
     {
         private static Controller control = new Controller();
-        private static Deck deck = control.CreateDeck();
-        private static Hand myHand = new Hand();
-        private static Hand dealerHand = new Hand();
-        private String bet;
+        private double bet;
+        private String betString;
         private String myTotal;
         private String dealerTotal;
-        private Account player;
-        private Account Bank;
         public GUI()
         {
             InitializeComponent();
@@ -30,8 +26,15 @@ namespace BlackJackSolution
 
         private void LogOutBtn_Click(object sender, EventArgs e)
         {
-            MainPanel.Hide();
-            LoginPanel.Show();
+            try
+            {
+                MainPanel.Hide();
+                LoginPanel.Show();
+            }
+            catch (Exception eLOB)
+            {
+                //Fattas
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -43,61 +46,43 @@ namespace BlackJackSolution
         {
             try {
                 clearCards();
-                int betInt = 0;
-                bool tryParse = Int32.TryParse(BetAmountText.Text, out betInt);
-                if (tryParse == true)
+                if (bet > 0)
                 {
-                    betInt = Int32.Parse(BetAmountText.Text);
-                    if (betInt <= 0)
+                    control.DealButtonPush();
+                    HitButton.Show();
+                    StandButton.Show();
+                    DealButton.Hide();
+                    LeaveButton.Hide();
+                    MinBetBtn.Hide();
+                    MaxBetBtn.Hide();
+                    //Fattas visa kort
+                    int myHandCheck = control.CheckMyHand();
+                    int dealerHandCheck = control.CheckDealerHand();
+                    if (myHandCheck == 21)
                     {
-                        InfoLabel.Text = "Please enter a valid bet (Not 0 or negative numbers)";
+                        double winnings = bet * 1.5; 
+                        InfoLabel.Text = "BLACKJACK! You win : " + winnings + "\n" + "Please enter a new bet to play again";
+                        //UPDATE SALDO +user*1.5 -bank
+                        control.ClearHands();
+                        bet = 0;//Måste skicka till DB först
+                        HitButton.Hide();
+                        StandButton.Hide();
+                        DealButton.Show();
+                        LeaveButton.Show();
+                        MinBetBtn.Show();
+                        MaxBetBtn.Show();
                     }
                     else
                     {
-                        HitButton.Show();
-                        StandButton.Show();
-                        DealButton.Hide();
-                        LeaveButton.Hide();
-                        BetAmountText.Hide();
-                        BetLabelAmount.Text = BetAmountText.Text;
-                        BetLabelAmount.Show();
-                        //Börjar dela kort
-                        control.AddCard(deck, dealerHand);
-                        control.AddCard(deck, myHand);
-                        control.AddCard(deck, myHand);
-                        displayMyCards(myHand);
-                        displayDealerCards(dealerHand);
-                        if (myHand.getTotal() == 21)
-                        {
-                            int winnings = Int32.Parse(BetLabelAmount.Text);
-                            InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
-                            //UPDATE SALDO +user*1.5 -bank
-                            myHand.clearHand(); //-----------------
-                            dealerHand.clearHand(); //------------------
-                            HitButton.Hide();
-                            StandButton.Hide();
-                            DealButton.Show();
-                            LeaveButton.Show();
-                            BetAmountText.Clear();
-                            BetAmountText.Show();
-                            BetLabelAmount.Hide();
-                        }
-                        else
-                        {
-                            myTotal = "Your handtotal is : " + myHand.getTotal() + "\n";
-                            dealerTotal = "Dealer handtotal is : " + dealerHand.getTotal();
-                            bet = "You bet " + BetLabelAmount.Text + "\n";
-                            InfoLabel.Text = bet + myTotal + dealerTotal;
-                        }
+                        myTotal = "Your handtotal is : " + myHandCheck + "\n";
+                        dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
+                        betString = "You bet " + bet + "\n"; //ÄNDRA TILL KNAPP
+                        InfoLabel.Text = betString + myTotal + dealerTotal;
                     }
                 }
-                else if (!String.IsNullOrWhiteSpace(BetAmountText.Text))
+                else
                 {
-                    InfoLabel.Text = "Please place a bet";
-                }
-                else if (tryParse == false)
-                {
-                    InfoLabel.Text = "Please enter a number as your bet";
+                    InfoLabel.Text = "Please choose a bet first";
                 }
             }
             catch (Exception ex)
@@ -107,25 +92,39 @@ namespace BlackJackSolution
         }
         private void LeaveButton_Click(object sender, EventArgs e)
         {
-            GamePanel.Hide();
-            MainPanel.Show();
+            try
+            {
+                GamePanel.Hide();
+                MainPanel.Show();
+            }
+            catch(Exception eLB)
+            {
+                //Fattas
+            }
         }
         public void clearCards()
         {
-            YourHandPictureBox1.Image = null;
-            YourHandPictureBox2.Image = null;
-            YourHandPictureBox3.Image = null;
-            YourHandPictureBox4.Image = null;
-            YourHandPictureBox5.Image = null;
-            YourHandPictureBox6.Image = null;
-            YourHandPictureBox7.Image = null;
-            DealerPictureBox1.Image = null;
-            DealerPictureBox2.Image = null;
-            DealerPictureBox3.Image = null;
-            DealerPictureBox4.Image = null;
-            DealerPictureBox5.Image = null;
-            DealerPictureBox6.Image = null;
-            DealerPictureBox7.Image = null;
+            try
+            {
+                YourHandPictureBox1.Image = null;
+                YourHandPictureBox2.Image = null;
+                YourHandPictureBox3.Image = null;
+                YourHandPictureBox4.Image = null;
+                YourHandPictureBox5.Image = null;
+                YourHandPictureBox6.Image = null;
+                YourHandPictureBox7.Image = null;
+                DealerPictureBox1.Image = null;
+                DealerPictureBox2.Image = null;
+                DealerPictureBox3.Image = null;
+                DealerPictureBox4.Image = null;
+                DealerPictureBox5.Image = null;
+                DealerPictureBox6.Image = null;
+                DealerPictureBox7.Image = null;
+            }
+            catch(Exception eCC)
+            {
+                //Fattas
+            }
         }
         public void displayMyCards(Hand hand) //måste fixa om hur suit och value läses
         {
@@ -223,9 +222,9 @@ namespace BlackJackSolution
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception eDMH)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                Console.WriteLine("Error : " + eDMH.Message);
             }
         }
         public void displayDealerCards(Hand hand)
@@ -324,9 +323,9 @@ namespace BlackJackSolution
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception eDDH)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                Console.WriteLine("Error : " + eDDH.Message);
             }
         }
 
@@ -354,8 +353,8 @@ namespace BlackJackSolution
                         BetAmountText.Show();
                         BetLabelAmount.Hide();
                         //UPDATE SALDO FÖR USER / BANK -user + dealer
-                        myHand.clearHand();//-----------------------
-                        dealerHand.clearHand();//--------------------
+                        control.ClearHand(myHand);//----------------------------------
+                        control.ClearHand(dealerHand);//--------------------
                     } else if (myHand.getTotal() == 21)
                     {
                         InfoLabel.Text = "You have 21";
@@ -387,22 +386,22 @@ namespace BlackJackSolution
                 if (dealerHand.getTotal() >= myHand.getTotal() && dealerHand.getTotal() < 22)
                 {
                     InfoLabel.Text = "The dealer has : " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "The dealer wins : " + BetAmountText.Text;
-                    myHand.clearHand();//----------------------------
-                    dealerHand.clearHand();//----------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//----------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer + user -
                 }
                 else if (dealerHand.getTotal() > 21)
                 {
                     InfoLabel.Text = "The dealer is bust " + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    myHand.clearHand();//---------------------------
-                    dealerHand.clearHand();//--------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//--------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +
                 }
                 else if (myHand.getTotal() > dealerHand.getTotal())
                 {
                     InfoLabel.Text = "The dealer has " + dealerHand.getTotal() + "\n" + "You have : " + myHand.getTotal() + "\n" + "You win : " + BetAmountText.Text;
-                    myHand.clearHand();//----------------------------------
-                    dealerHand.clearHand();//------------------------------
+                    control.ClearHand(myHand);//----------------------------------
+                    control.ClearHand(dealerHand);//------------------------------
                     //UPDATE SALDO FÖR USER/BANK dealer - user +
                 }
                 HitButton.Hide();
@@ -412,10 +411,60 @@ namespace BlackJackSolution
                 BetAmountText.Clear();
                 BetAmountText.Show();
                 BetLabelAmount.Hide();
-            } catch (Exception exp)
+            } catch (Exception eSB)
             {
-
+                //Fattas
             }
+        }
+
+        private void LoginLoginButton_Click(object sender, EventArgs e)
+        {
+            MainPanel.Show();
+            LoginPanel.Hide();
+            MainTableGroupBox.Show();
+
+            MainTableOnePictureBox.Visible = true;
+            System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+            Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
+            MainTableOnePictureBox.Image = picSt;
+            MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableOnePictureBox.BringToFront();
+
+            MainTableTwoPictureBox.Visible = true;
+            Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
+            MainTableTwoPictureBox.Image = picSt2;
+            MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableTwoPictureBox.BringToFront();
+
+            MainTableThreePictureBox.Visible = true;
+            Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
+            MainTableThreePictureBox.Image = picVIP;
+            MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableThreePictureBox.BringToFront();
+        }
+
+        private void MainTableOnePictureBox_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Erik heja heja");
+        }
+
+        private void LoginExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MinBetBtn_Click(object sender, EventArgs e)
+        {
+            bet = double.Parse(MinBetBtn.Text);
+            MinBetBtn.Hide();
+            MaxBetBtn.Hide();
+        }
+
+        private void MaxBetBtn_Click(object sender, EventArgs e)
+        {
+            bet = double.Parse(MaxBetBtn.Text);
+            MinBetBtn.Hide();
+            MaxBetBtn.Hide();
         }
     }
 }
