@@ -14,7 +14,7 @@ namespace BlackJackSolution
         /// The main entry point for the application.
         /// </summary>
         //[STAThread]
-        private static DBAccess db = new DBAccess();
+        //private static DBAccess db = new DBAccess();
        
             
 

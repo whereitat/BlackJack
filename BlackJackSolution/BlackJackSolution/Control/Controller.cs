@@ -251,6 +251,6 @@ namespace BlackJackSolution.Control
                 dealerHand.AddCard(deck);
             }
         }
-        //Behöver commit på nya procedures för test
+        
     } 
 }
