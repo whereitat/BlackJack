@@ -438,5 +438,36 @@ namespace BlackJackSolution
                 //Fattas
             }
         }
+
+        private void LoginLoginButton_Click(object sender, EventArgs e)
+        {
+            MainPanel.Show();
+            LoginPanel.Hide();
+            MainTableGroupBox.Show();
+
+            MainTableOnePictureBox.Visible = true;
+            System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+            Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
+            MainTableOnePictureBox.Image = picSt;
+            MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableOnePictureBox.BringToFront();
+
+            MainTableTwoPictureBox.Visible = true;
+            Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
+            MainTableTwoPictureBox.Image = picSt2;
+            MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableTwoPictureBox.BringToFront();
+
+            MainTableThreePictureBox.Visible = true;
+            Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
+            MainTableThreePictureBox.Image = picVIP;
+            MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MainTableThreePictureBox.BringToFront();
+        }
+
+        private void MainTableOnePictureBox_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Erik heja heja");
+        }
     }
 }
