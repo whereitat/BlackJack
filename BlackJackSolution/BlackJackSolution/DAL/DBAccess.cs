@@ -195,15 +195,15 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public string[] GetBlackJackGame(int sessionId)
+        public List<string[]> GetBlackJackGame(int sessionId)
         {
             try
             {
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[GETBLACKJACKGAME] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
+                SqlCommand command = new SqlCommand("EXEC [dbo].[GETBLACKJACKGAME] ", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
-                string[] result = new string[4];
+                string[] result = new string[3];
 
                 if (read.HasRows)
                 {
