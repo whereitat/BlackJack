@@ -195,6 +195,14 @@ namespace BlackJackSolution.DAL
             }
         }
 
+        public int GetMinBet()
+        {
+
+        }
+        public int GetMaxBet()
+        {
+
+        }
         public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try {
