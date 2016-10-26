@@ -545,6 +545,14 @@ namespace BlackJackSolution
             LoginPanel.Show();
         }
 
-       
+        private void LoginPasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPasswordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

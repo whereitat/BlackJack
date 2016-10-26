@@ -129,6 +129,7 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.MainPanel.Controls.Add(this.MainInfoGroupBox);
             this.MainPanel.Controls.Add(this.MainAccountGroupBox);
             this.MainPanel.Controls.Add(this.MainTableGroupBox);
@@ -142,6 +143,7 @@
             // MainInfoGroupBox
             // 
             this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
+            this.MainInfoGroupBox.ForeColor = System.Drawing.Color.White;
             this.MainInfoGroupBox.Location = new System.Drawing.Point(527, 276);
             this.MainInfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.MainInfoGroupBox.Name = "MainInfoGroupBox";
@@ -166,6 +168,7 @@
             this.MainAccountGroupBox.Controls.Add(this.MainAccountDeleteBtn);
             this.MainAccountGroupBox.Controls.Add(this.MainFundsGB);
             this.MainAccountGroupBox.Controls.Add(this.MainAccountGB);
+            this.MainAccountGroupBox.ForeColor = System.Drawing.Color.White;
             this.MainAccountGroupBox.Location = new System.Drawing.Point(63, 262);
             this.MainAccountGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.MainAccountGroupBox.Name = "MainAccountGroupBox";
@@ -178,6 +181,7 @@
             // MainAccountDeleteLabel
             // 
             this.MainAccountDeleteLabel.AutoSize = true;
+            this.MainAccountDeleteLabel.ForeColor = System.Drawing.Color.White;
             this.MainAccountDeleteLabel.Location = new System.Drawing.Point(164, 193);
             this.MainAccountDeleteLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
@@ -189,6 +193,8 @@
             // 
             this.MainAccountDeleteBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.MainAccountDeleteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.MainAccountDeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MainAccountDeleteBtn.ForeColor = System.Drawing.Color.Black;
             this.MainAccountDeleteBtn.Location = new System.Drawing.Point(149, 210);
             this.MainAccountDeleteBtn.Margin = new System.Windows.Forms.Padding(2);
             this.MainAccountDeleteBtn.Name = "MainAccountDeleteBtn";
@@ -202,6 +208,7 @@
             // 
             this.MainFundsGB.Controls.Add(this.MainAccountFundAddBtn);
             this.MainFundsGB.Controls.Add(this.MainAccountFundsTF);
+            this.MainFundsGB.ForeColor = System.Drawing.Color.White;
             this.MainFundsGB.Location = new System.Drawing.Point(234, 33);
             this.MainFundsGB.Margin = new System.Windows.Forms.Padding(2);
             this.MainFundsGB.Name = "MainFundsGB";
@@ -215,10 +222,12 @@
             // 
             this.MainAccountFundAddBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.MainAccountFundAddBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(39, 85);
+            this.MainAccountFundAddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MainAccountFundAddBtn.ForeColor = System.Drawing.Color.Black;
+            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(33, 85);
             this.MainAccountFundAddBtn.Margin = new System.Windows.Forms.Padding(2);
             this.MainAccountFundAddBtn.Name = "MainAccountFundAddBtn";
-            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(66, 19);
+            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(78, 29);
             this.MainAccountFundAddBtn.TabIndex = 3;
             this.MainAccountFundAddBtn.Text = "Add funds";
             this.MainAccountFundAddBtn.UseVisualStyleBackColor = false;
@@ -238,6 +247,7 @@
             this.MainAccountGB.Controls.Add(this.MainAccountUpdateBtn);
             this.MainAccountGB.Controls.Add(this.MainAccountUpdatePwTF);
             this.MainAccountGB.Controls.Add(this.MainAccountUpdateUNTF);
+            this.MainAccountGB.ForeColor = System.Drawing.Color.White;
             this.MainAccountGB.Location = new System.Drawing.Point(28, 33);
             this.MainAccountGB.Margin = new System.Windows.Forms.Padding(2);
             this.MainAccountGB.Name = "MainAccountGB";
@@ -250,6 +260,7 @@
             // MainAccountUpdateULab
             // 
             this.MainAccountUpdateULab.AutoSize = true;
+            this.MainAccountUpdateULab.ForeColor = System.Drawing.Color.White;
             this.MainAccountUpdateULab.Location = new System.Drawing.Point(37, 24);
             this.MainAccountUpdateULab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MainAccountUpdateULab.Name = "MainAccountUpdateULab";
@@ -260,6 +271,7 @@
             // MainAccountUpdatePWLab
             // 
             this.MainAccountUpdatePWLab.AutoSize = true;
+            this.MainAccountUpdatePWLab.ForeColor = System.Drawing.Color.White;
             this.MainAccountUpdatePWLab.Location = new System.Drawing.Point(37, 67);
             this.MainAccountUpdatePWLab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MainAccountUpdatePWLab.Name = "MainAccountUpdatePWLab";
@@ -271,10 +283,12 @@
             // 
             this.MainAccountUpdateBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.MainAccountUpdateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.MainAccountUpdateBtn.Location = new System.Drawing.Point(51, 118);
+            this.MainAccountUpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MainAccountUpdateBtn.ForeColor = System.Drawing.Color.Black;
+            this.MainAccountUpdateBtn.Location = new System.Drawing.Point(39, 118);
             this.MainAccountUpdateBtn.Margin = new System.Windows.Forms.Padding(2);
             this.MainAccountUpdateBtn.Name = "MainAccountUpdateBtn";
-            this.MainAccountUpdateBtn.Size = new System.Drawing.Size(56, 19);
+            this.MainAccountUpdateBtn.Size = new System.Drawing.Size(76, 22);
             this.MainAccountUpdateBtn.TabIndex = 2;
             this.MainAccountUpdateBtn.Text = "Update";
             this.MainAccountUpdateBtn.UseVisualStyleBackColor = false;
@@ -300,6 +314,7 @@
             this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
             this.MainTableGroupBox.Controls.Add(this.MainTableTwoPictureBox);
             this.MainTableGroupBox.Controls.Add(this.MainTableOnePictureBox);
+            this.MainTableGroupBox.ForeColor = System.Drawing.Color.White;
             this.MainTableGroupBox.Location = new System.Drawing.Point(63, 32);
             this.MainTableGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.MainTableGroupBox.Name = "MainTableGroupBox";
@@ -341,6 +356,7 @@
             // 
             this.LogOutBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.LogOutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.LogOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutBtn.Location = new System.Drawing.Point(642, 431);
             this.LogOutBtn.Margin = new System.Windows.Forms.Padding(2);
             this.LogOutBtn.Name = "LogOutBtn";
@@ -352,6 +368,7 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.LoginPanel.Controls.Add(this.Header);
             this.LoginPanel.Controls.Add(this.LoginExitBtn);
             this.LoginPanel.Controls.Add(this.LoginCreateGroupBox);
@@ -365,14 +382,15 @@
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.LoginPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(926, 531);
+            this.LoginPanel.Size = new System.Drawing.Size(949, 553);
             this.LoginPanel.TabIndex = 2;
             // 
             // Header
             // 
             this.Header.AutoSize = true;
             this.Header.Font = new System.Drawing.Font("Impact", 75F);
-            this.Header.Location = new System.Drawing.Point(180, 9);
+            this.Header.ForeColor = System.Drawing.Color.LawnGreen;
+            this.Header.Location = new System.Drawing.Point(230, 56);
             this.Header.Name = "Header";
             this.Header.Size = new System.Drawing.Size(501, 122);
             this.Header.TabIndex = 9;
@@ -384,7 +402,7 @@
             this.LoginExitBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginExitBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginExitBtn.Location = new System.Drawing.Point(349, 395);
+            this.LoginExitBtn.Location = new System.Drawing.Point(408, 454);
             this.LoginExitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.LoginExitBtn.Name = "LoginExitBtn";
             this.LoginExitBtn.Size = new System.Drawing.Size(132, 37);
@@ -395,36 +413,42 @@
             // 
             // LoginCreateGroupBox
             // 
-            this.LoginCreateGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginCreateGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreateCreateBtn);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWLabel);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUsernameLabel);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWTextBox);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUnameTextBox);
-            this.LoginCreateGroupBox.Location = new System.Drawing.Point(47, 191);
+            this.LoginCreateGroupBox.ForeColor = System.Drawing.Color.White;
+            this.LoginCreateGroupBox.Location = new System.Drawing.Point(103, 253);
             this.LoginCreateGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginCreateGroupBox.Name = "LoginCreateGroupBox";
             this.LoginCreateGroupBox.Padding = new System.Windows.Forms.Padding(2);
             this.LoginCreateGroupBox.Size = new System.Drawing.Size(230, 241);
             this.LoginCreateGroupBox.TabIndex = 7;
             this.LoginCreateGroupBox.TabStop = false;
-            this.LoginCreateGroupBox.Text = "Create";
+            this.LoginCreateGroupBox.Text = "Create Account";
             this.LoginCreateGroupBox.Visible = false;
             // 
             // LoginCreateCreateBtn
             // 
-            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(76, 196);
+            this.LoginCreateCreateBtn.BackColor = System.Drawing.Color.LawnGreen;
+            this.LoginCreateCreateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.LoginCreateCreateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginCreateCreateBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(44, 190);
             this.LoginCreateCreateBtn.Margin = new System.Windows.Forms.Padding(2);
             this.LoginCreateCreateBtn.Name = "LoginCreateCreateBtn";
-            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(56, 19);
+            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(71, 27);
             this.LoginCreateCreateBtn.TabIndex = 5;
             this.LoginCreateCreateBtn.Text = "Create";
-            this.LoginCreateCreateBtn.UseVisualStyleBackColor = true;
+            this.LoginCreateCreateBtn.UseVisualStyleBackColor = false;
             this.LoginCreateCreateBtn.Click += new System.EventHandler(this.LoginCreateCreateBtn_Click);
             // 
             // LoginCreatePWLabel
             // 
             this.LoginCreatePWLabel.AutoSize = true;
+            this.LoginCreatePWLabel.ForeColor = System.Drawing.Color.White;
             this.LoginCreatePWLabel.Location = new System.Drawing.Point(42, 130);
             this.LoginCreatePWLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginCreatePWLabel.Name = "LoginCreatePWLabel";
@@ -435,6 +459,7 @@
             // LoginCreateUsernameLabel
             // 
             this.LoginCreateUsernameLabel.AutoSize = true;
+            this.LoginCreateUsernameLabel.ForeColor = System.Drawing.Color.White;
             this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(42, 68);
             this.LoginCreateUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginCreateUsernameLabel.Name = "LoginCreateUsernameLabel";
@@ -465,7 +490,7 @@
             this.LoginCreateAccBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginCreateAccBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginCreateAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginCreateAccBtn.Location = new System.Drawing.Point(350, 338);
+            this.LoginCreateAccBtn.Location = new System.Drawing.Point(409, 397);
             this.LoginCreateAccBtn.Margin = new System.Windows.Forms.Padding(2);
             this.LoginCreateAccBtn.Name = "LoginCreateAccBtn";
             this.LoginCreateAccBtn.Size = new System.Drawing.Size(131, 38);
@@ -477,17 +502,20 @@
             // LoginPasswordLabel
             // 
             this.LoginPasswordLabel.AutoSize = true;
-            this.LoginPasswordLabel.Location = new System.Drawing.Point(350, 214);
+            this.LoginPasswordLabel.ForeColor = System.Drawing.Color.White;
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(409, 273);
             this.LoginPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginPasswordLabel.Name = "LoginPasswordLabel";
             this.LoginPasswordLabel.Size = new System.Drawing.Size(53, 13);
             this.LoginPasswordLabel.TabIndex = 5;
             this.LoginPasswordLabel.Text = "Password";
+            this.LoginPasswordLabel.Click += new System.EventHandler(this.LoginPasswordLabel_Click);
             // 
             // LoginUsernameLabel
             // 
             this.LoginUsernameLabel.AutoSize = true;
-            this.LoginUsernameLabel.Location = new System.Drawing.Point(350, 175);
+            this.LoginUsernameLabel.ForeColor = System.Drawing.Color.White;
+            this.LoginUsernameLabel.Location = new System.Drawing.Point(407, 229);
             this.LoginUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginUsernameLabel.Name = "LoginUsernameLabel";
             this.LoginUsernameLabel.Size = new System.Drawing.Size(55, 13);
@@ -496,9 +524,10 @@
             // 
             // LoginInfoGroupBox
             // 
-            this.LoginInfoGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LoginInfoGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.LoginInfoGroupBox.Controls.Add(this.LoginInfoLabel);
-            this.LoginInfoGroupBox.Location = new System.Drawing.Point(544, 337);
+            this.LoginInfoGroupBox.ForeColor = System.Drawing.Color.White;
+            this.LoginInfoGroupBox.Location = new System.Drawing.Point(604, 395);
             this.LoginInfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginInfoGroupBox.Name = "LoginInfoGroupBox";
             this.LoginInfoGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -523,7 +552,7 @@
             this.LoginLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginLoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginLoginButton.Location = new System.Drawing.Point(350, 282);
+            this.LoginLoginButton.Location = new System.Drawing.Point(409, 341);
             this.LoginLoginButton.Margin = new System.Windows.Forms.Padding(2);
             this.LoginLoginButton.Name = "LoginLoginButton";
             this.LoginLoginButton.Size = new System.Drawing.Size(131, 38);
@@ -534,16 +563,17 @@
             // 
             // LoginPasswordTextBox
             // 
-            this.LoginPasswordTextBox.Location = new System.Drawing.Point(350, 231);
+            this.LoginPasswordTextBox.Location = new System.Drawing.Point(409, 290);
             this.LoginPasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginPasswordTextBox.Name = "LoginPasswordTextBox";
             this.LoginPasswordTextBox.PasswordChar = '*';
             this.LoginPasswordTextBox.Size = new System.Drawing.Size(132, 20);
             this.LoginPasswordTextBox.TabIndex = 1;
+            this.LoginPasswordTextBox.TextChanged += new System.EventHandler(this.LoginPasswordTextBox_TextChanged);
             // 
             // LoginUsernameTextBox
             // 
-            this.LoginUsernameTextBox.Location = new System.Drawing.Point(350, 191);
+            this.LoginUsernameTextBox.Location = new System.Drawing.Point(408, 247);
             this.LoginUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginUsernameTextBox.Name = "LoginUsernameTextBox";
             this.LoginUsernameTextBox.Size = new System.Drawing.Size(133, 20);
@@ -881,10 +911,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(946, 547);
-            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.GamePanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUI";
