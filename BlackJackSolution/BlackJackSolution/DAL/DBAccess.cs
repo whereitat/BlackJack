@@ -10,6 +10,7 @@ namespace BlackJackSolution.DAL
 {
     public class DBAccess
     {
+        //Connection
         public static SqlConnection Connect()
         {
             SqlConnection con = new SqlConnection("user id=test;" +
@@ -28,6 +29,25 @@ namespace BlackJackSolution.DAL
                 String ex = Logic.Utils.SqlExceptionUtility(e);
                 Console.WriteLine(e.ToString() + e.Message + " " + ex);
                 return null;
+            }
+        }
+
+        //Get data methods
+        public bool CreateAccount(string aname, string password)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+                return true;
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return false;
             }
         }
         public List<string[]> CreateDeck() 
@@ -62,25 +82,40 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
-        public bool CreateAccount(string aname, string password)
+        public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try
             {
+
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
-                command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
+                int update = command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
-                return true;         
+                string a = "Gameround recorded";
+
+
+                if (update == 0)
+                {
+                    if (read.HasRows)
+                    {
+                        while (read.Read())
+                        {
+                            a = read.GetInt32(0).ToString();
+                        }
+                    }
+                    return a;
+                }
+                else
+                {
+                    return a;
+                }
             }
-            catch(SqlException e)
-            {               
+            catch (SqlException e)
+            {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
-                return false;
+                return ex;
             }
         }
-
         public bool DeleteAccount(string aname, string password)
         {
             try
@@ -105,7 +140,30 @@ namespace BlackJackSolution.DAL
                 return false;
             }
         }
+        public string DepositFunds(string aname, double amount)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
+                int s = command.ExecuteNonQuery();
+                if (s != 0)
+                {
+                    string result = amount + " inserted!";
+                    return result;
+                }
+                else
+                {
+                    return "else"; //what
+                }
 
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                return ex;
+            }
+        }
         public string[] GetAccount(string aname, string password)
         {
             try
@@ -144,57 +202,6 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
-        public string WithdrawFunds(string aname, double amount)
-        {
-            try
-            {
-                SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
-                int s = command.ExecuteNonQuery();
-
-                if (s != 0)
-                {
-                    string result = amount + " withdrawn";
-                    return result;
-                }
-                else
-                {
-                    return "else";
-                }
-                
-            }
-            catch (SqlException e)
-            {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
-            }
-        }
-        public string DepositFunds(string aname, double amount)
-        {
-            try
-            {
-                SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
-                int s = command.ExecuteNonQuery();
-                if (s != 0)
-                {
-                    string result = amount + " inserted!";
-                    return result;
-                }
-                else
-                {
-                    return "else"; //what
-                }
-
-            }
-            catch (SqlException e)
-            {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
-            }
-        }
-
         public List<string[]> GetBlackJackGames()
         {
             try
@@ -230,40 +237,30 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
-
-        public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
+        public string WithdrawFunds(string aname, double amount)
         {
-            try {
-            
+            try
+            {
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
-                int update = command.ExecuteNonQuery();
-                SqlDataReader read = command.ExecuteReader();
-                string a = "Gameround recorded";
-            
+                SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
+                int s = command.ExecuteNonQuery();
 
-                if (update == 0 )
+                if (s != 0)
                 {
-                    if (read.HasRows)
-                    {
-                        while (read.Read())
-                        {
-                            a = read.GetInt32(0).ToString();
-                        }
-                    }
-                    return a;
+                    string result = amount + " withdrawn";
+                    return result;
                 }
                 else
                 {
-                    return a;
+                    return "else";
                 }
+                
             }
             catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
                 return ex;
             }
-        }
+        }        
     }
 }
