@@ -148,9 +148,14 @@ namespace BlackJackSolution.Control
             String picture;
             for (int i = 0; i < dealerHand.handCards.Count; i++)
             {
-                if (dealerHand.handCards[i].getValue() < 10)
+                if (dealerHand.handCards[i].getValue() < 10 && dealerHand.handCards[i].getValue() > 1)
                 {
                     picture = "_0" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+                else if (dealerHand.handCards[i].getValue() == 1)
+                {
+                    picture = "_11_" + dealerHand.handCards[i].getSuit();
                     picList.Add(picture);
                 }
                 else if (dealerHand.handCards[i].getValue() == 10)
@@ -173,6 +178,12 @@ namespace BlackJackSolution.Control
                     picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
                     picList.Add(picture);
                 }
+                else if (dealerHand.handCards[i].getValue() == 14)
+                {
+                    picture = "_" + dealerHand.handCards[i].getValue() + "_" + dealerHand.handCards[i].getSuit();
+                    picList.Add(picture);
+                }
+
             }
             return picList;
         }
@@ -190,9 +201,14 @@ namespace BlackJackSolution.Control
             String picture;
                 for(int i = 0; i < myHand.handCards.Count; i++)
                 {
-                    if (myHand.handCards[i].getValue() < 10)
+                    if (myHand.handCards[i].getValue() < 10 && myHand.handCards[i].getValue() > 1)
                     {
                         picture = "_0" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+                    else if (myHand.handCards[i].getValue() == 1)
+                    {
+                        picture = "_11_" + dealerHand.handCards[i].getSuit();
                         picList.Add(picture);
                     }
                     else if (myHand.handCards[i].getValue() == 10)

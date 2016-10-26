@@ -20,7 +20,6 @@ namespace BlackJackSolution.DAL
             try
             {
                 con.Open();
-                Console.WriteLine("Connection established");
                 return con;
             }
             catch (SqlException e)

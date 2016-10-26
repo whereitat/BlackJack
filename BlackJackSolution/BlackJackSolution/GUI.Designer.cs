@@ -237,6 +237,7 @@
             this.MainAccountWithdrawBtn.TabIndex = 4;
             this.MainAccountWithdrawBtn.Text = "Withdraw funds";
             this.MainAccountWithdrawBtn.UseVisualStyleBackColor = false;
+            this.MainAccountWithdrawBtn.Click += new System.EventHandler(this.MainAccountWithdrawBtn_Click_1);
             // 
             // MainAccountFundAddBtn
             // 
@@ -249,6 +250,7 @@
             this.MainAccountFundAddBtn.TabIndex = 3;
             this.MainAccountFundAddBtn.Text = "Add funds";
             this.MainAccountFundAddBtn.UseVisualStyleBackColor = false;
+            this.MainAccountFundAddBtn.Click += new System.EventHandler(this.MainAccountFundAddBtn_Click_1);
             // 
             // MainAccountFundsTF
             // 
@@ -447,7 +449,6 @@
             this.LoginPasswordLabel.Size = new System.Drawing.Size(69, 17);
             this.LoginPasswordLabel.TabIndex = 5;
             this.LoginPasswordLabel.Text = "Password";
-            this.LoginPasswordLabel.Click += new System.EventHandler(this.LoginPasswordLabel_Click);
             // 
             // LoginUsernameLabel
             // 
@@ -845,8 +846,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.LoginPanel);
-            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.GamePanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI";
             this.Text = "Blackjack";

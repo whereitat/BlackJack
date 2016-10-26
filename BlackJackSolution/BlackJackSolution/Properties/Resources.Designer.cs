@@ -63,46 +63,6 @@ namespace BlackJackSolution.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _01_clubs {
-            get {
-                object obj = ResourceManager.GetObject("_01_clubs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _01_diamonds {
-            get {
-                object obj = ResourceManager.GetObject("_01_diamonds", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _01_hearts {
-            get {
-                object obj = ResourceManager.GetObject("_01_hearts", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _01_spades {
-            get {
-                object obj = ResourceManager.GetObject("_01_spades", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _02_clubs {
             get {
                 object obj = ResourceManager.GetObject("_02_clubs", resourceCulture);
@@ -576,6 +536,46 @@ namespace BlackJackSolution.Properties {
         internal static System.Drawing.Bitmap _13_spades {
             get {
                 object obj = ResourceManager.GetObject("_13_spades", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14_clubs {
+            get {
+                object obj = ResourceManager.GetObject("_14_clubs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14_diamonds {
+            get {
+                object obj = ResourceManager.GetObject("_14_diamonds", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14_hearts {
+            get {
+                object obj = ResourceManager.GetObject("_14_hearts", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14_spades {
+            get {
+                object obj = ResourceManager.GetObject("_14_spades", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

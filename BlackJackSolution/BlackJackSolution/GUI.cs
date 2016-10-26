@@ -547,7 +547,7 @@ namespace BlackJackSolution
             MainPanel.Hide();
             LoginPanel.Show();
         }
-        private void MainAccountFundAddBtn_Click(object sender, EventArgs e)
+        private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {
             string check = control.AddFunds(Double.Parse(MainAccountFundsTF.Text));
             if (check.Equals("True"))
@@ -562,7 +562,7 @@ namespace BlackJackSolution
             MainAccountFundsTF.Clear();
         }
 
-        private void MainAccountWithdrawBtn_Click(object sender, EventArgs e)
+        private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
         {
             string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
             if (check.Equals("True"))
@@ -575,11 +575,6 @@ namespace BlackJackSolution
             }
             MainAccountBLabel.Text = control.GetBalance().ToString();
             MainAccountFundsTF.Clear();
-        }
-
-        private void LoginPasswordLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

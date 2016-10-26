@@ -52,9 +52,14 @@ namespace BlackJackSolution.Model
             int handTotal = 0;
             for (int i = 0; i < handCards.Count; i++)
             {
-
-                handTotal += handCards[i].getValue();
-
+                if (handCards[i].getValue() > 11)
+                {
+                    handTotal += 10;
+                }
+                else
+                {
+                    handTotal += handCards[i].getValue();
+                }
                 if (handTotal > 21)
                 {
                     for (int j = 0; j < handCards.Count; j++)
