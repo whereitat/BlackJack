@@ -290,5 +290,34 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
+
+        public bool GameTransaction(string aname, int gameid)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC dbo.GAMETRANSACTION @USERNAME = '" + aname + "', @GAMEID = " + gameid, connection);
+                int update = command.ExecuteNonQuery();
+                bool a;
+
+                Console.WriteLine(update);
+                if (update == 0)
+                {
+                    a = false;
+                }
+                else
+                {
+                    a = true;
+                }
+                return a;
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }
