@@ -88,6 +88,10 @@ namespace BlackJackSolution.Control
 
             }
         }
+        public List<Table> GetAllBlackJackGames()
+        {
+            List<string[]> dbData = db.GetBlackJackGames
+        }
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();

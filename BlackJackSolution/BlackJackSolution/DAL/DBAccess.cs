@@ -195,7 +195,7 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public List<string[]> GetBlackJackGame(int sessionId)
+        public List<string[]> GetBlackJackGames()
         {
             try
             {
