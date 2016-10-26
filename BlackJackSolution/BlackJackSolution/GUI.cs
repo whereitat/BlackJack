@@ -429,6 +429,7 @@ namespace BlackJackSolution
                     LoginCreatePWTextBox.Clear();
                     LoginCreateUnameTextBox.Clear();
                     LoginInfoLabel.Text = "";
+                    MainAccountBLabel.Text = control.GetBalance().ToString();
 
                     MainTableOnePictureBox.Visible = true;
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;

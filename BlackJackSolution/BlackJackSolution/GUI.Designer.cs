@@ -37,12 +37,6 @@
             this.MainFundsGB = new System.Windows.Forms.GroupBox();
             this.MainAccountFundAddBtn = new System.Windows.Forms.Button();
             this.MainAccountFundsTF = new System.Windows.Forms.TextBox();
-            this.MainAccountGB = new System.Windows.Forms.GroupBox();
-            this.MainAccountUpdateULab = new System.Windows.Forms.Label();
-            this.MainAccountUpdatePWLab = new System.Windows.Forms.Label();
-            this.MainAccountUpdateBtn = new System.Windows.Forms.Button();
-            this.MainAccountUpdatePwTF = new System.Windows.Forms.TextBox();
-            this.MainAccountUpdateUNTF = new System.Windows.Forms.TextBox();
             this.MainTableGroupBox = new System.Windows.Forms.GroupBox();
             this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
             this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
@@ -94,11 +88,13 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MainAccountWithdrawBtn = new System.Windows.Forms.Button();
+            this.MainAccountBalanceLabel = new System.Windows.Forms.Label();
+            this.MainAccountBLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.MainInfoGroupBox.SuspendLayout();
             this.MainAccountGroupBox.SuspendLayout();
             this.MainFundsGB.SuspendLayout();
-            this.MainAccountGB.SuspendLayout();
             this.MainTableGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
@@ -134,19 +130,19 @@
             this.MainPanel.Controls.Add(this.MainTableGroupBox);
             this.MainPanel.Controls.Add(this.LogOutBtn);
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(931, 531);
+            this.MainPanel.Size = new System.Drawing.Size(1241, 654);
             this.MainPanel.TabIndex = 0;
             // 
             // MainInfoGroupBox
             // 
             this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
-            this.MainInfoGroupBox.Location = new System.Drawing.Point(527, 276);
-            this.MainInfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainInfoGroupBox.Location = new System.Drawing.Point(703, 340);
+            this.MainInfoGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainInfoGroupBox.Name = "MainInfoGroupBox";
-            this.MainInfoGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.MainInfoGroupBox.Size = new System.Drawing.Size(384, 95);
+            this.MainInfoGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainInfoGroupBox.Size = new System.Drawing.Size(512, 117);
             this.MainInfoGroupBox.TabIndex = 4;
             this.MainInfoGroupBox.TabStop = false;
             this.MainInfoGroupBox.Text = "Info";
@@ -154,10 +150,9 @@
             // MainInfoLabel
             // 
             this.MainInfoLabel.AutoSize = true;
-            this.MainInfoLabel.Location = new System.Drawing.Point(20, 37);
-            this.MainInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MainInfoLabel.Location = new System.Drawing.Point(27, 46);
             this.MainInfoLabel.Name = "MainInfoLabel";
-            this.MainInfoLabel.Size = new System.Drawing.Size(0, 13);
+            this.MainInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.MainInfoLabel.TabIndex = 0;
             // 
             // MainAccountGroupBox
@@ -165,12 +160,11 @@
             this.MainAccountGroupBox.Controls.Add(this.MainAccountDeleteLabel);
             this.MainAccountGroupBox.Controls.Add(this.MainAccountDeleteBtn);
             this.MainAccountGroupBox.Controls.Add(this.MainFundsGB);
-            this.MainAccountGroupBox.Controls.Add(this.MainAccountGB);
-            this.MainAccountGroupBox.Location = new System.Drawing.Point(63, 262);
-            this.MainAccountGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainAccountGroupBox.Location = new System.Drawing.Point(84, 322);
+            this.MainAccountGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainAccountGroupBox.Name = "MainAccountGroupBox";
-            this.MainAccountGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.MainAccountGroupBox.Size = new System.Drawing.Size(433, 244);
+            this.MainAccountGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainAccountGroupBox.Size = new System.Drawing.Size(577, 300);
             this.MainAccountGroupBox.TabIndex = 3;
             this.MainAccountGroupBox.TabStop = false;
             this.MainAccountGroupBox.Text = "Account Options";
@@ -178,10 +172,9 @@
             // MainAccountDeleteLabel
             // 
             this.MainAccountDeleteLabel.AutoSize = true;
-            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(164, 193);
-            this.MainAccountDeleteLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(219, 238);
             this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
-            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(81, 13);
+            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(104, 17);
             this.MainAccountDeleteLabel.TabIndex = 3;
             this.MainAccountDeleteLabel.Text = "Delete Account";
             // 
@@ -189,10 +182,10 @@
             // 
             this.MainAccountDeleteBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.MainAccountDeleteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.MainAccountDeleteBtn.Location = new System.Drawing.Point(149, 210);
-            this.MainAccountDeleteBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.MainAccountDeleteBtn.Location = new System.Drawing.Point(199, 258);
+            this.MainAccountDeleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainAccountDeleteBtn.Name = "MainAccountDeleteBtn";
-            this.MainAccountDeleteBtn.Size = new System.Drawing.Size(109, 19);
+            this.MainAccountDeleteBtn.Size = new System.Drawing.Size(145, 23);
             this.MainAccountDeleteBtn.TabIndex = 2;
             this.MainAccountDeleteBtn.Text = "Delete";
             this.MainAccountDeleteBtn.UseVisualStyleBackColor = false;
@@ -200,13 +193,16 @@
             // 
             // MainFundsGB
             // 
+            this.MainFundsGB.Controls.Add(this.MainAccountBLabel);
+            this.MainFundsGB.Controls.Add(this.MainAccountBalanceLabel);
+            this.MainFundsGB.Controls.Add(this.MainAccountWithdrawBtn);
             this.MainFundsGB.Controls.Add(this.MainAccountFundAddBtn);
             this.MainFundsGB.Controls.Add(this.MainAccountFundsTF);
-            this.MainFundsGB.Location = new System.Drawing.Point(234, 33);
-            this.MainFundsGB.Margin = new System.Windows.Forms.Padding(2);
+            this.MainFundsGB.Location = new System.Drawing.Point(38, 41);
+            this.MainFundsGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainFundsGB.Name = "MainFundsGB";
-            this.MainFundsGB.Padding = new System.Windows.Forms.Padding(2);
-            this.MainFundsGB.Size = new System.Drawing.Size(150, 152);
+            this.MainFundsGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainFundsGB.Size = new System.Drawing.Size(519, 187);
             this.MainFundsGB.TabIndex = 1;
             this.MainFundsGB.TabStop = false;
             this.MainFundsGB.Text = "Funds";
@@ -215,124 +211,60 @@
             // 
             this.MainAccountFundAddBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.MainAccountFundAddBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(39, 85);
-            this.MainAccountFundAddBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(286, 123);
+            this.MainAccountFundAddBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainAccountFundAddBtn.Name = "MainAccountFundAddBtn";
-            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(66, 19);
+            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(88, 34);
             this.MainAccountFundAddBtn.TabIndex = 3;
             this.MainAccountFundAddBtn.Text = "Add funds";
             this.MainAccountFundAddBtn.UseVisualStyleBackColor = false;
             // 
             // MainAccountFundsTF
             // 
-            this.MainAccountFundsTF.Location = new System.Drawing.Point(33, 43);
-            this.MainAccountFundsTF.Margin = new System.Windows.Forms.Padding(2);
+            this.MainAccountFundsTF.Location = new System.Drawing.Point(332, 89);
+            this.MainAccountFundsTF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainAccountFundsTF.Name = "MainAccountFundsTF";
-            this.MainAccountFundsTF.Size = new System.Drawing.Size(76, 20);
+            this.MainAccountFundsTF.Size = new System.Drawing.Size(100, 22);
             this.MainAccountFundsTF.TabIndex = 2;
-            // 
-            // MainAccountGB
-            // 
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateULab);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePWLab);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateBtn);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePwTF);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateUNTF);
-            this.MainAccountGB.Location = new System.Drawing.Point(28, 33);
-            this.MainAccountGB.Margin = new System.Windows.Forms.Padding(2);
-            this.MainAccountGB.Name = "MainAccountGB";
-            this.MainAccountGB.Padding = new System.Windows.Forms.Padding(2);
-            this.MainAccountGB.Size = new System.Drawing.Size(150, 152);
-            this.MainAccountGB.TabIndex = 0;
-            this.MainAccountGB.TabStop = false;
-            this.MainAccountGB.Text = "Change";
-            // 
-            // MainAccountUpdateULab
-            // 
-            this.MainAccountUpdateULab.AutoSize = true;
-            this.MainAccountUpdateULab.Location = new System.Drawing.Point(37, 24);
-            this.MainAccountUpdateULab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MainAccountUpdateULab.Name = "MainAccountUpdateULab";
-            this.MainAccountUpdateULab.Size = new System.Drawing.Size(55, 13);
-            this.MainAccountUpdateULab.TabIndex = 4;
-            this.MainAccountUpdateULab.Text = "Username";
-            // 
-            // MainAccountUpdatePWLab
-            // 
-            this.MainAccountUpdatePWLab.AutoSize = true;
-            this.MainAccountUpdatePWLab.Location = new System.Drawing.Point(37, 67);
-            this.MainAccountUpdatePWLab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MainAccountUpdatePWLab.Name = "MainAccountUpdatePWLab";
-            this.MainAccountUpdatePWLab.Size = new System.Drawing.Size(53, 13);
-            this.MainAccountUpdatePWLab.TabIndex = 3;
-            this.MainAccountUpdatePWLab.Text = "Password";
-            // 
-            // MainAccountUpdateBtn
-            // 
-            this.MainAccountUpdateBtn.BackColor = System.Drawing.Color.LawnGreen;
-            this.MainAccountUpdateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.MainAccountUpdateBtn.Location = new System.Drawing.Point(51, 118);
-            this.MainAccountUpdateBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.MainAccountUpdateBtn.Name = "MainAccountUpdateBtn";
-            this.MainAccountUpdateBtn.Size = new System.Drawing.Size(56, 19);
-            this.MainAccountUpdateBtn.TabIndex = 2;
-            this.MainAccountUpdateBtn.Text = "Update";
-            this.MainAccountUpdateBtn.UseVisualStyleBackColor = false;
-            // 
-            // MainAccountUpdatePwTF
-            // 
-            this.MainAccountUpdatePwTF.Location = new System.Drawing.Point(39, 86);
-            this.MainAccountUpdatePwTF.Margin = new System.Windows.Forms.Padding(2);
-            this.MainAccountUpdatePwTF.Name = "MainAccountUpdatePwTF";
-            this.MainAccountUpdatePwTF.Size = new System.Drawing.Size(76, 20);
-            this.MainAccountUpdatePwTF.TabIndex = 1;
-            // 
-            // MainAccountUpdateUNTF
-            // 
-            this.MainAccountUpdateUNTF.Location = new System.Drawing.Point(39, 40);
-            this.MainAccountUpdateUNTF.Margin = new System.Windows.Forms.Padding(2);
-            this.MainAccountUpdateUNTF.Name = "MainAccountUpdateUNTF";
-            this.MainAccountUpdateUNTF.Size = new System.Drawing.Size(76, 20);
-            this.MainAccountUpdateUNTF.TabIndex = 0;
             // 
             // MainTableGroupBox
             // 
             this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
             this.MainTableGroupBox.Controls.Add(this.MainTableTwoPictureBox);
             this.MainTableGroupBox.Controls.Add(this.MainTableOnePictureBox);
-            this.MainTableGroupBox.Location = new System.Drawing.Point(63, 32);
-            this.MainTableGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainTableGroupBox.Location = new System.Drawing.Point(84, 39);
+            this.MainTableGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTableGroupBox.Name = "MainTableGroupBox";
-            this.MainTableGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.MainTableGroupBox.Size = new System.Drawing.Size(848, 217);
+            this.MainTableGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainTableGroupBox.Size = new System.Drawing.Size(1131, 267);
             this.MainTableGroupBox.TabIndex = 2;
             this.MainTableGroupBox.TabStop = false;
             this.MainTableGroupBox.Text = "Tables";
             // 
             // MainTableThreePictureBox
             // 
-            this.MainTableThreePictureBox.Location = new System.Drawing.Point(597, 33);
-            this.MainTableThreePictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
+            this.MainTableThreePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
-            this.MainTableThreePictureBox.Size = new System.Drawing.Size(202, 162);
+            this.MainTableThreePictureBox.Size = new System.Drawing.Size(269, 199);
             this.MainTableThreePictureBox.TabIndex = 2;
             this.MainTableThreePictureBox.TabStop = false;
             // 
             // MainTableTwoPictureBox
             // 
-            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(334, 33);
-            this.MainTableTwoPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(445, 41);
+            this.MainTableTwoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
-            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(202, 162);
+            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(269, 199);
             this.MainTableTwoPictureBox.TabIndex = 1;
             this.MainTableTwoPictureBox.TabStop = false;
             // 
             // MainTableOnePictureBox
             // 
-            this.MainTableOnePictureBox.Location = new System.Drawing.Point(68, 33);
-            this.MainTableOnePictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainTableOnePictureBox.Location = new System.Drawing.Point(91, 41);
+            this.MainTableOnePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
-            this.MainTableOnePictureBox.Size = new System.Drawing.Size(202, 162);
+            this.MainTableOnePictureBox.Size = new System.Drawing.Size(269, 199);
             this.MainTableOnePictureBox.TabIndex = 0;
             this.MainTableOnePictureBox.TabStop = false;
             this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
@@ -341,10 +273,10 @@
             // 
             this.LogOutBtn.BackColor = System.Drawing.Color.LawnGreen;
             this.LogOutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.LogOutBtn.Location = new System.Drawing.Point(642, 431);
-            this.LogOutBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.LogOutBtn.Location = new System.Drawing.Point(856, 530);
+            this.LogOutBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogOutBtn.Name = "LogOutBtn";
-            this.LogOutBtn.Size = new System.Drawing.Size(154, 63);
+            this.LogOutBtn.Size = new System.Drawing.Size(205, 78);
             this.LogOutBtn.TabIndex = 1;
             this.LogOutBtn.Text = "Logout";
             this.LogOutBtn.UseVisualStyleBackColor = false;
@@ -363,18 +295,19 @@
             this.LoginPanel.Controls.Add(this.LoginPasswordTextBox);
             this.LoginPanel.Controls.Add(this.LoginUsernameTextBox);
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
-            this.LoginPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(926, 531);
+            this.LoginPanel.Size = new System.Drawing.Size(1235, 654);
             this.LoginPanel.TabIndex = 2;
             // 
             // Header
             // 
             this.Header.AutoSize = true;
             this.Header.Font = new System.Drawing.Font("Impact", 75F);
-            this.Header.Location = new System.Drawing.Point(180, 9);
+            this.Header.Location = new System.Drawing.Point(240, 11);
+            this.Header.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(501, 122);
+            this.Header.Size = new System.Drawing.Size(626, 153);
             this.Header.TabIndex = 9;
             this.Header.Text = "BLACKJACK";
             // 
@@ -384,10 +317,10 @@
             this.LoginExitBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginExitBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginExitBtn.Location = new System.Drawing.Point(349, 395);
-            this.LoginExitBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginExitBtn.Location = new System.Drawing.Point(465, 486);
+            this.LoginExitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginExitBtn.Name = "LoginExitBtn";
-            this.LoginExitBtn.Size = new System.Drawing.Size(132, 37);
+            this.LoginExitBtn.Size = new System.Drawing.Size(176, 46);
             this.LoginExitBtn.TabIndex = 8;
             this.LoginExitBtn.Text = "Exit";
             this.LoginExitBtn.UseVisualStyleBackColor = false;
@@ -401,11 +334,11 @@
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUsernameLabel);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreatePWTextBox);
             this.LoginCreateGroupBox.Controls.Add(this.LoginCreateUnameTextBox);
-            this.LoginCreateGroupBox.Location = new System.Drawing.Point(47, 191);
-            this.LoginCreateGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginCreateGroupBox.Location = new System.Drawing.Point(63, 235);
+            this.LoginCreateGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginCreateGroupBox.Name = "LoginCreateGroupBox";
-            this.LoginCreateGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.LoginCreateGroupBox.Size = new System.Drawing.Size(230, 241);
+            this.LoginCreateGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginCreateGroupBox.Size = new System.Drawing.Size(307, 297);
             this.LoginCreateGroupBox.TabIndex = 7;
             this.LoginCreateGroupBox.TabStop = false;
             this.LoginCreateGroupBox.Text = "Create";
@@ -413,10 +346,10 @@
             // 
             // LoginCreateCreateBtn
             // 
-            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(76, 196);
-            this.LoginCreateCreateBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginCreateCreateBtn.Location = new System.Drawing.Point(101, 241);
+            this.LoginCreateCreateBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginCreateCreateBtn.Name = "LoginCreateCreateBtn";
-            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(56, 19);
+            this.LoginCreateCreateBtn.Size = new System.Drawing.Size(75, 23);
             this.LoginCreateCreateBtn.TabIndex = 5;
             this.LoginCreateCreateBtn.Text = "Create";
             this.LoginCreateCreateBtn.UseVisualStyleBackColor = true;
@@ -425,38 +358,36 @@
             // LoginCreatePWLabel
             // 
             this.LoginCreatePWLabel.AutoSize = true;
-            this.LoginCreatePWLabel.Location = new System.Drawing.Point(42, 130);
-            this.LoginCreatePWLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginCreatePWLabel.Location = new System.Drawing.Point(56, 160);
             this.LoginCreatePWLabel.Name = "LoginCreatePWLabel";
-            this.LoginCreatePWLabel.Size = new System.Drawing.Size(53, 13);
+            this.LoginCreatePWLabel.Size = new System.Drawing.Size(69, 17);
             this.LoginCreatePWLabel.TabIndex = 4;
             this.LoginCreatePWLabel.Text = "Password";
             // 
             // LoginCreateUsernameLabel
             // 
             this.LoginCreateUsernameLabel.AutoSize = true;
-            this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(42, 68);
-            this.LoginCreateUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(56, 84);
             this.LoginCreateUsernameLabel.Name = "LoginCreateUsernameLabel";
-            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(55, 13);
+            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(73, 17);
             this.LoginCreateUsernameLabel.TabIndex = 3;
             this.LoginCreateUsernameLabel.Text = "Username";
             // 
             // LoginCreatePWTextBox
             // 
-            this.LoginCreatePWTextBox.Location = new System.Drawing.Point(44, 146);
-            this.LoginCreatePWTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginCreatePWTextBox.Location = new System.Drawing.Point(59, 180);
+            this.LoginCreatePWTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginCreatePWTextBox.Name = "LoginCreatePWTextBox";
             this.LoginCreatePWTextBox.PasswordChar = '*';
-            this.LoginCreatePWTextBox.Size = new System.Drawing.Size(133, 20);
+            this.LoginCreatePWTextBox.Size = new System.Drawing.Size(176, 22);
             this.LoginCreatePWTextBox.TabIndex = 2;
             // 
             // LoginCreateUnameTextBox
             // 
-            this.LoginCreateUnameTextBox.Location = new System.Drawing.Point(44, 84);
-            this.LoginCreateUnameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginCreateUnameTextBox.Location = new System.Drawing.Point(59, 103);
+            this.LoginCreateUnameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginCreateUnameTextBox.Name = "LoginCreateUnameTextBox";
-            this.LoginCreateUnameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.LoginCreateUnameTextBox.Size = new System.Drawing.Size(176, 22);
             this.LoginCreateUnameTextBox.TabIndex = 1;
             // 
             // LoginCreateAccBtn
@@ -465,10 +396,10 @@
             this.LoginCreateAccBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginCreateAccBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginCreateAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginCreateAccBtn.Location = new System.Drawing.Point(350, 338);
-            this.LoginCreateAccBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginCreateAccBtn.Location = new System.Drawing.Point(467, 416);
+            this.LoginCreateAccBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginCreateAccBtn.Name = "LoginCreateAccBtn";
-            this.LoginCreateAccBtn.Size = new System.Drawing.Size(131, 38);
+            this.LoginCreateAccBtn.Size = new System.Drawing.Size(175, 47);
             this.LoginCreateAccBtn.TabIndex = 6;
             this.LoginCreateAccBtn.Text = "Create Account";
             this.LoginCreateAccBtn.UseVisualStyleBackColor = false;
@@ -477,20 +408,18 @@
             // LoginPasswordLabel
             // 
             this.LoginPasswordLabel.AutoSize = true;
-            this.LoginPasswordLabel.Location = new System.Drawing.Point(350, 214);
-            this.LoginPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(467, 263);
             this.LoginPasswordLabel.Name = "LoginPasswordLabel";
-            this.LoginPasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.LoginPasswordLabel.Size = new System.Drawing.Size(69, 17);
             this.LoginPasswordLabel.TabIndex = 5;
             this.LoginPasswordLabel.Text = "Password";
             // 
             // LoginUsernameLabel
             // 
             this.LoginUsernameLabel.AutoSize = true;
-            this.LoginUsernameLabel.Location = new System.Drawing.Point(350, 175);
-            this.LoginUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginUsernameLabel.Location = new System.Drawing.Point(467, 215);
             this.LoginUsernameLabel.Name = "LoginUsernameLabel";
-            this.LoginUsernameLabel.Size = new System.Drawing.Size(55, 13);
+            this.LoginUsernameLabel.Size = new System.Drawing.Size(73, 17);
             this.LoginUsernameLabel.TabIndex = 4;
             this.LoginUsernameLabel.Text = "Username";
             // 
@@ -498,11 +427,11 @@
             // 
             this.LoginInfoGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.LoginInfoGroupBox.Controls.Add(this.LoginInfoLabel);
-            this.LoginInfoGroupBox.Location = new System.Drawing.Point(544, 337);
-            this.LoginInfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginInfoGroupBox.Location = new System.Drawing.Point(725, 415);
+            this.LoginInfoGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginInfoGroupBox.Name = "LoginInfoGroupBox";
-            this.LoginInfoGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.LoginInfoGroupBox.Size = new System.Drawing.Size(283, 95);
+            this.LoginInfoGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginInfoGroupBox.Size = new System.Drawing.Size(377, 117);
             this.LoginInfoGroupBox.TabIndex = 3;
             this.LoginInfoGroupBox.TabStop = false;
             this.LoginInfoGroupBox.Text = "Info";
@@ -510,10 +439,9 @@
             // LoginInfoLabel
             // 
             this.LoginInfoLabel.AutoSize = true;
-            this.LoginInfoLabel.Location = new System.Drawing.Point(22, 37);
-            this.LoginInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginInfoLabel.Location = new System.Drawing.Point(29, 46);
             this.LoginInfoLabel.Name = "LoginInfoLabel";
-            this.LoginInfoLabel.Size = new System.Drawing.Size(0, 13);
+            this.LoginInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.LoginInfoLabel.TabIndex = 0;
             // 
             // LoginLoginButton
@@ -523,10 +451,10 @@
             this.LoginLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
             this.LoginLoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoginLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginLoginButton.Location = new System.Drawing.Point(350, 282);
-            this.LoginLoginButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginLoginButton.Location = new System.Drawing.Point(467, 347);
+            this.LoginLoginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginLoginButton.Name = "LoginLoginButton";
-            this.LoginLoginButton.Size = new System.Drawing.Size(131, 38);
+            this.LoginLoginButton.Size = new System.Drawing.Size(175, 47);
             this.LoginLoginButton.TabIndex = 2;
             this.LoginLoginButton.Text = "Login";
             this.LoginLoginButton.UseVisualStyleBackColor = false;
@@ -534,19 +462,19 @@
             // 
             // LoginPasswordTextBox
             // 
-            this.LoginPasswordTextBox.Location = new System.Drawing.Point(350, 231);
-            this.LoginPasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginPasswordTextBox.Location = new System.Drawing.Point(467, 284);
+            this.LoginPasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginPasswordTextBox.Name = "LoginPasswordTextBox";
             this.LoginPasswordTextBox.PasswordChar = '*';
-            this.LoginPasswordTextBox.Size = new System.Drawing.Size(132, 20);
+            this.LoginPasswordTextBox.Size = new System.Drawing.Size(175, 22);
             this.LoginPasswordTextBox.TabIndex = 1;
             // 
             // LoginUsernameTextBox
             // 
-            this.LoginUsernameTextBox.Location = new System.Drawing.Point(350, 191);
-            this.LoginUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.LoginUsernameTextBox.Location = new System.Drawing.Point(467, 235);
+            this.LoginUsernameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginUsernameTextBox.Name = "LoginUsernameTextBox";
-            this.LoginUsernameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.LoginUsernameTextBox.Size = new System.Drawing.Size(176, 22);
             this.LoginUsernameTextBox.TabIndex = 0;
             // 
             // GamePanel
@@ -556,9 +484,9 @@
             this.GamePanel.Controls.Add(this.YourHandGroupBox);
             this.GamePanel.Controls.Add(this.DealerHandGroupBox);
             this.GamePanel.Location = new System.Drawing.Point(0, 0);
-            this.GamePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.GamePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GamePanel.Name = "GamePanel";
-            this.GamePanel.Size = new System.Drawing.Size(928, 527);
+            this.GamePanel.Size = new System.Drawing.Size(1237, 649);
             this.GamePanel.TabIndex = 3;
             // 
             // InfoGroupBox
@@ -567,11 +495,11 @@
             this.InfoGroupBox.Controls.Add(this.GameBalanceLabel);
             this.InfoGroupBox.Controls.Add(this.GameInfoBalLab);
             this.InfoGroupBox.Controls.Add(this.InfoLabel);
-            this.InfoGroupBox.Location = new System.Drawing.Point(22, 404);
-            this.InfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.InfoGroupBox.Location = new System.Drawing.Point(29, 497);
+            this.InfoGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.InfoGroupBox.Name = "InfoGroupBox";
-            this.InfoGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.InfoGroupBox.Size = new System.Drawing.Size(490, 101);
+            this.InfoGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.InfoGroupBox.Size = new System.Drawing.Size(653, 124);
             this.InfoGroupBox.TabIndex = 18;
             this.InfoGroupBox.TabStop = false;
             this.InfoGroupBox.Text = "Information";
@@ -579,29 +507,26 @@
             // GameBalanceLabel
             // 
             this.GameBalanceLabel.AutoSize = true;
-            this.GameBalanceLabel.Location = new System.Drawing.Point(411, 46);
-            this.GameBalanceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GameBalanceLabel.Location = new System.Drawing.Point(548, 57);
             this.GameBalanceLabel.Name = "GameBalanceLabel";
-            this.GameBalanceLabel.Size = new System.Drawing.Size(0, 13);
+            this.GameBalanceLabel.Size = new System.Drawing.Size(0, 17);
             this.GameBalanceLabel.TabIndex = 2;
             // 
             // GameInfoBalLab
             // 
             this.GameInfoBalLab.AutoSize = true;
-            this.GameInfoBalLab.Location = new System.Drawing.Point(362, 46);
-            this.GameInfoBalLab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GameInfoBalLab.Location = new System.Drawing.Point(483, 57);
             this.GameInfoBalLab.Name = "GameInfoBalLab";
-            this.GameInfoBalLab.Size = new System.Drawing.Size(49, 13);
+            this.GameInfoBalLab.Size = new System.Drawing.Size(63, 17);
             this.GameInfoBalLab.TabIndex = 1;
             this.GameInfoBalLab.Text = "Balance:";
             // 
             // InfoLabel
             // 
             this.InfoLabel.AutoSize = true;
-            this.InfoLabel.Location = new System.Drawing.Point(22, 40);
-            this.InfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.InfoLabel.Location = new System.Drawing.Point(29, 49);
             this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(0, 13);
+            this.InfoLabel.Size = new System.Drawing.Size(0, 17);
             this.InfoLabel.TabIndex = 0;
             // 
             // ActionGroupBox
@@ -613,31 +538,31 @@
             this.ActionGroupBox.Controls.Add(this.DealButton);
             this.ActionGroupBox.Controls.Add(this.StandButton);
             this.ActionGroupBox.Controls.Add(this.HitButton);
-            this.ActionGroupBox.Location = new System.Drawing.Point(532, 404);
-            this.ActionGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ActionGroupBox.Location = new System.Drawing.Point(709, 497);
+            this.ActionGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ActionGroupBox.Name = "ActionGroupBox";
-            this.ActionGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.ActionGroupBox.Size = new System.Drawing.Size(310, 102);
+            this.ActionGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ActionGroupBox.Size = new System.Drawing.Size(413, 126);
             this.ActionGroupBox.TabIndex = 17;
             this.ActionGroupBox.TabStop = false;
             this.ActionGroupBox.Text = "Actions";
             // 
             // MinBetBtn
             // 
-            this.MinBetBtn.Location = new System.Drawing.Point(110, 31);
-            this.MinBetBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.MinBetBtn.Location = new System.Drawing.Point(147, 38);
+            this.MinBetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinBetBtn.Name = "MinBetBtn";
-            this.MinBetBtn.Size = new System.Drawing.Size(56, 24);
+            this.MinBetBtn.Size = new System.Drawing.Size(75, 30);
             this.MinBetBtn.TabIndex = 9;
             this.MinBetBtn.UseVisualStyleBackColor = true;
             this.MinBetBtn.Click += new System.EventHandler(this.MinBetBtn_Click);
             // 
             // MaxBetBtn
             // 
-            this.MaxBetBtn.Location = new System.Drawing.Point(110, 64);
-            this.MaxBetBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.MaxBetBtn.Location = new System.Drawing.Point(147, 79);
+            this.MaxBetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaxBetBtn.Name = "MaxBetBtn";
-            this.MaxBetBtn.Size = new System.Drawing.Size(56, 24);
+            this.MaxBetBtn.Size = new System.Drawing.Size(75, 30);
             this.MaxBetBtn.TabIndex = 8;
             this.MaxBetBtn.UseVisualStyleBackColor = true;
             this.MaxBetBtn.Click += new System.EventHandler(this.MaxBetBtn_Click);
@@ -645,20 +570,19 @@
             // BetLabel
             // 
             this.BetLabel.AutoSize = true;
-            this.BetLabel.Location = new System.Drawing.Point(126, 14);
-            this.BetLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BetLabel.Location = new System.Drawing.Point(168, 17);
             this.BetLabel.Name = "BetLabel";
-            this.BetLabel.Size = new System.Drawing.Size(23, 13);
+            this.BetLabel.Size = new System.Drawing.Size(29, 17);
             this.BetLabel.TabIndex = 6;
             this.BetLabel.Text = "Bet";
             // 
             // LeaveButton
             // 
             this.LeaveButton.BackColor = System.Drawing.Color.Red;
-            this.LeaveButton.Location = new System.Drawing.Point(209, 62);
-            this.LeaveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LeaveButton.Location = new System.Drawing.Point(279, 76);
+            this.LeaveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LeaveButton.Name = "LeaveButton";
-            this.LeaveButton.Size = new System.Drawing.Size(56, 24);
+            this.LeaveButton.Size = new System.Drawing.Size(75, 30);
             this.LeaveButton.TabIndex = 3;
             this.LeaveButton.Text = "Leave";
             this.LeaveButton.UseVisualStyleBackColor = false;
@@ -667,10 +591,10 @@
             // DealButton
             // 
             this.DealButton.BackColor = System.Drawing.Color.Lime;
-            this.DealButton.Location = new System.Drawing.Point(209, 29);
-            this.DealButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DealButton.Location = new System.Drawing.Point(279, 36);
+            this.DealButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealButton.Name = "DealButton";
-            this.DealButton.Size = new System.Drawing.Size(56, 24);
+            this.DealButton.Size = new System.Drawing.Size(75, 30);
             this.DealButton.TabIndex = 2;
             this.DealButton.Text = "Deal";
             this.DealButton.UseVisualStyleBackColor = false;
@@ -678,10 +602,10 @@
             // 
             // StandButton
             // 
-            this.StandButton.Location = new System.Drawing.Point(12, 62);
-            this.StandButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StandButton.Location = new System.Drawing.Point(16, 76);
+            this.StandButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StandButton.Name = "StandButton";
-            this.StandButton.Size = new System.Drawing.Size(56, 24);
+            this.StandButton.Size = new System.Drawing.Size(75, 30);
             this.StandButton.TabIndex = 1;
             this.StandButton.Text = "Stand";
             this.StandButton.UseVisualStyleBackColor = true;
@@ -690,10 +614,10 @@
             // 
             // HitButton
             // 
-            this.HitButton.Location = new System.Drawing.Point(12, 29);
-            this.HitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.HitButton.Location = new System.Drawing.Point(16, 36);
+            this.HitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HitButton.Name = "HitButton";
-            this.HitButton.Size = new System.Drawing.Size(56, 24);
+            this.HitButton.Size = new System.Drawing.Size(75, 30);
             this.HitButton.TabIndex = 0;
             this.HitButton.Text = "Hit";
             this.HitButton.UseVisualStyleBackColor = true;
@@ -709,81 +633,81 @@
             this.YourHandGroupBox.Controls.Add(this.YourHandPictureBox3);
             this.YourHandGroupBox.Controls.Add(this.YourHandPictureBox2);
             this.YourHandGroupBox.Controls.Add(this.YourHandPictureBox1);
-            this.YourHandGroupBox.Location = new System.Drawing.Point(17, 214);
-            this.YourHandGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandGroupBox.Location = new System.Drawing.Point(23, 263);
+            this.YourHandGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandGroupBox.Name = "YourHandGroupBox";
-            this.YourHandGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.YourHandGroupBox.Size = new System.Drawing.Size(824, 162);
+            this.YourHandGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.YourHandGroupBox.Size = new System.Drawing.Size(1099, 199);
             this.YourHandGroupBox.TabIndex = 16;
             this.YourHandGroupBox.TabStop = false;
             this.YourHandGroupBox.Text = "Your Hand";
             // 
             // YourHandPictureBox7
             // 
-            this.YourHandPictureBox7.Location = new System.Drawing.Point(718, 17);
-            this.YourHandPictureBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox7.Location = new System.Drawing.Point(957, 21);
+            this.YourHandPictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox7.Name = "YourHandPictureBox7";
-            this.YourHandPictureBox7.Size = new System.Drawing.Size(88, 133);
+            this.YourHandPictureBox7.Size = new System.Drawing.Size(117, 164);
             this.YourHandPictureBox7.TabIndex = 14;
             this.YourHandPictureBox7.TabStop = false;
             this.YourHandPictureBox7.Visible = false;
             // 
             // YourHandPictureBox6
             // 
-            this.YourHandPictureBox6.Location = new System.Drawing.Point(606, 17);
-            this.YourHandPictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox6.Location = new System.Drawing.Point(808, 21);
+            this.YourHandPictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox6.Name = "YourHandPictureBox6";
-            this.YourHandPictureBox6.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox6.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox6.TabIndex = 13;
             this.YourHandPictureBox6.TabStop = false;
             this.YourHandPictureBox6.Visible = false;
             // 
             // YourHandPictureBox5
             // 
-            this.YourHandPictureBox5.Location = new System.Drawing.Point(483, 17);
-            this.YourHandPictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox5.Location = new System.Drawing.Point(644, 21);
+            this.YourHandPictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox5.Name = "YourHandPictureBox5";
-            this.YourHandPictureBox5.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox5.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox5.TabIndex = 12;
             this.YourHandPictureBox5.TabStop = false;
             this.YourHandPictureBox5.Visible = false;
             // 
             // YourHandPictureBox4
             // 
-            this.YourHandPictureBox4.Location = new System.Drawing.Point(362, 17);
-            this.YourHandPictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox4.Location = new System.Drawing.Point(483, 21);
+            this.YourHandPictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox4.Name = "YourHandPictureBox4";
-            this.YourHandPictureBox4.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox4.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox4.TabIndex = 11;
             this.YourHandPictureBox4.TabStop = false;
             this.YourHandPictureBox4.Visible = false;
             // 
             // YourHandPictureBox3
             // 
-            this.YourHandPictureBox3.Location = new System.Drawing.Point(238, 17);
-            this.YourHandPictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox3.Location = new System.Drawing.Point(317, 21);
+            this.YourHandPictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox3.Name = "YourHandPictureBox3";
-            this.YourHandPictureBox3.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox3.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox3.TabIndex = 10;
             this.YourHandPictureBox3.TabStop = false;
             this.YourHandPictureBox3.Visible = false;
             // 
             // YourHandPictureBox2
             // 
-            this.YourHandPictureBox2.Location = new System.Drawing.Point(125, 17);
-            this.YourHandPictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox2.Location = new System.Drawing.Point(167, 21);
+            this.YourHandPictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox2.Name = "YourHandPictureBox2";
-            this.YourHandPictureBox2.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox2.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox2.TabIndex = 9;
             this.YourHandPictureBox2.TabStop = false;
             this.YourHandPictureBox2.Visible = false;
             // 
             // YourHandPictureBox1
             // 
-            this.YourHandPictureBox1.Location = new System.Drawing.Point(12, 17);
-            this.YourHandPictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.YourHandPictureBox1.Location = new System.Drawing.Point(16, 21);
+            this.YourHandPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YourHandPictureBox1.Name = "YourHandPictureBox1";
-            this.YourHandPictureBox1.Size = new System.Drawing.Size(90, 133);
+            this.YourHandPictureBox1.Size = new System.Drawing.Size(120, 164);
             this.YourHandPictureBox1.TabIndex = 8;
             this.YourHandPictureBox1.TabStop = false;
             this.YourHandPictureBox1.Visible = false;
@@ -797,11 +721,11 @@
             this.DealerHandGroupBox.Controls.Add(this.DealerPictureBox3);
             this.DealerHandGroupBox.Controls.Add(this.DealerPictureBox2);
             this.DealerHandGroupBox.Controls.Add(this.DealerPictureBox1);
-            this.DealerHandGroupBox.Location = new System.Drawing.Point(17, 39);
-            this.DealerHandGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerHandGroupBox.Location = new System.Drawing.Point(23, 48);
+            this.DealerHandGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerHandGroupBox.Name = "DealerHandGroupBox";
-            this.DealerHandGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.DealerHandGroupBox.Size = new System.Drawing.Size(825, 162);
+            this.DealerHandGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DealerHandGroupBox.Size = new System.Drawing.Size(1100, 199);
             this.DealerHandGroupBox.TabIndex = 15;
             this.DealerHandGroupBox.TabStop = false;
             this.DealerHandGroupBox.Text = "Dealer Hand";
@@ -809,84 +733,113 @@
             // 
             // DealerPictureBox7
             // 
-            this.DealerPictureBox7.Location = new System.Drawing.Point(719, 17);
-            this.DealerPictureBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox7.Location = new System.Drawing.Point(959, 21);
+            this.DealerPictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox7.Name = "DealerPictureBox7";
-            this.DealerPictureBox7.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox7.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox7.TabIndex = 7;
             this.DealerPictureBox7.TabStop = false;
             this.DealerPictureBox7.Visible = false;
             // 
             // DealerPictureBox6
             // 
-            this.DealerPictureBox6.Location = new System.Drawing.Point(606, 17);
-            this.DealerPictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox6.Location = new System.Drawing.Point(808, 21);
+            this.DealerPictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox6.Name = "DealerPictureBox6";
-            this.DealerPictureBox6.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox6.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox6.TabIndex = 6;
             this.DealerPictureBox6.TabStop = false;
             this.DealerPictureBox6.Visible = false;
             // 
             // DealerPictureBox5
             // 
-            this.DealerPictureBox5.Location = new System.Drawing.Point(483, 17);
-            this.DealerPictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox5.Location = new System.Drawing.Point(644, 21);
+            this.DealerPictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox5.Name = "DealerPictureBox5";
-            this.DealerPictureBox5.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox5.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox5.TabIndex = 5;
             this.DealerPictureBox5.TabStop = false;
             this.DealerPictureBox5.Visible = false;
             // 
             // DealerPictureBox4
             // 
-            this.DealerPictureBox4.Location = new System.Drawing.Point(362, 17);
-            this.DealerPictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox4.Location = new System.Drawing.Point(483, 21);
+            this.DealerPictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox4.Name = "DealerPictureBox4";
-            this.DealerPictureBox4.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox4.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox4.TabIndex = 4;
             this.DealerPictureBox4.TabStop = false;
             this.DealerPictureBox4.Visible = false;
             // 
             // DealerPictureBox3
             // 
-            this.DealerPictureBox3.Location = new System.Drawing.Point(238, 17);
-            this.DealerPictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox3.Location = new System.Drawing.Point(317, 21);
+            this.DealerPictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox3.Name = "DealerPictureBox3";
-            this.DealerPictureBox3.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox3.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox3.TabIndex = 3;
             this.DealerPictureBox3.TabStop = false;
             this.DealerPictureBox3.Visible = false;
             // 
             // DealerPictureBox2
             // 
-            this.DealerPictureBox2.Location = new System.Drawing.Point(125, 17);
-            this.DealerPictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox2.Location = new System.Drawing.Point(167, 21);
+            this.DealerPictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox2.Name = "DealerPictureBox2";
-            this.DealerPictureBox2.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox2.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox2.TabIndex = 2;
             this.DealerPictureBox2.TabStop = false;
             this.DealerPictureBox2.Visible = false;
             // 
             // DealerPictureBox1
             // 
-            this.DealerPictureBox1.Location = new System.Drawing.Point(12, 17);
-            this.DealerPictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.DealerPictureBox1.Location = new System.Drawing.Point(16, 21);
+            this.DealerPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DealerPictureBox1.Name = "DealerPictureBox1";
-            this.DealerPictureBox1.Size = new System.Drawing.Size(90, 133);
+            this.DealerPictureBox1.Size = new System.Drawing.Size(120, 164);
             this.DealerPictureBox1.TabIndex = 1;
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
+            // MainAccountWithdrawBtn
+            // 
+            this.MainAccountWithdrawBtn.BackColor = System.Drawing.Color.LawnGreen;
+            this.MainAccountWithdrawBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.MainAccountWithdrawBtn.Location = new System.Drawing.Point(380, 123);
+            this.MainAccountWithdrawBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainAccountWithdrawBtn.Name = "MainAccountWithdrawBtn";
+            this.MainAccountWithdrawBtn.Size = new System.Drawing.Size(124, 34);
+            this.MainAccountWithdrawBtn.TabIndex = 4;
+            this.MainAccountWithdrawBtn.Text = "Withdraw funds";
+            this.MainAccountWithdrawBtn.UseVisualStyleBackColor = false;
+            // 
+            // MainAccountBalanceLabel
+            // 
+            this.MainAccountBalanceLabel.AutoSize = true;
+            this.MainAccountBalanceLabel.Location = new System.Drawing.Point(19, 49);
+            this.MainAccountBalanceLabel.Name = "MainAccountBalanceLabel";
+            this.MainAccountBalanceLabel.Size = new System.Drawing.Size(63, 17);
+            this.MainAccountBalanceLabel.TabIndex = 5;
+            this.MainAccountBalanceLabel.Text = "Balance:";
+            // 
+            // MainAccountBLabel
+            // 
+            this.MainAccountBLabel.AutoSize = true;
+            this.MainAccountBLabel.Location = new System.Drawing.Point(94, 49);
+            this.MainAccountBLabel.Name = "MainAccountBLabel";
+            this.MainAccountBLabel.Size = new System.Drawing.Size(0, 17);
+            this.MainAccountBLabel.TabIndex = 6;
+            // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(946, 547);
-            this.Controls.Add(this.LoginPanel);
+            this.ClientSize = new System.Drawing.Size(1261, 673);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.GamePanel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
@@ -896,8 +849,6 @@
             this.MainAccountGroupBox.PerformLayout();
             this.MainFundsGB.ResumeLayout(false);
             this.MainFundsGB.PerformLayout();
-            this.MainAccountGB.ResumeLayout(false);
-            this.MainAccountGB.PerformLayout();
             this.MainTableGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
@@ -985,22 +936,19 @@
         private System.Windows.Forms.Button MinBetBtn;
         private System.Windows.Forms.Button MaxBetBtn;
         private System.Windows.Forms.GroupBox MainFundsGB;
-        private System.Windows.Forms.GroupBox MainAccountGB;
         private System.Windows.Forms.Label MainAccountDeleteLabel;
         private System.Windows.Forms.Button MainAccountDeleteBtn;
         private System.Windows.Forms.Button MainAccountFundAddBtn;
         private System.Windows.Forms.TextBox MainAccountFundsTF;
-        private System.Windows.Forms.Label MainAccountUpdateULab;
-        private System.Windows.Forms.Label MainAccountUpdatePWLab;
-        private System.Windows.Forms.Button MainAccountUpdateBtn;
-        private System.Windows.Forms.TextBox MainAccountUpdatePwTF;
-        private System.Windows.Forms.TextBox MainAccountUpdateUNTF;
         private System.Windows.Forms.PictureBox MainTableThreePictureBox;
         private System.Windows.Forms.PictureBox MainTableTwoPictureBox;
         private System.Windows.Forms.PictureBox MainTableOnePictureBox;
         private System.Windows.Forms.Label GameBalanceLabel;
         private System.Windows.Forms.Label GameInfoBalLab;
         private System.Windows.Forms.Label Header;
+        private System.Windows.Forms.Label MainAccountBLabel;
+        private System.Windows.Forms.Label MainAccountBalanceLabel;
+        private System.Windows.Forms.Button MainAccountWithdrawBtn;
     }
 }
 

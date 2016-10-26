@@ -234,6 +234,10 @@ namespace BlackJackSolution.Control
         }
         public void HitBtnPush()
         {
+            if(deck.cards.Count < 1)
+            {
+                CreateDeck();
+            }
             myHand.AddCard(deck);
         }
         public void InitiateTable(int nr)
@@ -283,8 +287,13 @@ namespace BlackJackSolution.Control
         }
         public void StandBtnPush()
         {
+            
             while(dealerHand.getTotal() < 17)
             {
+                if(deck.cards.Count < 1)
+                {
+                    CreateDeck();
+                }
                 dealerHand.AddCard(deck);
             }
         }
