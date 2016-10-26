@@ -195,6 +195,45 @@ namespace BlackJackSolution.DAL
             }
         }
 
+        public List<string[]> GetBlackJackGame(int sessionId)
+        {
+            try
+            {
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC [dbo].[GETBLACKJACKGAME] ", connection);
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+                string[] result = new string[3];
+
+                if (read.HasRows)
+                {
+                    if (read.FieldCount > 1)
+                    {
+                        while (read.Read())
+                        {
+                            result[0] = read.GetString(0);
+                            result[1] = read.GetString(1);
+                            result[2] = read.GetDouble(2).ToString();
+                            result[3] = read.GetString(3);
+                        }
+                    }
+                    else if (read.FieldCount == 1)
+                    {
+                        while (read.Read())
+                        {
+                            result[0] = read.GetString(0);
+                        }
+                    }
+                }
+                return result;
+            }
+            catch (SqlException e) //KOLLA DENNA SEN, VAD DEN SKA RETURNA
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                return null;
+            }
+        }
+        
         public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try {
