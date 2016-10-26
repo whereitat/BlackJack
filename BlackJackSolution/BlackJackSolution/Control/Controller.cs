@@ -13,7 +13,7 @@ namespace BlackJackSolution.Control
     public class Controller
     {
         DBAccess db = new DBAccess();
-        public Deck CreateDeck() //static??
+        public Deck CreateDeck() 
         {
             Deck d = DAL.DBAccess.CreateDeck();
             return d;            
