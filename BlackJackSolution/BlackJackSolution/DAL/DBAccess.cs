@@ -74,7 +74,6 @@ namespace BlackJackSolution.DAL
         {
             try
             {
-                Account account = new Account();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 command.ExecuteNonQuery();
@@ -93,7 +92,6 @@ namespace BlackJackSolution.DAL
         {
             try
             {
-                Account account = new Account();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 int result = command.ExecuteNonQuery();
