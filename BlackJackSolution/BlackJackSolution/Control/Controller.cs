@@ -60,7 +60,7 @@ namespace BlackJackSolution.Control
             }
             deck = newDeck;
         }
-        public bool CreateAccount(string aname, string password)
+        public string CreateAccount(string aname, string password)
         {
             return db.CreateAccount(aname, Crypt(password));
         }
