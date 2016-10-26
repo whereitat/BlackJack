@@ -12,7 +12,9 @@ CREATE TABLE Account (
 aname VARCHAR(20) NOT NULL,
 astatus VARCHAR(20) NOT NULL,
 balance FLOAT NOT NULL,
+CHECK(DATALENGTH([aname]) > 2 AND DATALENGTH([aname]) < 21),
 CHECK(balance >= 0),
+CHECK(DATALENGTH([password]) > 1 AND DATALENGTH([password]) < 129),
 [password] VARCHAR(128) NOT NULL,
 PRIMARY KEY (aname));
 
