@@ -30,9 +30,10 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-        public List<string[]> CreateDeck() 
+        public List<string[]> CreateDeck()
         {
-            try {
+            try
+            {
                 List<string[]> newDeck = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
@@ -40,14 +41,14 @@ namespace BlackJackSolution.DAL
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
-                {                
-                        while (read.Read())
-                        {
-                            string[] card = new string[2];
-                            card[0] = read.GetInt32(read.GetOrdinal("value")).ToString();
-                            card[1] = read.GetString(read.GetOrdinal("cardId"));
+                {
+                    while (read.Read())
+                    {
+                        string[] card = new string[2];
+                        card[0] = read.GetInt32(read.GetOrdinal("value")).ToString();
+                        card[1] = read.GetString(read.GetOrdinal("cardId"));
                         newDeck.Add(card);
-                        }
+                    }
                 }
                 else
                 {
@@ -55,7 +56,7 @@ namespace BlackJackSolution.DAL
                 }
                 return newDeck;
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
                 Console.WriteLine(e.Message + " " + ex);
@@ -89,9 +90,9 @@ namespace BlackJackSolution.DAL
                     return a;
                 }
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message); 
+                Console.WriteLine(e.Message);
                 string ex = Logic.Utils.SqlExceptionUtility(e);
                 return ex;
             }
@@ -106,7 +107,7 @@ namespace BlackJackSolution.DAL
                 int update = command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
                 string a = "User deleted";
-                
+
                 if (update != 1)
                 {
                     if (read.HasRows)
@@ -142,8 +143,8 @@ namespace BlackJackSolution.DAL
 
                 if (read.HasRows)
                 {
-                   if (read.FieldCount > 1)
-                   {
+                    if (read.FieldCount > 1)
+                    {
                         while (read.Read())
                         {
                             result[0] = read.GetString(0);
@@ -152,7 +153,7 @@ namespace BlackJackSolution.DAL
                             result[3] = read.GetString(3);
                         }
                     }
-                   else if(read.FieldCount == 1)
+                    else if (read.FieldCount == 1)
                     {
                         while (read.Read())
                         {
@@ -186,7 +187,7 @@ namespace BlackJackSolution.DAL
                 {
                     return "else";
                 }
-                
+
             }
             catch (SqlException e)
             {
@@ -203,18 +204,18 @@ namespace BlackJackSolution.DAL
                 SqlDataReader read = command.ExecuteReader();
                 string a = "fel i metoden";
 
-                    if (read.HasRows)
+                if (read.HasRows)
+                {
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
                         a = read.GetString(0);
-                        }
                     }
-                    else
-                    {
-                        a = "Balance updated";
-                        return a;
-                    }
+                }
+                else
+                {
+                    a = "Balance updated";
+                    return a;
+                }
                 return a;
             }
             catch (SqlException e)
@@ -226,8 +227,9 @@ namespace BlackJackSolution.DAL
 
         public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
-            try {
-            
+            try
+            {
+
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
@@ -250,6 +252,42 @@ namespace BlackJackSolution.DAL
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
                 return ex;
+            }
+        }
+
+        public List<string[]> GetBlackJackGames()
+        {
+            try
+            {
+                List<string[]> setOfGames = new List<string[]>();
+                SqlConnection connection = Connect();
+                SqlCommand command = new SqlCommand("EXEC dbo.GETBLACKJACKGAME", connection);
+                command.ExecuteNonQuery();
+                SqlDataReader read = command.ExecuteReader();
+
+                if (read.HasRows)
+                {
+                    while (read.Read())
+                    {
+                        string[] game = new string[4];
+                        game[0] = read.GetInt32(read.GetOrdinal("sessionId")).ToString();
+                        game[1] = read.GetDouble(read.GetOrdinal("minBet")).ToString();
+                        game[2] = read.GetDouble(read.GetOrdinal("maxBet")).ToString();
+                        game[3] = read.GetString(read.GetOrdinal("gstatus"));
+                        setOfGames.Add(game);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Something went wrong, no objects found.");
+                }
+                return setOfGames;
+            }
+            catch (SqlException e)
+            {
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(e.Message + " " + ex);
+                return null;
             }
         }
     }
