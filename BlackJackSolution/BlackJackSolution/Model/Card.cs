@@ -11,9 +11,6 @@ namespace BlackJackSolution.Model
         private int value;
         private String cardId;
         private String suit;
-        //public int value { set; get; }
-        //public string cardId { set; get; }
-        //public String suit { set; get; }
 
         public Card()
         {

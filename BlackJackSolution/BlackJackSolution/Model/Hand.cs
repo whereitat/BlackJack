@@ -13,7 +13,6 @@ namespace BlackJackSolution.Model
     {
         private int total;
         public List<Card> handCards { set; get; }
-        //public int total { set; get; }
 
         public Hand()
         {

@@ -32,7 +32,21 @@
             this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.MainInfoLabel = new System.Windows.Forms.Label();
             this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainAccountDeleteLabel = new System.Windows.Forms.Label();
+            this.MainAccountDeleteBtn = new System.Windows.Forms.Button();
+            this.MainFundsGB = new System.Windows.Forms.GroupBox();
+            this.MainAccountFundAddBtn = new System.Windows.Forms.Button();
+            this.MainAccountFundsTF = new System.Windows.Forms.TextBox();
+            this.MainAccountGB = new System.Windows.Forms.GroupBox();
+            this.MainAccountUpdateULab = new System.Windows.Forms.Label();
+            this.MainAccountUpdatePWLab = new System.Windows.Forms.Label();
+            this.MainAccountUpdateBtn = new System.Windows.Forms.Button();
+            this.MainAccountUpdatePwTF = new System.Windows.Forms.TextBox();
+            this.MainAccountUpdateUNTF = new System.Windows.Forms.TextBox();
             this.MainTableGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableOnePictureBox = new System.Windows.Forms.PictureBox();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.LoginExitBtn = new System.Windows.Forms.Button();
@@ -77,24 +91,15 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MainAccountGB = new System.Windows.Forms.GroupBox();
-            this.MainFundsGB = new System.Windows.Forms.GroupBox();
-            this.MainAccountUpdateUNTF = new System.Windows.Forms.TextBox();
-            this.MainAccountUpdatePwTF = new System.Windows.Forms.TextBox();
-            this.MainAccountFundsTF = new System.Windows.Forms.TextBox();
-            this.MainAccountUpdateBtn = new System.Windows.Forms.Button();
-            this.MainAccountFundAddBtn = new System.Windows.Forms.Button();
-            this.MainAccountUpdatePWLab = new System.Windows.Forms.Label();
-            this.MainAccountUpdateULab = new System.Windows.Forms.Label();
-            this.MainAccountDeleteBtn = new System.Windows.Forms.Button();
-            this.MainAccountDeleteLabel = new System.Windows.Forms.Label();
-            this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
-            this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
-            this.MainTableOnePictureBox = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
             this.MainInfoGroupBox.SuspendLayout();
             this.MainAccountGroupBox.SuspendLayout();
+            this.MainFundsGB.SuspendLayout();
+            this.MainAccountGB.SuspendLayout();
             this.MainTableGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).BeginInit();
             this.LoginPanel.SuspendLayout();
             this.LoginCreateGroupBox.SuspendLayout();
             this.LoginInfoGroupBox.SuspendLayout();
@@ -117,11 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).BeginInit();
-            this.MainAccountGB.SuspendLayout();
-            this.MainFundsGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -166,6 +166,107 @@
             this.MainAccountGroupBox.TabStop = false;
             this.MainAccountGroupBox.Text = "Account Options";
             // 
+            // MainAccountDeleteLabel
+            // 
+            this.MainAccountDeleteLabel.AutoSize = true;
+            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(218, 238);
+            this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
+            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(104, 17);
+            this.MainAccountDeleteLabel.TabIndex = 3;
+            this.MainAccountDeleteLabel.Text = "Delete Account";
+            // 
+            // MainAccountDeleteBtn
+            // 
+            this.MainAccountDeleteBtn.Location = new System.Drawing.Point(199, 258);
+            this.MainAccountDeleteBtn.Name = "MainAccountDeleteBtn";
+            this.MainAccountDeleteBtn.Size = new System.Drawing.Size(145, 23);
+            this.MainAccountDeleteBtn.TabIndex = 2;
+            this.MainAccountDeleteBtn.Text = "Delete";
+            this.MainAccountDeleteBtn.UseVisualStyleBackColor = true;
+            this.MainAccountDeleteBtn.Click += new System.EventHandler(this.MainAccountDeleteBtn_Click);
+            // 
+            // MainFundsGB
+            // 
+            this.MainFundsGB.Controls.Add(this.MainAccountFundAddBtn);
+            this.MainFundsGB.Controls.Add(this.MainAccountFundsTF);
+            this.MainFundsGB.Location = new System.Drawing.Point(312, 41);
+            this.MainFundsGB.Name = "MainFundsGB";
+            this.MainFundsGB.Size = new System.Drawing.Size(200, 187);
+            this.MainFundsGB.TabIndex = 1;
+            this.MainFundsGB.TabStop = false;
+            this.MainFundsGB.Text = "Funds";
+            // 
+            // MainAccountFundAddBtn
+            // 
+            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(52, 105);
+            this.MainAccountFundAddBtn.Name = "MainAccountFundAddBtn";
+            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(88, 23);
+            this.MainAccountFundAddBtn.TabIndex = 3;
+            this.MainAccountFundAddBtn.Text = "Add funds";
+            this.MainAccountFundAddBtn.UseVisualStyleBackColor = true;
+            // 
+            // MainAccountFundsTF
+            // 
+            this.MainAccountFundsTF.Location = new System.Drawing.Point(44, 53);
+            this.MainAccountFundsTF.Name = "MainAccountFundsTF";
+            this.MainAccountFundsTF.Size = new System.Drawing.Size(100, 22);
+            this.MainAccountFundsTF.TabIndex = 2;
+            // 
+            // MainAccountGB
+            // 
+            this.MainAccountGB.Controls.Add(this.MainAccountUpdateULab);
+            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePWLab);
+            this.MainAccountGB.Controls.Add(this.MainAccountUpdateBtn);
+            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePwTF);
+            this.MainAccountGB.Controls.Add(this.MainAccountUpdateUNTF);
+            this.MainAccountGB.Location = new System.Drawing.Point(38, 41);
+            this.MainAccountGB.Name = "MainAccountGB";
+            this.MainAccountGB.Size = new System.Drawing.Size(200, 187);
+            this.MainAccountGB.TabIndex = 0;
+            this.MainAccountGB.TabStop = false;
+            this.MainAccountGB.Text = "Change";
+            // 
+            // MainAccountUpdateULab
+            // 
+            this.MainAccountUpdateULab.AutoSize = true;
+            this.MainAccountUpdateULab.Location = new System.Drawing.Point(49, 29);
+            this.MainAccountUpdateULab.Name = "MainAccountUpdateULab";
+            this.MainAccountUpdateULab.Size = new System.Drawing.Size(73, 17);
+            this.MainAccountUpdateULab.TabIndex = 4;
+            this.MainAccountUpdateULab.Text = "Username";
+            // 
+            // MainAccountUpdatePWLab
+            // 
+            this.MainAccountUpdatePWLab.AutoSize = true;
+            this.MainAccountUpdatePWLab.Location = new System.Drawing.Point(49, 83);
+            this.MainAccountUpdatePWLab.Name = "MainAccountUpdatePWLab";
+            this.MainAccountUpdatePWLab.Size = new System.Drawing.Size(69, 17);
+            this.MainAccountUpdatePWLab.TabIndex = 3;
+            this.MainAccountUpdatePWLab.Text = "Password";
+            // 
+            // MainAccountUpdateBtn
+            // 
+            this.MainAccountUpdateBtn.Location = new System.Drawing.Point(68, 145);
+            this.MainAccountUpdateBtn.Name = "MainAccountUpdateBtn";
+            this.MainAccountUpdateBtn.Size = new System.Drawing.Size(75, 23);
+            this.MainAccountUpdateBtn.TabIndex = 2;
+            this.MainAccountUpdateBtn.Text = "Update";
+            this.MainAccountUpdateBtn.UseVisualStyleBackColor = true;
+            // 
+            // MainAccountUpdatePwTF
+            // 
+            this.MainAccountUpdatePwTF.Location = new System.Drawing.Point(52, 106);
+            this.MainAccountUpdatePwTF.Name = "MainAccountUpdatePwTF";
+            this.MainAccountUpdatePwTF.Size = new System.Drawing.Size(100, 22);
+            this.MainAccountUpdatePwTF.TabIndex = 1;
+            // 
+            // MainAccountUpdateUNTF
+            // 
+            this.MainAccountUpdateUNTF.Location = new System.Drawing.Point(52, 49);
+            this.MainAccountUpdateUNTF.Name = "MainAccountUpdateUNTF";
+            this.MainAccountUpdateUNTF.Size = new System.Drawing.Size(100, 22);
+            this.MainAccountUpdateUNTF.TabIndex = 0;
+            // 
             // MainTableGroupBox
             // 
             this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
@@ -177,6 +278,31 @@
             this.MainTableGroupBox.TabIndex = 2;
             this.MainTableGroupBox.TabStop = false;
             this.MainTableGroupBox.Text = "Tables";
+            // 
+            // MainTableThreePictureBox
+            // 
+            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
+            this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
+            this.MainTableThreePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableThreePictureBox.TabIndex = 2;
+            this.MainTableThreePictureBox.TabStop = false;
+            // 
+            // MainTableTwoPictureBox
+            // 
+            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(446, 41);
+            this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
+            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableTwoPictureBox.TabIndex = 1;
+            this.MainTableTwoPictureBox.TabStop = false;
+            // 
+            // MainTableOnePictureBox
+            // 
+            this.MainTableOnePictureBox.Location = new System.Drawing.Point(90, 41);
+            this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
+            this.MainTableOnePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableOnePictureBox.TabIndex = 0;
+            this.MainTableOnePictureBox.TabStop = false;
+            this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
             // 
             // LogOutBtn
             // 
@@ -623,139 +749,14 @@
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
-            // MainAccountGB
-            // 
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateULab);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePWLab);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateBtn);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdatePwTF);
-            this.MainAccountGB.Controls.Add(this.MainAccountUpdateUNTF);
-            this.MainAccountGB.Location = new System.Drawing.Point(38, 41);
-            this.MainAccountGB.Name = "MainAccountGB";
-            this.MainAccountGB.Size = new System.Drawing.Size(200, 187);
-            this.MainAccountGB.TabIndex = 0;
-            this.MainAccountGB.TabStop = false;
-            this.MainAccountGB.Text = "Change";
-            // 
-            // MainFundsGB
-            // 
-            this.MainFundsGB.Controls.Add(this.MainAccountFundAddBtn);
-            this.MainFundsGB.Controls.Add(this.MainAccountFundsTF);
-            this.MainFundsGB.Location = new System.Drawing.Point(312, 41);
-            this.MainFundsGB.Name = "MainFundsGB";
-            this.MainFundsGB.Size = new System.Drawing.Size(200, 187);
-            this.MainFundsGB.TabIndex = 1;
-            this.MainFundsGB.TabStop = false;
-            this.MainFundsGB.Text = "Funds";
-            // 
-            // MainAccountUpdateUNTF
-            // 
-            this.MainAccountUpdateUNTF.Location = new System.Drawing.Point(52, 49);
-            this.MainAccountUpdateUNTF.Name = "MainAccountUpdateUNTF";
-            this.MainAccountUpdateUNTF.Size = new System.Drawing.Size(100, 22);
-            this.MainAccountUpdateUNTF.TabIndex = 0;
-            // 
-            // MainAccountUpdatePwTF
-            // 
-            this.MainAccountUpdatePwTF.Location = new System.Drawing.Point(52, 106);
-            this.MainAccountUpdatePwTF.Name = "MainAccountUpdatePwTF";
-            this.MainAccountUpdatePwTF.Size = new System.Drawing.Size(100, 22);
-            this.MainAccountUpdatePwTF.TabIndex = 1;
-            // 
-            // MainAccountFundsTF
-            // 
-            this.MainAccountFundsTF.Location = new System.Drawing.Point(44, 53);
-            this.MainAccountFundsTF.Name = "MainAccountFundsTF";
-            this.MainAccountFundsTF.Size = new System.Drawing.Size(100, 22);
-            this.MainAccountFundsTF.TabIndex = 2;
-            // 
-            // MainAccountUpdateBtn
-            // 
-            this.MainAccountUpdateBtn.Location = new System.Drawing.Point(68, 145);
-            this.MainAccountUpdateBtn.Name = "MainAccountUpdateBtn";
-            this.MainAccountUpdateBtn.Size = new System.Drawing.Size(75, 23);
-            this.MainAccountUpdateBtn.TabIndex = 2;
-            this.MainAccountUpdateBtn.Text = "Update";
-            this.MainAccountUpdateBtn.UseVisualStyleBackColor = true;
-            // 
-            // MainAccountFundAddBtn
-            // 
-            this.MainAccountFundAddBtn.Location = new System.Drawing.Point(52, 105);
-            this.MainAccountFundAddBtn.Name = "MainAccountFundAddBtn";
-            this.MainAccountFundAddBtn.Size = new System.Drawing.Size(88, 23);
-            this.MainAccountFundAddBtn.TabIndex = 3;
-            this.MainAccountFundAddBtn.Text = "Add funds";
-            this.MainAccountFundAddBtn.UseVisualStyleBackColor = true;
-            // 
-            // MainAccountUpdatePWLab
-            // 
-            this.MainAccountUpdatePWLab.AutoSize = true;
-            this.MainAccountUpdatePWLab.Location = new System.Drawing.Point(49, 83);
-            this.MainAccountUpdatePWLab.Name = "MainAccountUpdatePWLab";
-            this.MainAccountUpdatePWLab.Size = new System.Drawing.Size(69, 17);
-            this.MainAccountUpdatePWLab.TabIndex = 3;
-            this.MainAccountUpdatePWLab.Text = "Password";
-            // 
-            // MainAccountUpdateULab
-            // 
-            this.MainAccountUpdateULab.AutoSize = true;
-            this.MainAccountUpdateULab.Location = new System.Drawing.Point(49, 29);
-            this.MainAccountUpdateULab.Name = "MainAccountUpdateULab";
-            this.MainAccountUpdateULab.Size = new System.Drawing.Size(73, 17);
-            this.MainAccountUpdateULab.TabIndex = 4;
-            this.MainAccountUpdateULab.Text = "Username";
-            // 
-            // MainAccountDeleteBtn
-            // 
-            this.MainAccountDeleteBtn.Location = new System.Drawing.Point(199, 258);
-            this.MainAccountDeleteBtn.Name = "MainAccountDeleteBtn";
-            this.MainAccountDeleteBtn.Size = new System.Drawing.Size(145, 23);
-            this.MainAccountDeleteBtn.TabIndex = 2;
-            this.MainAccountDeleteBtn.Text = "Delete";
-            this.MainAccountDeleteBtn.UseVisualStyleBackColor = true;
-            // 
-            // MainAccountDeleteLabel
-            // 
-            this.MainAccountDeleteLabel.AutoSize = true;
-            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(218, 238);
-            this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
-            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(104, 17);
-            this.MainAccountDeleteLabel.TabIndex = 3;
-            this.MainAccountDeleteLabel.Text = "Delete Account";
-            // 
-            // MainTableTwoPictureBox
-            // 
-            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(446, 41);
-            this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
-            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableTwoPictureBox.TabIndex = 1;
-            this.MainTableTwoPictureBox.TabStop = false;
-            // 
-            // MainTableThreePictureBox
-            // 
-            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
-            this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
-            this.MainTableThreePictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableThreePictureBox.TabIndex = 2;
-            this.MainTableThreePictureBox.TabStop = false;
-            // 
-            // MainTableOnePictureBox
-            // 
-            this.MainTableOnePictureBox.Location = new System.Drawing.Point(90, 41);
-            this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
-            this.MainTableOnePictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableOnePictureBox.TabIndex = 0;
-            this.MainTableOnePictureBox.TabStop = false;
-            this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.LoginPanel);
+            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.GamePanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
@@ -764,7 +765,14 @@
             this.MainInfoGroupBox.PerformLayout();
             this.MainAccountGroupBox.ResumeLayout(false);
             this.MainAccountGroupBox.PerformLayout();
+            this.MainFundsGB.ResumeLayout(false);
+            this.MainFundsGB.PerformLayout();
+            this.MainAccountGB.ResumeLayout(false);
+            this.MainAccountGB.PerformLayout();
             this.MainTableGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).EndInit();
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
             this.LoginCreateGroupBox.ResumeLayout(false);
@@ -792,13 +800,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).EndInit();
-            this.MainAccountGB.ResumeLayout(false);
-            this.MainAccountGB.PerformLayout();
-            this.MainFundsGB.ResumeLayout(false);
-            this.MainFundsGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
