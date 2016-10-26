@@ -346,6 +346,7 @@ namespace BlackJackSolution
                         InfoLabel.Text = "You have 21";
                         displayMyCards(control.GetMyPictureStrings());
                         HitButton.Hide();
+                        control.ClearHands();
                     }
                 }
             }

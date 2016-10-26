@@ -37,7 +37,9 @@ namespace BlackJackSolution.Control
         public void ClearHands()
         {
             myHand.clearHand();
+            myHand.setTotal(0);
             dealerHand.clearHand();
+            dealerHand.setTotal(0);
         }
         public void CreateDeck()
         {
