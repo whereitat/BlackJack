@@ -244,6 +244,12 @@
   <ItemGroup>
     <None Include="Resources\13_spades.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VIP_Table_Btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Standard_Table_Btn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
