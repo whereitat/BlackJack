@@ -225,7 +225,7 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
+        public int CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try
             {
@@ -233,25 +233,26 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string gameid = "fel i metoden";
-
+                int gameid = 0;
+                if(read.GetInt32(read.GetOrdinal("ERROR")) < 1)
+                {
+                    return gameid;
+                }
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
-                        gameid = read.GetInt32(0).ToString();
+                        gameid = read.GetInt32(0);
+                        return gameid;
                     }
-                }
-                else
-                {
-                    gameid = "Gameround recorded";
                 }
                 return gameid;
             }
             catch (SqlException e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                return ex;
+                //string ex = Logic.Utils.SqlExceptionUtility(e);
+                //return ex;
+                return 0;
             }
         }
 
