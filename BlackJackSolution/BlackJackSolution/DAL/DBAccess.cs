@@ -36,7 +36,7 @@ namespace BlackJackSolution.DAL
             }
             **/
         }
-        public static Deck CreateDeck()
+        public Deck CreateDeck()
         {
             try {
                 Deck newDeck = new Deck();

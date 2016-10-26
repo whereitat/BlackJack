@@ -15,9 +15,6 @@ namespace BlackJackSolution
     public partial class GUI : Form
     {
         private static Controller control = new Controller();
-        private static Deck deck = control.CreateDeck();
-        private static Hand myHand = new Hand();
-        private static Hand dealerHand = new Hand();
         private String bet;
         private String myTotal;
         private String dealerTotal;
@@ -67,33 +64,29 @@ namespace BlackJackSolution
                         LeaveButton.Hide();
                         BetAmountText.Hide();
                         BetLabelAmount.Text = BetAmountText.Text;
-                        BetLabelAmount.Show();
+                        BetLabelAmount.Show();//tabort^^^^label bet
                         //Börjar dela kort
-                        control.AddCard(deck, dealerHand);
-                        control.AddCard(deck, myHand);
-                        control.AddCard(deck, myHand);
                         displayMyCards(myHand);
                         displayDealerCards(dealerHand);
-                        if (myHand.getTotal() == 21)
+
+                        int myHandCheck = control.CheckMyHand();
+                        int dealerHandCheck = control.CheckDealerHand();
+                        if (myHandCheck == 21)
                         {
-                            int winnings = Int32.Parse(BetLabelAmount.Text);
+                            int winnings = Int32.Parse(BetLabelAmount.Text); //ÄNDRA TILL KNAPP
                             InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
                             //UPDATE SALDO +user*1.5 -bank
-                            control.ClearHand(myHand);//----------------------------------
-                            control.ClearHand(dealerHand); //------------------
+                            control.ClearHands();
                             HitButton.Hide();
                             StandButton.Hide();
                             DealButton.Show();
-                            LeaveButton.Show();
-                            BetAmountText.Clear();
-                            BetAmountText.Show();
-                            BetLabelAmount.Hide();
+                            LeaveButton.Show();//BET BUTTONS
                         }
                         else
                         {
-                            myTotal = "Your handtotal is : " + myHand.getTotal() + "\n";
-                            dealerTotal = "Dealer handtotal is : " + dealerHand.getTotal();
-                            bet = "You bet " + BetLabelAmount.Text + "\n";
+                            myTotal = "Your handtotal is : " + myHandCheck + "\n";
+                            dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
+                            bet = "You bet " + BetLabelAmount.Text + "\n"; //ÄNDRA TILL KNAPP
                             InfoLabel.Text = bet + myTotal + dealerTotal;
                         }
                     }
@@ -468,6 +461,11 @@ namespace BlackJackSolution
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Erik heja heja");
+        }
+
+        private void LoginExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

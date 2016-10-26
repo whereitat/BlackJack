@@ -12,19 +12,55 @@ namespace BlackJackSolution.Control
 {
     public class Controller
     {
-        DBAccess db = new DBAccess();
-        public Deck CreateDeck() 
+        private static Deck deck = new Deck();
+        private static Hand myHand = new Hand();
+        private static Hand dealerHand = new Hand();
+        private static DBAccess db = new DBAccess();
+        public int CheckMyHand()
         {
-            Deck d = DAL.DBAccess.CreateDeck();
-            return d;            
+            int value = myHand.getTotal();
+            return value;
         }
-        public void AddCard(Deck d, Hand h)
+        public int CheckDealerHand()
         {
-            h.AddCard(d);
+            int value = dealerHand.getTotal();
+            return value;
         }
-        public void ClearHand(Hand h)
+        public void ClearHands()
         {
-            h.clearHand();
+            myHand.clearHand();
+            dealerHand.clearHand();
+        }
+        public void CreateDeck()
+        {
+            deck = db.CreateDeck();
+        }
+        public bool CreateAccount(string aname, string password)
+        {
+            return db.CreateAccount(aname, Crypt(password));
+        }
+        public string Crypt(string input)
+        {
+            SHA512 alg = SHA512.Create();
+            return Convert.ToBase64String(alg.ComputeHash(Encoding.Unicode.GetBytes(input)));
+        }
+        public void DealButtonPush()
+        {
+            try
+            {
+                if(deck.cards.Count < 1)
+                {
+                    CreateDeck();
+                }
+                myHand.AddCard(deck);
+                myHand.AddCard(deck);
+                dealerHand.AddCard(deck);
+
+            }
+            catch (Exception e)
+            {
+
+            }
         }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
@@ -45,14 +81,5 @@ namespace BlackJackSolution.Control
             
         }
         //Behöver commit på nya procedures för test
-        public bool CreateAccount(string aname, string password)
-        {
-            return db.CreateAccount(aname, Crypt(password));
-        }
-        public string Crypt(string input)
-        {
-            SHA512 alg = SHA512.Create();
-            return Convert.ToBase64String(alg.ComputeHash(Encoding.Unicode.GetBytes(input)));
-        }
     }
 }

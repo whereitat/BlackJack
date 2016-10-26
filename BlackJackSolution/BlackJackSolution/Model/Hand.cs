@@ -12,7 +12,6 @@ namespace BlackJackSolution.Model
     public class Hand
     {
         private int total;
-        private static Controller control = new Controller();
         public List<Card> handCards { set; get; }
         //public int total { set; get; }
 
@@ -31,10 +30,6 @@ namespace BlackJackSolution.Model
         }
         public void AddCard(Deck deck)
         {
-            if(deck.cards.Count < 1)
-            {
-                deck = control.CreateDeck();
-            }
             if (total < 21) //Om totalen är mindre än 21 lägg till nytt kort och kolla efter ess.
             {               //Om total är 21 ska det inte kunna gå att lägga till kort
                 Card cardToAdd = deck.cards[0];
@@ -77,31 +72,5 @@ namespace BlackJackSolution.Model
             this.total = handTotal;
             return total;
         }
-        /**
-        public Hand CreateSplit(Hand h)
-        {
-            try
-            {
-                if (h.handCards[0].value == h.handCards[1].value && h.handCards.Count == 2) //Måste vara 2 kort med samma värde.
-                {
-                    Hand splitHand = new Hand();
-                    var cardToMove = h.handCards[1];
-                    splitHand.handCards.Add(cardToMove);
-                    splitHand.total = cardToMove.value;
-                    return splitHand;
-                }
-                else
-                {
-                    Console.WriteLine("Sorry, cant split.");
-                    return null;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-        }
-    **/
     }
 }

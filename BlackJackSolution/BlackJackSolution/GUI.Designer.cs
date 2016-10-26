@@ -80,6 +80,7 @@
             this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
             this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.MainInfoLabel = new System.Windows.Forms.Label();
+            this.LoginExitBtn = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             this.LoginCreateGroupBox.SuspendLayout();
@@ -143,6 +144,7 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.LoginExitBtn);
             this.LoginPanel.Controls.Add(this.LoginCreateGroupBox);
             this.LoginPanel.Controls.Add(this.LoginCreateAccBtn);
             this.LoginPanel.Controls.Add(this.LoginPasswordLabel);
@@ -622,6 +624,16 @@
             this.MainInfoLabel.TabIndex = 0;
             this.MainInfoLabel.Text = "label1";
             // 
+            // LoginExitBtn
+            // 
+            this.LoginExitBtn.Location = new System.Drawing.Point(465, 486);
+            this.LoginExitBtn.Name = "LoginExitBtn";
+            this.LoginExitBtn.Size = new System.Drawing.Size(176, 45);
+            this.LoginExitBtn.TabIndex = 8;
+            this.LoginExitBtn.Text = "Exit";
+            this.LoginExitBtn.UseVisualStyleBackColor = true;
+            this.LoginExitBtn.Click += new System.EventHandler(this.LoginExitBtn_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -725,6 +737,7 @@
         private System.Windows.Forms.PictureBox MainTableThreePictureBox;
         private System.Windows.Forms.PictureBox MainTableTwoPictureBox;
         private System.Windows.Forms.PictureBox MainTableOnePictureBox;
+        private System.Windows.Forms.Button LoginExitBtn;
     }
 }
 
