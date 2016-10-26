@@ -15,11 +15,10 @@ namespace BlackJackSolution
     public partial class GUI : Form
     {
         private static Controller control = new Controller();
-        private String bet;
+        private double bet;
+        private String betString;
         private String myTotal;
         private String dealerTotal;
-        private Account player;
-        private Account bank;
         public GUI()
         {
             InitializeComponent();
@@ -47,57 +46,43 @@ namespace BlackJackSolution
         {
             try {
                 clearCards();
-                int betInt = 0;
-                bool tryParse = Int32.TryParse(BetAmountText.Text, out betInt);
-                if (tryParse == true)
+                if (bet > 0)
                 {
-                    betInt = Int32.Parse(BetAmountText.Text);
-                    if (betInt <= 0)
+                    control.DealButtonPush();
+                    HitButton.Show();
+                    StandButton.Show();
+                    DealButton.Hide();
+                    LeaveButton.Hide();
+                    MinBetBtn.Hide();
+                    MaxBetBtn.Hide();
+                    //Fattas visa kort
+                    int myHandCheck = control.CheckMyHand();
+                    int dealerHandCheck = control.CheckDealerHand();
+                    if (myHandCheck == 21)
                     {
-                        InfoLabel.Text = "Please enter a valid bet (Not 0 or negative numbers)";
+                        double winnings = bet * 1.5; 
+                        InfoLabel.Text = "BLACKJACK! You win : " + winnings + "\n" + "Please enter a new bet to play again";
+                        //UPDATE SALDO +user*1.5 -bank
+                        control.ClearHands();
+                        bet = 0;//Måste skicka till DB först
+                        HitButton.Hide();
+                        StandButton.Hide();
+                        DealButton.Show();
+                        LeaveButton.Show();
+                        MinBetBtn.Show();
+                        MaxBetBtn.Show();
                     }
                     else
                     {
-                        HitButton.Show();
-                        StandButton.Show();
-                        DealButton.Hide();
-                        LeaveButton.Hide();
-                        BetAmountText.Hide();
-                        BetLabelAmount.Text = BetAmountText.Text;
-                        BetLabelAmount.Show();//tabort^^^^label bet
-                        //Börjar dela kort
-                        displayMyCards(myHand);
-                        displayDealerCards(dealerHand);
-
-                        int myHandCheck = control.CheckMyHand();
-                        int dealerHandCheck = control.CheckDealerHand();
-                        if (myHandCheck == 21)
-                        {
-                            int winnings = Int32.Parse(BetLabelAmount.Text); //ÄNDRA TILL KNAPP
-                            InfoLabel.Text = "BLACKJACK! You win : " + winnings * 1.5 + "\n" + "Please enter a new bet to play again";
-                            //UPDATE SALDO +user*1.5 -bank
-                            control.ClearHands();
-                            HitButton.Hide();
-                            StandButton.Hide();
-                            DealButton.Show();
-                            LeaveButton.Show();//BET BUTTONS
-                        }
-                        else
-                        {
-                            myTotal = "Your handtotal is : " + myHandCheck + "\n";
-                            dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
-                            bet = "You bet " + BetLabelAmount.Text + "\n"; //ÄNDRA TILL KNAPP
-                            InfoLabel.Text = bet + myTotal + dealerTotal;
-                        }
+                        myTotal = "Your handtotal is : " + myHandCheck + "\n";
+                        dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
+                        betString = "You bet " + bet + "\n"; //ÄNDRA TILL KNAPP
+                        InfoLabel.Text = betString + myTotal + dealerTotal;
                     }
                 }
-                else if (!String.IsNullOrWhiteSpace(BetAmountText.Text))
+                else
                 {
-                    InfoLabel.Text = "Please place a bet";
-                }
-                else if (tryParse == false)
-                {
-                    InfoLabel.Text = "Please enter a number as your bet";
+                    InfoLabel.Text = "Please choose a bet first";
                 }
             }
             catch (Exception ex)
@@ -466,6 +451,20 @@ namespace BlackJackSolution
         private void LoginExitBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MinBetBtn_Click(object sender, EventArgs e)
+        {
+            bet = double.Parse(MinBetBtn.Text);
+            MinBetBtn.Hide();
+            MaxBetBtn.Hide();
+        }
+
+        private void MaxBetBtn_Click(object sender, EventArgs e)
+        {
+            bet = double.Parse(MaxBetBtn.Text);
+            MinBetBtn.Hide();
+            MaxBetBtn.Hide();
         }
     }
 }

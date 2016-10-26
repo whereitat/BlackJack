@@ -62,6 +62,40 @@ namespace BlackJackSolution.Control
 
             }
         }
+        public List<String> GetMyPictureStrings()
+        {
+            List<String> picList = new List<string>();
+            String picture;
+                for(int i = 0; i < myHand.handCards.Count; i++)
+                {
+                    if (myHand.handCards[i].getValue() < 10)
+                    {
+                        picture = "_0" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+                    else if (myHand.handCards[i].getValue() == 10)
+                    {
+                        picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+                    else if (myHand.handCards[i].getValue() == 11) 
+                    {
+                        picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+                    else if (myHand.handCards[i].getValue() == 12)
+                    {
+                        picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+                    else if (myHand.handCards[i].getValue() == 13)
+                    {
+                        picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }  
+                }
+            return picList;
+        }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
