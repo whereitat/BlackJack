@@ -110,6 +110,14 @@ namespace BlackJackSolution.Control
             }
             return null;
         }
+        public int GetMinBet(Table t)
+        {
+            return t.MinBet;
+        }
+        public int GetMaxBet(Table t)
+        {
+            return t.MaxBet;
+        }
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();
