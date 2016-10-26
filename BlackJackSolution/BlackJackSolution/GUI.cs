@@ -371,28 +371,44 @@ namespace BlackJackSolution
 
         private void LoginLoginButton_Click(object sender, EventArgs e)
         {
-            MainPanel.Show();
-            LoginPanel.Hide();
-            MainTableGroupBox.Show();
+            try {
+                bool loginOK;
+                loginOK = control.Login(LoginUsernameTextBox.Text, LoginPasswordTextBox.Text);
+                if (loginOK == true)
+                {
+                    MainPanel.Show();
+                    LoginPanel.Hide();
+                    MainTableGroupBox.Show();
 
-            MainTableOnePictureBox.Visible = true;
-            System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
-            Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
-            MainTableOnePictureBox.Image = picSt;
-            MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableOnePictureBox.BringToFront();
+                    MainTableOnePictureBox.Visible = true;
+                    System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
+                    Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    MainTableOnePictureBox.Image = picSt;
+                    MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableOnePictureBox.BringToFront();
 
-            MainTableTwoPictureBox.Visible = true;
-            Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
-            MainTableTwoPictureBox.Image = picSt2;
-            MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableTwoPictureBox.BringToFront();
+                    MainTableTwoPictureBox.Visible = true;
+                    Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    MainTableTwoPictureBox.Image = picSt2;
+                    MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableTwoPictureBox.BringToFront();
 
-            MainTableThreePictureBox.Visible = true;
-            Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
-            MainTableThreePictureBox.Image = picVIP;
-            MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MainTableThreePictureBox.BringToFront();
+                    MainTableThreePictureBox.Visible = true;
+                    Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
+                    MainTableThreePictureBox.Image = picVIP;
+                    MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MainTableThreePictureBox.BringToFront();
+                }
+                else
+                {
+                    LoginInfoLabel.Text = "Username or Password incorrect";
+                }
+            }
+            catch(Exception loginE)
+            {
+
+            }
+            
         }
 
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
@@ -417,6 +433,25 @@ namespace BlackJackSolution
             bet = double.Parse(MaxBetBtn.Text);
             MinBetBtn.Hide();
             MaxBetBtn.Hide();
+        }
+
+        private void LoginCreateCreateBtn_Click(object sender, EventArgs e)
+        {
+            bool acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
+            if(acc == true)
+            {
+                LoginInfoLabel.Text = "Account created";
+                LoginCreateGroupBox.Hide();
+            }
+            else
+            {
+                LoginInfoLabel.Text = "Account name already in use";
+            }
+        }
+
+        private void LoginCreateAccBtn_Click(object sender, EventArgs e)
+        {
+            LoginCreateGroupBox.Show();
         }
     }
 }

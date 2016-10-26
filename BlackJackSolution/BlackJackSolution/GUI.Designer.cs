@@ -247,6 +247,7 @@
             this.LoginCreateGroupBox.TabIndex = 7;
             this.LoginCreateGroupBox.TabStop = false;
             this.LoginCreateGroupBox.Text = "Create";
+            this.LoginCreateGroupBox.Visible = false;
             // 
             // LoginCreateCreateBtn
             // 
@@ -256,6 +257,7 @@
             this.LoginCreateCreateBtn.TabIndex = 5;
             this.LoginCreateCreateBtn.Text = "Create";
             this.LoginCreateCreateBtn.UseVisualStyleBackColor = true;
+            this.LoginCreateCreateBtn.Click += new System.EventHandler(this.LoginCreateCreateBtn_Click);
             // 
             // LoginCreatePWLabel
             // 
@@ -297,6 +299,7 @@
             this.LoginCreateAccBtn.TabIndex = 6;
             this.LoginCreateAccBtn.Text = "Create account";
             this.LoginCreateAccBtn.UseVisualStyleBackColor = true;
+            this.LoginCreateAccBtn.Click += new System.EventHandler(this.LoginCreateAccBtn_Click);
             // 
             // LoginPasswordLabel
             // 
@@ -332,9 +335,8 @@
             this.LoginInfoLabel.AutoSize = true;
             this.LoginInfoLabel.Location = new System.Drawing.Point(29, 46);
             this.LoginInfoLabel.Name = "LoginInfoLabel";
-            this.LoginInfoLabel.Size = new System.Drawing.Size(46, 17);
+            this.LoginInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.LoginInfoLabel.TabIndex = 0;
-            this.LoginInfoLabel.Text = "label1";
             // 
             // LoginLoginButton
             // 
@@ -644,8 +646,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.LoginPanel);
+            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.MainPanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
