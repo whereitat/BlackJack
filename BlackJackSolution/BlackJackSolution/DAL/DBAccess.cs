@@ -36,41 +36,24 @@ namespace BlackJackSolution.DAL
             }
             **/
         }
-        public static Deck CreateDeck()
+        public static List<string[]> CreateDeck()
         {
             try {
-                Deck newDeck = new Deck();
+                List<string[]> newDeck = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
                 command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
-                {
-                    
+                {                
                         while (read.Read())
                         {
-                            Card card = new Card();
-                            card.setValue(read.GetInt32(read.GetOrdinal("value")));
-                            card.setCardId(read.GetString(read.GetOrdinal("cardId")));
-                            string suite = read.GetString(read.GetOrdinal("cardId"));
-                                if (suite.Substring(0, 1).Equals("H"))
-                                {
-                                    card.SetSuit("hearts");
-                                }
-                                else if (suite.Substring(0, 1).Equals("S"))
-                                {
-                                    card.SetSuit("spades");
-                                }
-                                else if (suite.Substring(0, 1).Equals("C"))
-                                {
-                                    card.SetSuit("clubs");
-                                }
-                                else if (suite.Substring(0, 1).Equals("D"))
-                                {
-                                    card.SetSuit("diamonds");
-                                }
-                            newDeck.cards.Add(card);
+                            string[] card = new string[3];
+                            card[0] = read.GetInt32(read.GetOrdinal("value")).ToString();
+                            card[1] = read.GetString(read.GetOrdinal("cardId"));
+                            card[2] = read.GetString(read.GetOrdinal("cardId"));
+                        newDeck.Add(card);
                         }
                 }
                 else
