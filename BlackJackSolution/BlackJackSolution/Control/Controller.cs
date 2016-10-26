@@ -238,5 +238,5 @@ namespace BlackJackSolution.Control
             }
         }
         //Behöver commit på nya procedures för test
-    }
+    } 
 }
