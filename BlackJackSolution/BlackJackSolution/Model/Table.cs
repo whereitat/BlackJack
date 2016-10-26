@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJackSolution.Model
 {
-    class Table
+    public class Table
     {
         private int sessionId;
         private int maxBet;

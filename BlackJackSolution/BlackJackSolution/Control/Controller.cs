@@ -17,6 +17,7 @@ namespace BlackJackSolution.Control
         private static Hand dealerHand = new Hand();
         private static DBAccess db = new DBAccess();
         private static Account user = new Account();
+        
         public int CheckMyHand()
         {
             int value = myHand.getTotal();
@@ -87,6 +88,28 @@ namespace BlackJackSolution.Control
 
             }
         }
+        public List<Table> GetAllBlackJackGames()
+        {
+            List<string[]> dbData = db.GetBlackJackGames();
+            List<Table> returnList = new List<Table>();
+            foreach (string[] datarow in dbData)
+            {
+                Table t = new Table(Int32.Parse(datarow[0]), Int32.Parse(datarow[1]), Int32.Parse(datarow[2]), datarow[3]);
+                returnList.Add(t);
+            }
+            return returnList;
+        }
+        public Table GetBlackJackGameById(int sessionId)
+        {
+            foreach (Table t in GetAllBlackJackGames())
+            {
+                if(t.SessionId == sessionId)
+                {
+                    return t;
+                }
+            }
+            return null;
+        }    
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();
@@ -120,6 +143,14 @@ namespace BlackJackSolution.Control
                 }
             }
             return picList;
+        }
+        public int GetMaxBet(Table t)
+        {
+            return t.MaxBet;
+        }
+        public int GetMinBet(Table t)
+        {
+            return t.MinBet;
         }
         public List<String> GetMyPictureStrings()
         {
