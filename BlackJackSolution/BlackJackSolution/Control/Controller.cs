@@ -64,6 +64,11 @@ namespace BlackJackSolution.Control
         {
             return db.CreateAccount(aname, Crypt(password));
         }
+        public void Transaction(int bet, int result)
+        {
+         int gameId = db.CreateGameRound(bet, result, user.getAname(), currentTable.SessionId)
+            db.GameTransaction();
+        }
         public string Crypt(string input)
         {
             SHA512 alg = SHA512.Create();

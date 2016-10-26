@@ -72,14 +72,14 @@ namespace BlackJackSolution.DAL
                 string a = "User created";
 
                 
-                if (read.HasRows)
-                {
-                    while (read.Read())
+                    if (read.HasRows)
                     {
-                        a = read.GetInt32(0).ToString();
-                    }
+                        while (read.Read())
+                        {
+                            a = read.GetInt32(0).ToString();
+                        }
                     
-                return a;
+                    return a;
                 }
                 else
                 {
@@ -103,14 +103,14 @@ namespace BlackJackSolution.DAL
                 string a = "User deleted";
 
                 
-                if (read.HasRows)
-                {
-                    while (read.Read())
+                    if (read.HasRows)
                     {
-                        a = read.GetString(0);
-                    }
+                        while (read.Read())
+                        {
+                            a = read.GetString(0);
+                        }
                     
-                return a;
+                    return a;
                 }
                 else
                 {
@@ -176,7 +176,7 @@ namespace BlackJackSolution.DAL
                     while (read.Read())
                     {
                         a = read.GetString(0);
-                    }
+                }
                 }
                 else
                 {
@@ -221,7 +221,7 @@ namespace BlackJackSolution.DAL
             }
         }
 
-        public string CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
+        public int CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
         {
             try
             {
@@ -229,25 +229,25 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string gameid = "Fel i CreateGameRound";
-
+                int gameid = 0;
+                if(read.GetInt32(read.GetOrdinal("ERROR")) < 1)
+                {
+                    return gameid;
+                }
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
-                        gameid = read.GetInt32(0).ToString();
-                    }
+                        gameid = read.GetInt32(0);
+                        return gameid;
                 }
-                else
-                {
-                    gameid = "Gameround recorded";
                 }
                 return gameid;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                return ex;
             }
         }
 
@@ -298,7 +298,7 @@ namespace BlackJackSolution.DAL
                 if (read.HasRows)
                 {
                     while (read.Read())
-                    {
+                {
                         a = read.GetString(0);
                     }
 
