@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainInfoLabel = new System.Windows.Forms.Label();
+            this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainTableGroupBox = new System.Windows.Forms.GroupBox();
+            this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
+            this.MainTableOnePictureBox = new System.Windows.Forms.PictureBox();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.UpdateAccountBtn = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.LoginExitBtn = new System.Windows.Forms.Button();
             this.LoginCreateGroupBox = new System.Windows.Forms.GroupBox();
             this.LoginCreateCreateBtn = new System.Windows.Forms.Button();
             this.LoginCreatePWLabel = new System.Windows.Forms.Label();
@@ -50,9 +58,9 @@
             this.InfoGroupBox = new System.Windows.Forms.GroupBox();
             this.InfoLabel = new System.Windows.Forms.Label();
             this.ActionGroupBox = new System.Windows.Forms.GroupBox();
-            this.BetLabelAmount = new System.Windows.Forms.Label();
+            this.MinBetBtn = new System.Windows.Forms.Button();
+            this.MaxBetBtn = new System.Windows.Forms.Button();
             this.BetLabel = new System.Windows.Forms.Label();
-            this.BetAmountText = new System.Windows.Forms.TextBox();
             this.LeaveButton = new System.Windows.Forms.Button();
             this.DealButton = new System.Windows.Forms.Button();
             this.StandButton = new System.Windows.Forms.Button();
@@ -73,15 +81,12 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MainTableGroupBox = new System.Windows.Forms.GroupBox();
-            this.MainTableOnePictureBox = new System.Windows.Forms.PictureBox();
-            this.MainTableTwoPictureBox = new System.Windows.Forms.PictureBox();
-            this.MainTableThreePictureBox = new System.Windows.Forms.PictureBox();
-            this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
-            this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.MainInfoLabel = new System.Windows.Forms.Label();
-            this.LoginExitBtn = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
+            this.MainInfoGroupBox.SuspendLayout();
+            this.MainTableGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).BeginInit();
             this.LoginPanel.SuspendLayout();
             this.LoginCreateGroupBox.SuspendLayout();
             this.LoginInfoGroupBox.SuspendLayout();
@@ -104,11 +109,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).BeginInit();
-            this.MainTableGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).BeginInit();
-            this.MainInfoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -122,6 +122,71 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1241, 654);
             this.MainPanel.TabIndex = 0;
+            // 
+            // MainInfoGroupBox
+            // 
+            this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
+            this.MainInfoGroupBox.Location = new System.Drawing.Point(703, 340);
+            this.MainInfoGroupBox.Name = "MainInfoGroupBox";
+            this.MainInfoGroupBox.Size = new System.Drawing.Size(512, 97);
+            this.MainInfoGroupBox.TabIndex = 4;
+            this.MainInfoGroupBox.TabStop = false;
+            this.MainInfoGroupBox.Text = "Info";
+            // 
+            // MainInfoLabel
+            // 
+            this.MainInfoLabel.AutoSize = true;
+            this.MainInfoLabel.Location = new System.Drawing.Point(27, 45);
+            this.MainInfoLabel.Name = "MainInfoLabel";
+            this.MainInfoLabel.Size = new System.Drawing.Size(46, 17);
+            this.MainInfoLabel.TabIndex = 0;
+            this.MainInfoLabel.Text = "label1";
+            // 
+            // MainAccountGroupBox
+            // 
+            this.MainAccountGroupBox.Location = new System.Drawing.Point(84, 322);
+            this.MainAccountGroupBox.Name = "MainAccountGroupBox";
+            this.MainAccountGroupBox.Size = new System.Drawing.Size(577, 300);
+            this.MainAccountGroupBox.TabIndex = 3;
+            this.MainAccountGroupBox.TabStop = false;
+            this.MainAccountGroupBox.Text = "Account Options";
+            // 
+            // MainTableGroupBox
+            // 
+            this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
+            this.MainTableGroupBox.Controls.Add(this.MainTableTwoPictureBox);
+            this.MainTableGroupBox.Controls.Add(this.MainTableOnePictureBox);
+            this.MainTableGroupBox.Location = new System.Drawing.Point(84, 39);
+            this.MainTableGroupBox.Name = "MainTableGroupBox";
+            this.MainTableGroupBox.Size = new System.Drawing.Size(1131, 267);
+            this.MainTableGroupBox.TabIndex = 2;
+            this.MainTableGroupBox.TabStop = false;
+            this.MainTableGroupBox.Text = "Tables";
+            // 
+            // MainTableThreePictureBox
+            // 
+            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
+            this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
+            this.MainTableThreePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableThreePictureBox.TabIndex = 2;
+            this.MainTableThreePictureBox.TabStop = false;
+            // 
+            // MainTableTwoPictureBox
+            // 
+            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(446, 41);
+            this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
+            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableTwoPictureBox.TabIndex = 1;
+            this.MainTableTwoPictureBox.TabStop = false;
+            // 
+            // MainTableOnePictureBox
+            // 
+            this.MainTableOnePictureBox.Location = new System.Drawing.Point(90, 41);
+            this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
+            this.MainTableOnePictureBox.Size = new System.Drawing.Size(270, 200);
+            this.MainTableOnePictureBox.TabIndex = 0;
+            this.MainTableOnePictureBox.TabStop = false;
+            this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
             // 
             // LogOutBtn
             // 
@@ -157,6 +222,16 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(1235, 654);
             this.LoginPanel.TabIndex = 2;
+            // 
+            // LoginExitBtn
+            // 
+            this.LoginExitBtn.Location = new System.Drawing.Point(465, 486);
+            this.LoginExitBtn.Name = "LoginExitBtn";
+            this.LoginExitBtn.Size = new System.Drawing.Size(176, 45);
+            this.LoginExitBtn.TabIndex = 8;
+            this.LoginExitBtn.Text = "Exit";
+            this.LoginExitBtn.UseVisualStyleBackColor = true;
+            this.LoginExitBtn.Click += new System.EventHandler(this.LoginExitBtn_Click);
             // 
             // LoginCreateGroupBox
             // 
@@ -317,9 +392,9 @@
             // 
             // ActionGroupBox
             // 
-            this.ActionGroupBox.Controls.Add(this.BetLabelAmount);
+            this.ActionGroupBox.Controls.Add(this.MinBetBtn);
+            this.ActionGroupBox.Controls.Add(this.MaxBetBtn);
             this.ActionGroupBox.Controls.Add(this.BetLabel);
-            this.ActionGroupBox.Controls.Add(this.BetAmountText);
             this.ActionGroupBox.Controls.Add(this.LeaveButton);
             this.ActionGroupBox.Controls.Add(this.DealButton);
             this.ActionGroupBox.Controls.Add(this.StandButton);
@@ -331,30 +406,34 @@
             this.ActionGroupBox.TabStop = false;
             this.ActionGroupBox.Text = "Actions";
             // 
-            // BetLabelAmount
+            // MinBetBtn
             // 
-            this.BetLabelAmount.AutoSize = true;
-            this.BetLabelAmount.Location = new System.Drawing.Point(160, 64);
-            this.BetLabelAmount.Name = "BetLabelAmount";
-            this.BetLabelAmount.Size = new System.Drawing.Size(0, 17);
-            this.BetLabelAmount.TabIndex = 7;
-            this.BetLabelAmount.Visible = false;
+            this.MinBetBtn.Location = new System.Drawing.Point(147, 38);
+            this.MinBetBtn.Name = "MinBetBtn";
+            this.MinBetBtn.Size = new System.Drawing.Size(75, 30);
+            this.MinBetBtn.TabIndex = 9;
+            this.MinBetBtn.UseVisualStyleBackColor = true;
+            this.MinBetBtn.Visible = false;
+            this.MinBetBtn.Click += new System.EventHandler(this.MinBetBtn_Click);
+            // 
+            // MaxBetBtn
+            // 
+            this.MaxBetBtn.Location = new System.Drawing.Point(147, 79);
+            this.MaxBetBtn.Name = "MaxBetBtn";
+            this.MaxBetBtn.Size = new System.Drawing.Size(75, 30);
+            this.MaxBetBtn.TabIndex = 8;
+            this.MaxBetBtn.UseVisualStyleBackColor = true;
+            this.MaxBetBtn.Visible = false;
+            this.MaxBetBtn.Click += new System.EventHandler(this.MaxBetBtn_Click);
             // 
             // BetLabel
             // 
             this.BetLabel.AutoSize = true;
-            this.BetLabel.Location = new System.Drawing.Point(168, 36);
+            this.BetLabel.Location = new System.Drawing.Point(168, 17);
             this.BetLabel.Name = "BetLabel";
             this.BetLabel.Size = new System.Drawing.Size(29, 17);
             this.BetLabel.TabIndex = 6;
             this.BetLabel.Text = "Bet";
-            // 
-            // BetAmountText
-            // 
-            this.BetAmountText.Location = new System.Drawing.Point(148, 84);
-            this.BetAmountText.Name = "BetAmountText";
-            this.BetAmountText.Size = new System.Drawing.Size(75, 22);
-            this.BetAmountText.TabIndex = 5;
             // 
             // LeaveButton
             // 
@@ -559,93 +638,24 @@
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
             // 
-            // MainTableGroupBox
-            // 
-            this.MainTableGroupBox.Controls.Add(this.MainTableThreePictureBox);
-            this.MainTableGroupBox.Controls.Add(this.MainTableTwoPictureBox);
-            this.MainTableGroupBox.Controls.Add(this.MainTableOnePictureBox);
-            this.MainTableGroupBox.Location = new System.Drawing.Point(84, 39);
-            this.MainTableGroupBox.Name = "MainTableGroupBox";
-            this.MainTableGroupBox.Size = new System.Drawing.Size(1131, 267);
-            this.MainTableGroupBox.TabIndex = 2;
-            this.MainTableGroupBox.TabStop = false;
-            this.MainTableGroupBox.Text = "Tables";
-            // 
-            // MainTableOnePictureBox
-            // 
-            this.MainTableOnePictureBox.Location = new System.Drawing.Point(90, 41);
-            this.MainTableOnePictureBox.Name = "MainTableOnePictureBox";
-            this.MainTableOnePictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableOnePictureBox.TabIndex = 0;
-            this.MainTableOnePictureBox.TabStop = false;
-            this.MainTableOnePictureBox.Click += new System.EventHandler(this.MainTableOnePictureBox_Click);
-            // 
-            // MainTableTwoPictureBox
-            // 
-            this.MainTableTwoPictureBox.Location = new System.Drawing.Point(446, 41);
-            this.MainTableTwoPictureBox.Name = "MainTableTwoPictureBox";
-            this.MainTableTwoPictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableTwoPictureBox.TabIndex = 1;
-            this.MainTableTwoPictureBox.TabStop = false;
-            // 
-            // MainTableThreePictureBox
-            // 
-            this.MainTableThreePictureBox.Location = new System.Drawing.Point(796, 41);
-            this.MainTableThreePictureBox.Name = "MainTableThreePictureBox";
-            this.MainTableThreePictureBox.Size = new System.Drawing.Size(270, 200);
-            this.MainTableThreePictureBox.TabIndex = 2;
-            this.MainTableThreePictureBox.TabStop = false;
-            // 
-            // MainAccountGroupBox
-            // 
-            this.MainAccountGroupBox.Location = new System.Drawing.Point(84, 322);
-            this.MainAccountGroupBox.Name = "MainAccountGroupBox";
-            this.MainAccountGroupBox.Size = new System.Drawing.Size(577, 300);
-            this.MainAccountGroupBox.TabIndex = 3;
-            this.MainAccountGroupBox.TabStop = false;
-            this.MainAccountGroupBox.Text = "Account Options";
-            // 
-            // MainInfoGroupBox
-            // 
-            this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
-            this.MainInfoGroupBox.Location = new System.Drawing.Point(703, 340);
-            this.MainInfoGroupBox.Name = "MainInfoGroupBox";
-            this.MainInfoGroupBox.Size = new System.Drawing.Size(512, 97);
-            this.MainInfoGroupBox.TabIndex = 4;
-            this.MainInfoGroupBox.TabStop = false;
-            this.MainInfoGroupBox.Text = "Info";
-            // 
-            // MainInfoLabel
-            // 
-            this.MainInfoLabel.AutoSize = true;
-            this.MainInfoLabel.Location = new System.Drawing.Point(27, 45);
-            this.MainInfoLabel.Name = "MainInfoLabel";
-            this.MainInfoLabel.Size = new System.Drawing.Size(46, 17);
-            this.MainInfoLabel.TabIndex = 0;
-            this.MainInfoLabel.Text = "label1";
-            // 
-            // LoginExitBtn
-            // 
-            this.LoginExitBtn.Location = new System.Drawing.Point(465, 486);
-            this.LoginExitBtn.Name = "LoginExitBtn";
-            this.LoginExitBtn.Size = new System.Drawing.Size(176, 45);
-            this.LoginExitBtn.TabIndex = 8;
-            this.LoginExitBtn.Text = "Exit";
-            this.LoginExitBtn.UseVisualStyleBackColor = true;
-            this.LoginExitBtn.Click += new System.EventHandler(this.LoginExitBtn_Click);
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.GamePanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
+            this.MainInfoGroupBox.ResumeLayout(false);
+            this.MainInfoGroupBox.PerformLayout();
+            this.MainTableGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).EndInit();
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
             this.LoginCreateGroupBox.ResumeLayout(false);
@@ -673,12 +683,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DealerPictureBox1)).EndInit();
-            this.MainTableGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableOnePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableTwoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainTableThreePictureBox)).EndInit();
-            this.MainInfoGroupBox.ResumeLayout(false);
-            this.MainInfoGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -709,12 +713,10 @@
         private System.Windows.Forms.GroupBox YourHandGroupBox;
         private System.Windows.Forms.GroupBox InfoGroupBox;
         private System.Windows.Forms.Label BetLabel;
-        private System.Windows.Forms.TextBox BetAmountText;
         private System.Windows.Forms.Button LeaveButton;
         private System.Windows.Forms.Button DealButton;
         private System.Windows.Forms.Button StandButton;
         private System.Windows.Forms.Button HitButton;
-        private System.Windows.Forms.Label BetLabelAmount;
         private System.Windows.Forms.Label InfoLabel;
         private System.Windows.Forms.GroupBox LoginCreateGroupBox;
         private System.Windows.Forms.Label LoginCreatePWLabel;
@@ -738,6 +740,8 @@
         private System.Windows.Forms.PictureBox MainTableTwoPictureBox;
         private System.Windows.Forms.PictureBox MainTableOnePictureBox;
         private System.Windows.Forms.Button LoginExitBtn;
+        private System.Windows.Forms.Button MinBetBtn;
+        private System.Windows.Forms.Button MaxBetBtn;
     }
 }
 
