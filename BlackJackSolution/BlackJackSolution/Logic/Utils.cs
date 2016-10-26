@@ -30,6 +30,10 @@ namespace BlackJackSolution.Logic
                     Console.WriteLine("Caught : primarykey/constraint/uniqueKey violation");
                     ex = "Account already exists";
                     return ex;
+                case 515:
+                    Console.WriteLine("Caught : Please don't send Nulls!");
+                    ex = "A value is Null";
+                    return ex;
                 default:
                     Console.WriteLine("Caught : SqlException ");
                     ex = "Something went wrong, please try again later";
