@@ -262,7 +262,6 @@ namespace BlackJackSolution.DAL
                 List<string[]> setOfGames = new List<string[]>();
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.GETBLACKJACKGAME", connection);
-                command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
 
                 if (read.HasRows)
