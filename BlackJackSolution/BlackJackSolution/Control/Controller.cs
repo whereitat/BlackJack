@@ -201,20 +201,18 @@ namespace BlackJackSolution.Control
         }
         public void InitiateTable(int nr)
         {
-            if(nr == 0)
+            int i = new int();
+            switch (nr)
             {
-                currentTable = GetBlackJackGameById(200);
+                case 0: i = 200;
+                    break;
+                case 1: i = 201;
+                    break;
+                case 2: i = 202;
+                    break;
             }
-            else if(nr == 1)
-            {
-                currentTable = GetBlackJackGameById(201);
-            }
-            else if(nr == 2)
-            {
-                currentTable = GetBlackJackGameById(202);
-            }
+            currentTable = GetBlackJackGameById(i);
         }
-        //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)
         {
             string[] dbData = db.GetAccount(accname, Crypt(pwd));
@@ -254,5 +252,5 @@ namespace BlackJackSolution.Control
             }
         }
         //Behöver commit på nya procedures för test
-    }
+    } 
 }

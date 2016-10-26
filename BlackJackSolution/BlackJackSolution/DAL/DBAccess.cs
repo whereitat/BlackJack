@@ -86,7 +86,6 @@ namespace BlackJackSolution.DAL
         {
             try
             {
-
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 int update = command.ExecuteNonQuery();
