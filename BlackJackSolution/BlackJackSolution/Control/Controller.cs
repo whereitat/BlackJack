@@ -109,15 +109,7 @@ namespace BlackJackSolution.Control
                 }
             }
             return null;
-        }
-        public int GetMinBet(Table t)
-        {
-            return t.MinBet;
-        }
-        public int GetMaxBet(Table t)
-        {
-            return t.MaxBet;
-        }
+        }    
         public List<String> GetDealerPictureStrings()
         {
             List<String> picList = new List<string>();
@@ -151,6 +143,14 @@ namespace BlackJackSolution.Control
                 }
             }
             return picList;
+        }
+        public int GetMaxBet(Table t)
+        {
+            return t.MaxBet;
+        }
+        public int GetMinBet(Table t)
+        {
+            return t.MinBet;
         }
         public List<String> GetMyPictureStrings()
         {
