@@ -17,6 +17,7 @@ namespace BlackJackSolution.Control
         private static Hand dealerHand = new Hand();
         private static DBAccess db = new DBAccess();
         private static Account user = new Account();
+        private static Table currentTable = new Table();
         
         public int CheckMyHand()
         {
@@ -144,13 +145,13 @@ namespace BlackJackSolution.Control
             }
             return picList;
         }
-        public int GetMaxBet(Table t)
+        public int GetMaxBet()
         {
-            return t.MaxBet;
+            return currentTable.MaxBet;
         }
-        public int GetMinBet(Table t)
+        public int GetMinBet()
         {
-            return t.MinBet;
+            return currentTable.MinBet;
         }
         public List<String> GetMyPictureStrings()
         {
@@ -197,6 +198,21 @@ namespace BlackJackSolution.Control
         public void HitBtnPush()
         {
             myHand.AddCard(deck);
+        }
+        public void InitiateTable(int nr)
+        {
+            if(nr == 0)
+            {
+                currentTable = GetBlackJackGameById(200);
+            }
+            else if(nr == 1)
+            {
+                currentTable = GetBlackJackGameById(201);
+            }
+            else if(nr == 2)
+            {
+                currentTable = GetBlackJackGameById(202);
+            }
         }
         //Behöver commit på nya procedures för test
         public bool Login(string accname, string pwd)

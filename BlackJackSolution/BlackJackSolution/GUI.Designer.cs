@@ -524,7 +524,6 @@
             this.MinBetBtn.Size = new System.Drawing.Size(75, 30);
             this.MinBetBtn.TabIndex = 9;
             this.MinBetBtn.UseVisualStyleBackColor = true;
-            this.MinBetBtn.Visible = false;
             this.MinBetBtn.Click += new System.EventHandler(this.MinBetBtn_Click);
             // 
             // MaxBetBtn
@@ -534,7 +533,6 @@
             this.MaxBetBtn.Size = new System.Drawing.Size(75, 30);
             this.MaxBetBtn.TabIndex = 8;
             this.MaxBetBtn.UseVisualStyleBackColor = true;
-            this.MaxBetBtn.Visible = false;
             this.MaxBetBtn.Click += new System.EventHandler(this.MaxBetBtn_Click);
             // 
             // BetLabel
@@ -755,9 +753,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.GamePanel);
+            this.Controls.Add(this.LoginPanel);
             this.Name = "GUI";
             this.Text = "Blackjack";
             this.MainPanel.ResumeLayout(false);
