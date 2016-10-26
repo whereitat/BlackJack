@@ -283,6 +283,7 @@
             this.LoginCreatePWTextBox.Name = "LoginCreatePWTextBox";
             this.LoginCreatePWTextBox.Size = new System.Drawing.Size(176, 22);
             this.LoginCreatePWTextBox.TabIndex = 2;
+            this.LoginCreatePWTextBox.PasswordChar = '*';
             // 
             // LoginCreateUnameTextBox
             // 
