@@ -8,44 +8,44 @@ namespace BlackJackSolution.Model
 {
     public class Account
     {
-        private String aname;
-        private String astatus;
-        private Double balance;
-        private String password;
+        private string aname;
+        private string astatus;
+        private double balance;
+        private string password;
 
         public Account ()
         {
 
         }
-        public void setAname(String name)
+        public void setAname(string name)
         {
             this.aname = name;
         }
-        public String getAname()
+        public string getAname()
         {
             return this.aname;
         }
-        public void setAstatus(String status)
+        public void setAstatus(string status)
         {
             this.astatus = status;
         }
-        public String getAstatus()
+        public string getAstatus()
         {
             return this.astatus;
         }
-        public void setBalance(Double amount)
+        public void setBalance(double amount)
         {
             this.balance = amount;
         }
-        public Double getBalance()
+        public double getBalance()
         {
             return this.balance;
         }
-        public void setPassword(String pw)
+        public void setPassword(string pw)
         {
             this.password = pw;
         }
-        public String getPassword()
+        public string getPassword()
         {
             return this.password;
         }
