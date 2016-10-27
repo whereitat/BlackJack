@@ -791,7 +791,6 @@
             this.DealerHandGroupBox.TabIndex = 15;
             this.DealerHandGroupBox.TabStop = false;
             this.DealerHandGroupBox.Text = "Dealer Hand";
-            this.DealerHandGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DealerPictureBox7
             // 

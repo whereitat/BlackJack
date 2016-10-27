@@ -23,7 +23,6 @@ namespace BlackJackSolution
         {
             InitializeComponent();
         }
-
         private void LogOutBtn_Click(object sender, EventArgs e)
         {
             try
@@ -43,16 +42,10 @@ namespace BlackJackSolution
                 MainInfoLabel.Text = "Could not logout";
             }
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void DealButton_Click(object sender, EventArgs e)
         {
             try {
-                clearCards();
+                ClearCards();
                 if (bet > 0)
                 {
                     control.DealButtonPush();
@@ -62,15 +55,14 @@ namespace BlackJackSolution
                     LeaveButton.Hide();
                     MinBetBtn.Hide();
                     MaxBetBtn.Hide();
-                    displayMyCards(control.GetMyPictureStrings());
-                    displayDealerCards(control.GetDealerPictureStrings());
+                    DisplayMyCards(control.GetMyPictureStrings());
+                    DisplayDealerCards(control.GetDealerPictureStrings());
                     int myHandCheck = control.CheckMyHand();
                     int dealerHandCheck = control.CheckDealerHand();
                     if (myHandCheck == 21)
                     {
-                        double winnings = bet * 1.5; 
+                        double winnings = bet * 1.5;
                         InfoLabel.Text = "BLACKJACK! You win : " + winnings + "\n" + "Please enter a new bet to play again";
-                        //UPDATE SALDO +user*1.5 -bank
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(winnings));
                         control.ClearHands();
                         bet = 0;
@@ -87,7 +79,7 @@ namespace BlackJackSolution
                     {
                         myTotal = "Your handtotal is : " + myHandCheck + "\n";
                         dealerTotal = "Dealer handtotal is : " + dealerHandCheck;
-                        betString = "You bet " + bet + "\n"; 
+                        betString = "You bet " + bet + "\n";
                         InfoLabel.Text = betString + myTotal + dealerTotal;
                     }
                 }
@@ -106,11 +98,10 @@ namespace BlackJackSolution
         {
             try
             {
-                
                 GamePanel.Hide();
                 MainPanel.Show();
                 MainAccountBLabel.Text = control.GetBalance().ToString();
-                clearCards();
+                ClearCards();
                 InfoLabel.Text = "";
                 MainInfoLabel.Text = "";
                 if (control.GetUserStatus().Equals("VIP"))
@@ -144,13 +135,13 @@ namespace BlackJackSolution
                     Console.WriteLine("User status dålig");
                 }
             }
-            catch(Exception eLB)
+            catch (Exception eLB)
             {
                 InfoLabel.Text = "Could not leave, you are trapped";
                 Console.WriteLine("Leave ERROR: " + eLB.Message);
             }
         }
-        public void clearCards()
+        public void ClearCards()
         {
             try
             {
@@ -169,12 +160,12 @@ namespace BlackJackSolution
                 DealerPictureBox6.Image = null;
                 DealerPictureBox7.Image = null;
             }
-            catch(Exception eCC)
+            catch (Exception eCC)
             {
-                Console.WriteLine("Clearcards error " + eCC.Message);
+                Console.WriteLine("ClearCards error " + eCC.Message);
             }
         }
-        public void displayMyCards(List<string> list) //måste fixa om hur suit och value läses
+        public void DisplayMyCards(List<string> list) //måste fixa om hur suit och value läses
         {
             try {
                 string picture;
@@ -257,10 +248,11 @@ namespace BlackJackSolution
             }
             catch (Exception eDMH)
             {
-                Console.WriteLine("Error : " + eDMH.Message);
+                Console.WriteLine("Error display cards : " + eDMH.Message);
+                InfoLabel.Text = "Could not load pictures";
             }
         }
-        public void displayDealerCards(List<string> list)
+        public void DisplayDealerCards(List<string> list)
         {
             try {
                 string picture;
@@ -344,9 +336,9 @@ namespace BlackJackSolution
             catch (Exception eDDH)
             {
                 Console.WriteLine("Error : " + eDDH.Message);
+                InfoLabel.Text = "Could not display cards";
             }
         }
-
         private void HitButton_Click(object sender, EventArgs e)
         {
             try {
@@ -362,11 +354,11 @@ namespace BlackJackSolution
                         dealerTotal = "Dealer handtotal is : " + dealerHandTot;
                         betString = "You bet " + bet + "\n";
                         InfoLabel.Text = betString + myTotal + dealerTotal;
-                        displayMyCards(control.GetMyPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
                     } else if (myHandTot > 21)
                     {
                         InfoLabel.Text = "You are bust, dealer wins " + bet + "\n" + "Please enter a new bet to play again";
-                        displayMyCards(control.GetMyPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
                         HitButton.Hide();
                         StandButton.Hide();
                         DealButton.Show();
@@ -375,25 +367,23 @@ namespace BlackJackSolution
                         MaxBetBtn.Show();
                         BetLabel.Show();
                         control.ClearHands();
-                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet-bet*2));
+                        control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
                         bet = 0;
-                        //UPDATE SALDO FÖR USER / BANK -user + dealer
-
                     } else if (myHandTot == 21)
                     {
                         InfoLabel.Text = "You have 21";
-                        displayMyCards(control.GetMyPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
                         HitButton.Hide();
                     }
                 }
             }
-            catch (Exception e1)
+            catch (Exception eHit)
             {
-
+                Console.WriteLine("Hit error : " + eHit.Message);
+                InfoLabel.Text = "Could not Hit";
             }
         }
-
         private void StandButton_Click(object sender, EventArgs e)
         {
             try {
@@ -405,26 +395,24 @@ namespace BlackJackSolution
                     if (Htot > Dtot)
                     {
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
-                        displayMyCards(control.GetMyPictureStrings());
-                        displayDealerCards(control.GetDealerPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
+                        DisplayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
-                        //UPDATE SALDO +user - bank
                     }
                     else if (Dtot > Htot)
                     {
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
-                        displayMyCards(control.GetMyPictureStrings());
-                        displayDealerCards(control.GetDealerPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
+                        DisplayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
-                        //UPDATE SALDO -Bank +user
                     }
                     else if (Dtot == Htot)
                     {
                         InfoLabel.Text = "The dealer has: " + Dtot + "\n" + "You have: " + Htot + "\n" + "Dealer wins: " + bet;
-                        displayMyCards(control.GetMyPictureStrings());
-                        displayDealerCards(control.GetDealerPictureStrings());
+                        DisplayMyCards(control.GetMyPictureStrings());
+                        DisplayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
                     }
@@ -432,8 +420,8 @@ namespace BlackJackSolution
                 else
                 {
                     InfoLabel.Text = "The dealer is bust: " + Dtot + "\n" + "You have: " + Htot + "\n" + "You win: " + bet;
-                    displayMyCards(control.GetMyPictureStrings());
-                    displayDealerCards(control.GetDealerPictureStrings());
+                    DisplayMyCards(control.GetMyPictureStrings());
+                    DisplayDealerCards(control.GetDealerPictureStrings());
                     control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet));
                     GameBalanceLabel.Text = control.GetBalance().ToString();
                 }
@@ -452,7 +440,6 @@ namespace BlackJackSolution
                 InfoLabel.Text = "Could not stand";
             }
         }
-
         private void LoginLoginButton_Click(object sender, EventArgs e)
         {
             try {
@@ -470,18 +457,15 @@ namespace BlackJackSolution
                     LoginCreateUnameTextBox.Clear();
                     LoginInfoLabel.Text = "";
                     MainAccountBLabel.Text = control.GetBalance().ToString();
-
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                     Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
                     MainTableOnePictureBox.Image = picSt;
                     MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableOnePictureBox.BringToFront();
-
                     Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
                     MainTableTwoPictureBox.Image = picSt2;
                     MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableTwoPictureBox.BringToFront();
-                    
                     Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
                     MainTableThreePictureBox.Image = picVIP;
                     MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -494,7 +478,7 @@ namespace BlackJackSolution
                     }
                     else if (control.GetUserStatus().Equals("STANDARD"))
                     {
-                        if(control.GetBalance() >= 500)
+                        if (control.GetBalance() >= 500)
                         {
                             MainTableTwoPictureBox.Visible = true;
                             MainTableOnePictureBox.Visible = true;
@@ -522,14 +506,12 @@ namespace BlackJackSolution
                     LoginInfoLabel.Text = "Username or Password incorrect";
                 }
             }
-            catch(Exception loginE)
+            catch (Exception loginE)
             {
                 Console.WriteLine("Login error " + loginE.Message);
                 LoginInfoLabel.Text = "Could not login with " + LoginUsernameTextBox.Text;
             }
-            
         }
-
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
         {
             try
@@ -587,20 +569,18 @@ namespace BlackJackSolution
                 MainInfoLabel.Text = "Could not load table";
             }
         }
-
         private void LoginExitBtn_Click(object sender, EventArgs e)
         {
             try
             {
                 Application.Exit();
             }
-            catch(Exception eExit)
+            catch (Exception eExit)
             {
                 Console.WriteLine("Exit btn error: " + eExit.Message);
                 LoginInfoLabel.Text = "Could not exit";
             }
         }
-
         private void MinBetBtn_Click(object sender, EventArgs e)
         {
             try
@@ -619,7 +599,7 @@ namespace BlackJackSolution
                     MaxBetBtn.Hide();
                     BetLabel.Hide();
                     DealButton.Show();
-                    clearCards();
+                    ClearCards();
                     InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
                     double bal = Double.Parse(GameBalanceLabel.Text);
                     bal -= bet;
@@ -632,7 +612,6 @@ namespace BlackJackSolution
                 Console.WriteLine("minBET ERROR: " + eMinB.Message);
             }
         }
-
         private void MaxBetBtn_Click(object sender, EventArgs e)
         {
             try
@@ -649,46 +628,52 @@ namespace BlackJackSolution
                     MaxBetBtn.Hide();
                     BetLabel.Hide();
                     DealButton.Show();
-                    clearCards();
+                    ClearCards();
                     InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
                     double bal = Double.Parse(GameBalanceLabel.Text);
                     bal -= bet;
                     GameBalanceLabel.Text = bal.ToString();
                 }
             }
-            catch(Exception eMaxB)
+            catch (Exception eMaxB)
             {
                 InfoLabel.Text = "Could not bet this amount";
                 Console.WriteLine("MAXBET ERROR: " + eMaxB.Message);
             }
         }
-
         private void LoginCreateCreateBtn_Click(object sender, EventArgs e)
         {
-            if (LoginCreatePWTextBox.Text.Length > 2)
+            try
             {
-                string acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
-                if (acc.Equals("True"))
+                if (LoginCreatePWTextBox.Text.Length > 2)
                 {
-                    LoginInfoLabel.Text = "Account created";
-                    LoginCreateGroupBox.Hide();
-                    LoginCreatePWTextBox.Clear();
-                    LoginCreateUnameTextBox.Clear();
+                    string acc = control.CreateAccount(LoginCreateUnameTextBox.Text, LoginCreatePWTextBox.Text);
+                    if (acc.Equals("True"))
+                    {
+                        LoginInfoLabel.Text = "Account created";
+                        LoginCreateGroupBox.Hide();
+                        LoginCreatePWTextBox.Clear();
+                        LoginCreateUnameTextBox.Clear();
+                    }
+                    else
+                    {
+                        LoginInfoLabel.Text = "Account name already in use";
+                        LoginCreatePWTextBox.Clear();
+                        LoginCreateUnameTextBox.Clear();
+                    }
                 }
                 else
                 {
-                    LoginInfoLabel.Text = "Account name already in use";
+                    LoginInfoLabel.Text = "For your safety" + "\n" + "your password must be atleast 3 characters";
                     LoginCreatePWTextBox.Clear();
-                    LoginCreateUnameTextBox.Clear();
                 }
             }
-            else
+            catch (Exception eClogin)
             {
-                LoginInfoLabel.Text = "For your safety" + "\n" + "your password must be atleast 3 characters";
-                LoginCreatePWTextBox.Clear();
+                Console.WriteLine("Create account error : " + eClogin.Message);
+                LoginInfoLabel.Text = "Could not create account";
             }
         }
-
         private void LoginCreateAccBtn_Click(object sender, EventArgs e)
         {
             LoginCreateGroupBox.Show();
@@ -696,90 +681,38 @@ namespace BlackJackSolution
 
         private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
         {
-            string check = control.DeleteAccount();
-            if (check.Equals("True"))
+            try
             {
-                MainPanel.Hide();
-                LoginPanel.Show();
-                LoginInfoLabel.Text = "Account deleted";
-                MainInfoLabel.Text = "";
+                string check = control.DeleteAccount();
+                if (check.Equals("True"))
+                {
+                    MainPanel.Hide();
+                    LoginPanel.Show();
+                    LoginInfoLabel.Text = "Account deleted";
+                    MainInfoLabel.Text = "";
+                }
+                else
+                {
+                    MainInfoLabel.Text = "Could not delete account: " + check;
+                }
             }
-            else
+            catch (Exception eCreateB)
             {
-                MainInfoLabel.Text = "Could not delete account: " + check;
+                Console.WriteLine("Create button error:" + eCreateB.Message);
+                LoginInfoLabel.Text = "Could not load create info";
             }
         }
         private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
-            {
-                if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
+            try {
+                if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
                 {
-                    string check = control.AddFunds(double.Parse(MainAccountFundsTF.Text));
-                    if (check.Equals("True"))
+                    if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
                     {
-                        MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
-                        if (control.GetUserStatus().Equals("VIP"))
-                        {
-                            MainTableThreePictureBox.Visible = true;
-                            MainTableTwoPictureBox.Visible = true;
-                            MainTableOnePictureBox.Visible = true;
-                        }
-                        else if (control.GetUserStatus().Equals("STANDARD"))
-                        {
-                            if (control.GetBalance() >= 500)
-                            {
-                                MainTableTwoPictureBox.Visible = true;
-                                MainTableOnePictureBox.Visible = true;
-                                MainTableThreePictureBox.Visible = false;
-                            }
-                            else
-                            {
-                                MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
-                                MainTableTwoPictureBox.Visible = false;
-                                MainTableOnePictureBox.Visible = false;
-                                MainTableThreePictureBox.Visible = false;
-                            }
-                        }
-                        else
-                        {
-                            MainInfoLabel.Text = "Hello Bank";
-                            MainTableTwoPictureBox.Visible = false;
-                            MainTableOnePictureBox.Visible = false;
-                            MainTableThreePictureBox.Visible = false;
-                            Console.WriteLine("User status dålig");
-                        }
-                    }
-                    else
-                    {
-                        MainInfoLabel.Text = "Could not add funds: " + "\n" + check;
-                    }
-                    MainAccountBLabel.Text = control.GetBalance().ToString();
-                    MainAccountFundsTF.Clear();
-                }
-                else
-                {
-                    MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
-                }
-            }
-            else
-            {
-                MainInfoLabel.Text = "Please enter a number, field may not be empty.";
-            }
-        }
-        private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
-        {
-
-            if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
-            {
-                if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
-                {
-                    if (control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
-                    {
-                        string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
+                        string check = control.AddFunds(double.Parse(MainAccountFundsTF.Text));
                         if (check.Equals("True"))
                         {
-                            MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
+                            MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
                             if (control.GetUserStatus().Equals("VIP"))
                             {
                                 MainTableThreePictureBox.Visible = true;
@@ -796,7 +729,7 @@ namespace BlackJackSolution
                                 }
                                 else
                                 {
-                                    MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                                    MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
                                     MainTableTwoPictureBox.Visible = false;
                                     MainTableOnePictureBox.Visible = false;
                                     MainTableThreePictureBox.Visible = false;
@@ -813,27 +746,99 @@ namespace BlackJackSolution
                         }
                         else
                         {
-                            MainInfoLabel.Text = "Could not withdraw funds: " + check;
+                            MainInfoLabel.Text = "Could not add funds: " + "\n" + check;
                         }
+                        MainAccountBLabel.Text = control.GetBalance().ToString();
+                        MainAccountFundsTF.Clear();
                     }
                     else
                     {
-                        MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";
+                        MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
                     }
                 }
                 else
                 {
-                    MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
+                    MainInfoLabel.Text = "Please enter a number, field may not be empty.";
                 }
             }
-            else
+            catch (Exception eAddf)
             {
-                MainInfoLabel.Text = "Please enter a number, field may not be empty.";
+                Console.WriteLine("Add fund error" + eAddf.Message);
+                MainInfoLabel.Text = "Could not add funds";
             }
-
-            MainAccountBLabel.Text = control.GetBalance().ToString();
-            MainAccountFundsTF.Clear();
         }
-
+        private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
+        {
+            try {
+                if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
+                {
+                    if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
+                    {
+                        if (control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
+                        {
+                            string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
+                            if (check.Equals("True"))
+                            {
+                                MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
+                                if (control.GetUserStatus().Equals("VIP"))
+                                {
+                                    MainTableThreePictureBox.Visible = true;
+                                    MainTableTwoPictureBox.Visible = true;
+                                    MainTableOnePictureBox.Visible = true;
+                                }
+                                else if (control.GetUserStatus().Equals("STANDARD"))
+                                {
+                                    if (control.GetBalance() >= 500)
+                                    {
+                                        MainTableTwoPictureBox.Visible = true;
+                                        MainTableOnePictureBox.Visible = true;
+                                        MainTableThreePictureBox.Visible = false;
+                                    }
+                                    else
+                                    {
+                                        MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                                        MainTableTwoPictureBox.Visible = false;
+                                        MainTableOnePictureBox.Visible = false;
+                                        MainTableThreePictureBox.Visible = false;
+                                    }
+                                }
+                                else
+                                {
+                                    MainInfoLabel.Text = "Hello Bank";
+                                    MainTableTwoPictureBox.Visible = false;
+                                    MainTableOnePictureBox.Visible = false;
+                                    MainTableThreePictureBox.Visible = false;
+                                    Console.WriteLine("User status dålig");
+                                }
+                            }
+                            else
+                            {
+                                MainInfoLabel.Text = "Could not withdraw funds: " + check;
+                            }
+                        }
+                        else
+                        {
+                            MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";
+                        }
+                    }
+                    else
+                    {
+                        MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
+                    }
+                }
+                else
+                {
+                    MainInfoLabel.Text = "Please enter a number, field may not be empty.";
+                }
+                MainAccountBLabel.Text = control.GetBalance().ToString();
+                MainAccountFundsTF.Clear();
+            }
+            catch(Exception eWithdraw)
+            {
+                Console.WriteLine("Withdraw error: " + eWithdraw.Message);
+                MainInfoLabel.Text = "Could not withdraw funds";
+            }
+       }
+            
     }
 }
