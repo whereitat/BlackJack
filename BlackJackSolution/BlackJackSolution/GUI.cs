@@ -705,7 +705,7 @@ namespace BlackJackSolution
                         if (check.Equals("True"))
                         {
                             MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
-                            if (control.GetBalance() <= 50000)
+                            if (control.GetBalance() < 50000)
                             {
                                 MainTableThreePictureBox.Visible = false;
                             }
