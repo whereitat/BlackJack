@@ -96,7 +96,8 @@ namespace BlackJackSolution
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                InfoLabel.Text = "Could not deal";
+                Console.WriteLine("Deal Error : " + ex.Message);
             }
         }
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -116,7 +117,8 @@ namespace BlackJackSolution
             }
             catch(Exception eLB)
             {
-                //Fattas
+                MainInfoLabel.Text = "Could not delete account";
+                Console.WriteLine("Delete ERROR: " + eLB.Message);
             }
         }
         public void clearCards()
