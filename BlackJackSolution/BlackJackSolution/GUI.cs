@@ -103,8 +103,14 @@ namespace BlackJackSolution
         {
             try
             {
+                
                 GamePanel.Hide();
                 MainPanel.Show();
+                MainAccountBLabel.Text = control.GetBalance().ToString();
+                if (control.GetBalance() <= 50000)
+                {
+                    MainTableThreePictureBox.Visible = false;
+                }
             }
             catch(Exception eLB)
             {
@@ -477,6 +483,24 @@ namespace BlackJackSolution
             MinBetBtn.Text = control.GetMinBet().ToString();
             GameBalanceLabel.Text = control.GetBalance().ToString();
         }
+        private void MainTableTwoPictureBox_Click(object sender, EventArgs e)
+        {
+            MainPanel.Hide();
+            GamePanel.Show();
+            control.InitiateTable(1);
+            MaxBetBtn.Text = control.GetMaxBet().ToString();
+            MinBetBtn.Text = control.GetMinBet().ToString();
+            GameBalanceLabel.Text = control.GetBalance().ToString();
+        }
+        private void MainTableThreePictureBox_Click(object sender, EventArgs e)
+        {
+            MainPanel.Hide();
+            GamePanel.Show();
+            control.InitiateTable(2);
+            MaxBetBtn.Text = control.GetMaxBet().ToString();
+            MinBetBtn.Text = control.GetMinBet().ToString();
+            GameBalanceLabel.Text = control.GetBalance().ToString();
+        }
 
         private void LoginExitBtn_Click(object sender, EventArgs e)
         {
@@ -542,10 +566,10 @@ namespace BlackJackSolution
 
         private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
         {
-            //ta bort konto
-            //rensa user
+            
             MainPanel.Hide();
             LoginPanel.Show();
+            //Oklart
         }
         private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {
@@ -553,6 +577,10 @@ namespace BlackJackSolution
             if (check.Equals("True"))
             {
                 MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
+                if (control.GetBalance() >= 50000)
+                {
+                    MainTableThreePictureBox.Visible = true;
+                }
             }
             else
             {
@@ -565,16 +593,27 @@ namespace BlackJackSolution
         private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
         {
             string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
-            if (check.Equals("True"))
-            {
-                MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
-            }
+            if(control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
+                if (check.Equals("True"))
+                {
+                    MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
+                    if (control.GetBalance() <= 50000)
+                    {
+                        MainTableThreePictureBox.Visible = false;
+                    }
+                }
+                else
+                {
+                    MainInfoLabel.Text = "Could not withdraw funds " + check;
+                }
             else
             {
-                MainInfoLabel.Text = "Could not withdraw funds " + check;
+                MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";
             }
             MainAccountBLabel.Text = control.GetBalance().ToString();
             MainAccountFundsTF.Clear();
         }
+
+
     }
 }
