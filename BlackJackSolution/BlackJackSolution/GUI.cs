@@ -676,9 +676,17 @@ namespace BlackJackSolution
         }
         private void LoginCreateAccBtn_Click(object sender, EventArgs e)
         {
-            LoginCreateGroupBox.Show();
+            try {
+                LoginCreateGroupBox.Show();
+                LoginPasswordTextBox.Clear();
+                LoginUsernameTextBox.Clear();
+            }
+            catch(Exception eLoginC)
+            {
+                Console.WriteLine("CreateAccount load error:" + eLoginC.Message);
+                LoginInfoLabel.Text = "Could not load create account info";
+            }
         }
-
         private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
         {
             try
@@ -839,6 +847,5 @@ namespace BlackJackSolution
                 MainInfoLabel.Text = "Could not withdraw funds";
             }
        }
-            
     }
 }
