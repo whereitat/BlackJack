@@ -121,7 +121,7 @@ namespace BlackJackSolution
                 }
                 else if (control.GetUserStatus().Equals("STANDARD"))
                 {
-                    if (control.GetBalance() > 500)
+                    if (control.GetBalance() >= 500)
                     {
                         MainTableTwoPictureBox.Visible = true;
                         MainTableOnePictureBox.Visible = true;
@@ -494,7 +494,7 @@ namespace BlackJackSolution
                     }
                     else if (control.GetUserStatus().Equals("STANDARD"))
                     {
-                        if(control.GetBalance() > 500)
+                        if(control.GetBalance() >= 500)
                         {
                             MainTableTwoPictureBox.Visible = true;
                             MainTableOnePictureBox.Visible = true;
@@ -727,7 +727,7 @@ namespace BlackJackSolution
                         }
                         else if (control.GetUserStatus().Equals("STANDARD"))
                         {
-                            if (control.GetBalance() > 500)
+                            if (control.GetBalance() >= 500)
                             {
                                 MainTableTwoPictureBox.Visible = true;
                                 MainTableOnePictureBox.Visible = true;
@@ -788,7 +788,7 @@ namespace BlackJackSolution
                             }
                             else if (control.GetUserStatus().Equals("STANDARD"))
                             {
-                                if (control.GetBalance() > 500)
+                                if (control.GetBalance() >= 500)
                                 {
                                     MainTableTwoPictureBox.Visible = true;
                                     MainTableOnePictureBox.Visible = true;

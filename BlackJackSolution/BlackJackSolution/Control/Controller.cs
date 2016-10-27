@@ -22,6 +22,10 @@ namespace BlackJackSolution.Control
         public string AddFunds(double amount)
         {
             string check = db.DepositFunds(user.getAname(), amount);
+            if(GetBalance() >= 50000)
+            {
+                user.setAstatus("VIP");
+            }
             return check;
         }
         public int CheckMyHand()
@@ -136,6 +140,14 @@ namespace BlackJackSolution.Control
             if (accB[2] != null)
             {
                 retvalue = Int32.Parse(accB[2]);
+                if(retvalue >= 50000)
+                {
+                    user.setAstatus("VIP");
+                }
+                else
+                {
+                    user.setAstatus("STANDARD");
+                }
                 return retvalue;
             }
             else
@@ -333,6 +345,10 @@ namespace BlackJackSolution.Control
         public string WithdrawFunds(double amount)
         {
             string check = db.WithdrawFunds(user.getAname(), amount);
+            if(GetBalance() < 50000)
+            {
+                user.setAstatus("STANDARD");
+            }
             return check;
         }
     } 
