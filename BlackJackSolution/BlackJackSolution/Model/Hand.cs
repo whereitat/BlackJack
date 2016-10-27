@@ -27,27 +27,79 @@ namespace BlackJackSolution.Model
         {
             return this.total;
         }
-        public void AddCard(Deck deck)
+        public void AddCard(Deck deck, Hand handen)
         {
-            if (total < 21) //Om totalen är mindre än 21 lägg till nytt kort och kolla efter ess.
+            int handTot = 0;
+            if (handen.getTotal() < 21) //Om totalen är mindre än 21 lägg till nytt kort och kolla efter ess.
             {               //Om total är 21 ska det inte kunna gå att lägga till kort
                 Card cardToAdd = deck.cards[0];
-                handCards.Add(cardToAdd);
+                handen.handCards.Add(cardToAdd);
                 deck.cards.RemoveAt(0);
-                total = CheckHand();
+                handen.setTotal(0);
+                
+                for (int i = 0; i < handen.handCards.Count; i++)
+                {
+                    if (handen.handCards[i].getValue() > 11)
+                    {
+                        handTot += 10;
+                    }
+                    else
+                    {
+                        handTot += handen.handCards[i].getValue();
+                    }
+                    if (handTot > 21)
+                    {
+                        Console.WriteLine("Johan");
+                        for (int j = 0; j < handen.handCards.Count; j++)
+                        {
+                            if (handen.handCards[j].getValue() == 11)
+                            {
+                                handen.handCards[j].setValue(1);
+                                handTot += handCards[j].getValue() - 11;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-        }
-        public void RemoveCard()
-        {
-            handCards.RemoveAt(handCards.Count-1);
-            total = CheckHand();
+            handen.setTotal(handTot);
         }
         public void clearHand()
         {
-            handCards.Clear();
+            this.handCards.Clear();
             this.total = 0;
         }
-        public int CheckHand()
+        public void CheckHand(Hand handen)
+        {
+            handen.setTotal(0);
+            int handTot = 0;
+            for(int i = 0; i < handen.handCards.Count; i++)
+            {
+                if(handen.handCards[i].getValue() > 11)
+                {
+                    handTot += 10;
+                }
+                else
+                {
+                    handTot += handen.handCards[i].getValue();
+                }
+                if (handen.getTotal() > 21)
+                {
+                    Console.WriteLine("Johan");
+                    for (int j = 0; j < handen.handCards.Count; j++)
+                    {
+                        if (handen.handCards[j].getValue() == 11)
+                        {
+                            handen.handCards[j].setValue(1);
+                            handTot += handCards[j].getValue() - 11;
+                            break;
+                        }
+                    }
+                }
+                handen.setTotal(handTot);
+            }
+        }
+        public int CheckHand2()
         {
             int handTotal = 0;
             for (int i = 0; i < handCards.Count; i++)

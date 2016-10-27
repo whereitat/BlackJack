@@ -98,9 +98,9 @@ namespace BlackJackSolution.Control
                 {
                     CreateDeck();
                 }
-                myHand.AddCard(deck);
-                myHand.AddCard(deck);
-                dealerHand.AddCard(deck);
+                myHand.AddCard(deck, myHand);
+                myHand.AddCard(deck, myHand);
+                dealerHand.AddCard(deck, dealerHand);
 
             }
             catch (Exception e)
@@ -210,7 +210,7 @@ namespace BlackJackSolution.Control
                     }
                     else if (myHand.handCards[i].getValue() == 1)
                     {
-                        picture = "_11_" + dealerHand.handCards[i].getSuit();
+                        picture = "_11_" + myHand.handCards[i].getSuit();
                         picList.Add(picture);
                     }
                     else if (myHand.handCards[i].getValue() == 10)
@@ -261,7 +261,7 @@ namespace BlackJackSolution.Control
             {
                 CreateDeck();
             }
-            myHand.AddCard(deck);
+            myHand.AddCard(deck, myHand);
         }
         public void InitiateTable(int nr)
         {
@@ -317,7 +317,7 @@ namespace BlackJackSolution.Control
                 {
                     CreateDeck();
                 }
-                dealerHand.AddCard(deck);
+                dealerHand.AddCard(deck, dealerHand);
             }
         }
         public string WithdrawFunds(double amount)
