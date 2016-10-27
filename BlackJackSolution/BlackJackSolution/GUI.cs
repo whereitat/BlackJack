@@ -621,9 +621,9 @@ namespace BlackJackSolution
             {
                 if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
                 {
-                    string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
                     if (control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
                     {
+                        string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
                         if (check.Equals("True"))
                         {
                             MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
