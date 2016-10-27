@@ -22,14 +22,6 @@ namespace BlackJackSolution
 
         static void Main(string[] args)
         {
-            //Console.WriteLine("test");
-            //string s = db.WithdrawFunds("Gustav Hedin", 20000);
-            //Console.WriteLine(s);
-
-            //string a = db.DepositFunds("Mattias West", 5000); 
-            //db.CreateAccount("1234567890123456789012345", "lol");             //funkar
-            //db.DeleteAccount("Alex Eiring", "lol");           //funkar
-
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -43,6 +35,14 @@ namespace BlackJackSolution
             {
                 Console.WriteLine(deckTest.cards[i].value);
             }
+
+            //Console.WriteLine("test");
+            //string s = db.WithdrawFunds("Gustav Hedin", 20000);
+            //Console.WriteLine(s);
+
+            //string a = db.DepositFunds("Mattias West", 5000); 
+            //db.CreateAccount("1234567890123456789012345", "password");
+            //db.DeleteAccount("Alex Eiring", "password");           
 
             Console.WriteLine(" Antal kort: " + deckTest.cards.Count);
             Hand dealerhand = new Hand();
