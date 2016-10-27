@@ -458,7 +458,7 @@ namespace BlackJackSolution
                     LoginInfoLabel.Text = "";
                     MainAccountBLabel.Text = control.GetBalance().ToString();
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
-                    Bitmap picSt = (Bitmap)rm.GetObject("_Standard_Table_Btn_redux_1");
+                    Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn_redux_1");
                     MainTableOnePictureBox.Image = picSt;
                     MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableOnePictureBox.BringToFront();
