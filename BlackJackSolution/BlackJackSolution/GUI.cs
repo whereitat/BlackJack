@@ -458,15 +458,15 @@ namespace BlackJackSolution
                     LoginInfoLabel.Text = "";
                     MainAccountBLabel.Text = control.GetBalance().ToString();
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
-                    Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    Bitmap picSt = (Bitmap)rm.GetObject("_Standard_Table_Btn_redux_1");
                     MainTableOnePictureBox.Image = picSt;
                     MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableOnePictureBox.BringToFront();
-                    Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
+                    Bitmap picSt2 = (Bitmap)rm.GetObject("_Standard_Table_Btn_redux_2");
                     MainTableTwoPictureBox.Image = picSt2;
                     MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableTwoPictureBox.BringToFront();
-                    Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
+                    Bitmap picVIP = (Bitmap)rm.GetObject("_VIP_Table_Btn_redux");
                     MainTableThreePictureBox.Image = picVIP;
                     MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableThreePictureBox.BringToFront();
