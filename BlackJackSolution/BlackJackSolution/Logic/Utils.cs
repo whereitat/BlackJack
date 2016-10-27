@@ -40,12 +40,5 @@ namespace BlackJackSolution.Logic
                     return ex;
             }
         }
-
-        public static string ExceptionEUtility(Exception e)
-        {
-            Console.WriteLine("Caught : " + e.Message);
-            string exc = e.Message;
-            return exc;
-        }
     }
 }

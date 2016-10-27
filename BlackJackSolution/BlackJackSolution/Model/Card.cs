@@ -16,19 +16,19 @@ namespace BlackJackSolution.Model
         {
 
         }
-        public void setValue(int v)
+        public void SetValue(int v)
         {
             this.value = v;
         }
-        public int getValue()
+        public int GetValue()
         {
             return this.value;
         }
-        public void setCardId(string id)
+        public void SetCardId(string id)
         {
             this.cardId = id;
         }
-        public string getCardId()
+        public string GetCardId()
         {
             return this.cardId;
         }
@@ -36,7 +36,7 @@ namespace BlackJackSolution.Model
         {
             this.suit = s;
         }
-        public string getSuit()
+        public string GetSuit()
         {
             return this.suit;
         }

@@ -39,22 +39,22 @@ namespace BlackJackSolution.Model
                 
                 for (int i = 0; i < handen.handCards.Count; i++)
                 {
-                    if (handen.handCards[i].getValue() > 11)
+                    if (handen.handCards[i].GetValue() > 11)
                     {
                         handTot += 10;
                     }
                     else
                     {
-                        handTot += handen.handCards[i].getValue();
+                        handTot += handen.handCards[i].GetValue();
                     }
                     if (handTot > 21)
                     {
                         for (int j = 0; j < handen.handCards.Count; j++)
                         {
-                            if (handen.handCards[j].getValue() == 11)
+                            if (handen.handCards[j].GetValue() == 11)
                             {
-                                handen.handCards[j].setValue(1);
-                                handTot += handCards[j].getValue() - 11;
+                                handen.handCards[j].SetValue(1);
+                                handTot += handCards[j].GetValue() - 11;
                                 break;
                             }
                         }
@@ -74,22 +74,22 @@ namespace BlackJackSolution.Model
             int handTot = 0;
             for(int i = 0; i < handen.handCards.Count; i++)
             {
-                if(handen.handCards[i].getValue() > 11)
+                if(handen.handCards[i].GetValue() > 11)
                 {
                     handTot += 10;
                 }
                 else
                 {
-                    handTot += handen.handCards[i].getValue();
+                    handTot += handen.handCards[i].GetValue();
                 }
                 if (handen.getTotal() > 21)
                 {
                     for (int j = 0; j < handen.handCards.Count; j++)
                     {
-                        if (handen.handCards[j].getValue() == 11)
+                        if (handen.handCards[j].GetValue() == 11)
                         {
-                            handen.handCards[j].setValue(1);
-                            handTot += handCards[j].getValue() - 11;
+                            handen.handCards[j].SetValue(1);
+                            handTot += handCards[j].GetValue() - 11;
                             break;
                         }
                     }
@@ -102,22 +102,22 @@ namespace BlackJackSolution.Model
             int handTotal = 0;
             for (int i = 0; i < handCards.Count; i++)
             {
-                if (handCards[i].getValue() > 11)
+                if (handCards[i].GetValue() > 11)
                 {
                     handTotal += 10;
                 }
                 else
                 {
-                    handTotal += handCards[i].getValue();
+                    handTotal += handCards[i].GetValue();
                 }
                 if (handTotal > 21)
                 {
                     for (int j = 0; j < handCards.Count; j++)
                     {
-                        if (handCards[j].getValue() == 11)
+                        if (handCards[j].GetValue() == 11)
                         {
-                            handCards[j].setValue(1);
-                            handTotal += handCards[j].getValue() - 11;
+                            handCards[j].SetValue(1);
+                            handTotal += handCards[j].GetValue() - 11;
                             break;
                         }
                     }

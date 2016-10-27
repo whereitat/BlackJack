@@ -37,7 +37,6 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.SHUFFLECARDS", connection);
                 SqlDataReader read = command.ExecuteReader();
-
                 if (read.HasRows)
                 {
                     while (read.Read())
@@ -60,7 +59,6 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
         public string CreateAccount(string aname, string password)
         {
             try
@@ -68,21 +66,18 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[ADDUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "True";
-
-                
-                    if (read.HasRows)
+                string value = "True";
+                if (read.HasRows)
+                {
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
-                            a = read.GetInt32(0).ToString();
-                        }
-                    
-                    return a;
+                        value = read.GetInt32(0).ToString();
+                    }                    
+                return value;
                 }
                 else
                 {
-                    return a;
+                    return value;
                 }
             }
             catch (Exception e)
@@ -91,7 +86,6 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
         public string DeleteAccount(string aname, string password)
         {
             try
@@ -99,21 +93,19 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "True";
-
-                
-                    if (read.HasRows)
+                string value = "True";
+                if (read.HasRows)
+                {
+                    while (read.Read())
                     {
-                        while (read.Read())
-                        {
-                            a = read.GetString(0);
-                        }
+                        value = read.GetString(0);
+                    }
                     
-                    return a;
+                return value;
                 }
                 else
                 {
-                    return a;
+                    return value;
                 }
             }
             catch (Exception e)
@@ -122,7 +114,6 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
         public string[] GetAccount(string aname, string password)
         {
             try
@@ -131,7 +122,6 @@ namespace BlackJackSolution.DAL
                 SqlCommand command = new SqlCommand("EXEC [dbo].[GETUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 SqlDataReader read = command.ExecuteReader();
                 string[] result = new string[4];
-
                 if (read.HasRows)
                 {
                     if (read.FieldCount > 1)
@@ -168,21 +158,20 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[WITHDRAWFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "False";
-
+                string value = "False";
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
-                        a = read.GetString(0);
-                }
+                        value = read.GetString(0);
+                    }
                 }
                 else
                 {
-                    a = "True";
-                    return a;
+                    value = "True";
+                    return value;
                 }
-                return a;
+                return value;
             }
             catch (Exception e)
             {
@@ -197,21 +186,20 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DEPOSITFUNDS] @USERNAME = '" + aname + "', @AMOUNT = " + amount, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "False";
-
+                string value = "False";
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
-                        a = read.GetString(0);
+                        value = read.GetString(0);
                     }
                 }
                 else
                 {
-                    a = "True";
-                    return a;
+                    value = "True";
+                    return value;
                 }
-                return a;
+                return value;
             }
             catch (Exception e)
             {
@@ -219,38 +207,30 @@ namespace BlackJackSolution.DAL
                 return null;
             }
         }
-
-        public int CreateGameRound(int bet, int result, string aname, int sessionid) //KLAR ISH, kanske vill förfina koden
+        public int CreateGameRound(int bet, int result, string aname, int sessionid)
         {
             try
             {
-
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[CREATEGAMEROUND] @BET = " + bet + ", @RESULT = " + result + ", @USERNAME = '" + aname + "', @SESSIONID = " + sessionid, connection);
                 SqlDataReader read = command.ExecuteReader();
                 int gameid = 0;
-                //if(read.GetInt32(read.GetOrdinal("ERROR")) > 0)
-                //{
-                //    return gameid;
-                //}
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
                         gameid = read.GetInt32(0);
                         return gameid;
-                }
+                    }
                 }
                 return gameid;
             }
             catch (Exception e)
             {
-                //string ex = Logic.Utils.SqlExceptionUtility(e);
-                //return ex;
+                Console.WriteLine(e.Message);
                 return 0;
             }
         }
-
         public List<string[]> GetBlackJackGames()
         {
             try
@@ -259,7 +239,6 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.GETBLACKJACKGAME", connection);
                 SqlDataReader read = command.ExecuteReader();
-
                 if (read.HasRows)
                 {
                     while (read.Read())
@@ -278,14 +257,12 @@ namespace BlackJackSolution.DAL
                 }
                 return setOfGames;
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.Message + " " + ex);
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
-
         public string GameTransaction(string aname, int gameid)
         {
             try
@@ -293,23 +270,19 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC dbo.GAMETRANSACTION @USERNAME = '" + aname + "', @GAMEID = " + gameid, connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "Transaction completed";
-
+                string value = "Transaction completed";
                 if (read.HasRows)
                 {
                     while (read.Read())
-                {
-                        a = read.GetInt32(0).ToString();
+                    {
+                        value = read.GetInt32(0).ToString();
                     }
-
-                    return a;
+                    return value;
                 }
                 else
                 {
-                    return a;
+                    return value;
                 }
-
-
             }
             catch (Exception e)
             {

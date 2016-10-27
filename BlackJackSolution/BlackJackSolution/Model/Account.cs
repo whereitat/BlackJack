@@ -17,35 +17,35 @@ namespace BlackJackSolution.Model
         {
 
         }
-        public void setAname(string name)
+        public void SetAname(string name)
         {
             this.aname = name;
         }
-        public string getAname()
+        public string GetAname()
         {
             return this.aname;
         }
-        public void setAstatus(string status)
+        public void SetAstatus(string status)
         {
             this.astatus = status;
         }
-        public string getAstatus()
+        public string GetAstatus()
         {
             return this.astatus;
         }
-        public void setBalance(double amount)
+        public void SetBalance(double amount)
         {
             this.balance = amount;
         }
-        public double getBalance()
+        public double GetBalance()
         {
             return this.balance;
         }
-        public void setPassword(string pw)
+        public void SetPassword(string pw)
         {
             this.password = pw;
         }
-        public string getPassword()
+        public string GetPassword()
         {
             return this.password;
         }
