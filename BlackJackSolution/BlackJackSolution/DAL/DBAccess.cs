@@ -99,7 +99,7 @@ namespace BlackJackSolution.DAL
                 SqlConnection connection = Connect();
                 SqlCommand command = new SqlCommand("EXEC [dbo].[DELETEUSER] @USERNAME = '" + aname + "', @PASSWORD = '" + password + "'", connection);
                 SqlDataReader read = command.ExecuteReader();
-                string a = "User deleted";
+                string a = "True";
 
                 
                     if (read.HasRows)

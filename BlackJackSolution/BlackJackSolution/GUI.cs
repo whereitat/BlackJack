@@ -107,6 +107,8 @@ namespace BlackJackSolution
                 GamePanel.Hide();
                 MainPanel.Show();
                 MainAccountBLabel.Text = control.GetBalance().ToString();
+                clearCards();
+                InfoLabel.Text = "";
                 if (control.GetBalance() <= 50000)
                 {
                     MainTableThreePictureBox.Visible = false;
@@ -566,10 +568,17 @@ namespace BlackJackSolution
 
         private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
         {
-            
-            MainPanel.Hide();
-            LoginPanel.Show();
-            //Oklart
+            string check = control.DeleteAccount();
+            if (check.Equals("True"))
+            {
+                MainPanel.Hide();
+                LoginPanel.Show();
+                LoginInfoLabel.Text = "Account deleted";
+            }
+            else
+            {
+                MainInfoLabel.Text = "Could not delete account: " + check;
+            }
         }
         private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {

@@ -72,9 +72,14 @@ namespace BlackJackSolution.Control
             return db.CreateAccount(aname, Crypt(password));
         }
 
-        public string DeleteAccount(string aname, string password)
+        public string DeleteAccount()
         {
-            return db.DeleteAccount(aname, Crypt(password));
+            string check = db.DeleteAccount(user.getAname(), user.getPassword());
+            if (check.Equals("True"))
+            {
+                LogOut();
+            }
+            return check;
         }
         public void Transaction(int bet, int result)
         {
