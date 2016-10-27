@@ -49,7 +49,6 @@ namespace BlackJackSolution.Model
                     }
                     if (handTot > 21)
                     {
-                        Console.WriteLine("Johan");
                         for (int j = 0; j < handen.handCards.Count; j++)
                         {
                             if (handen.handCards[j].getValue() == 11)
