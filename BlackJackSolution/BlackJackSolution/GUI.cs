@@ -35,10 +35,12 @@ namespace BlackJackSolution
                 betString = "";
                 myTotal = "";
                 dealerTotal = "";
+                MainInfoLabel.Text = "";
             }
             catch (Exception eLOB)
             {
-                //Fattas
+                Console.WriteLine("Logout ERROR" + eLOB.Message);
+                MainInfoLabel.Text = "Could not logout";
             }
         }
 
@@ -619,6 +621,7 @@ namespace BlackJackSolution
                 MainPanel.Hide();
                 LoginPanel.Show();
                 LoginInfoLabel.Text = "Account deleted";
+                MainInfoLabel.Text = "";
             }
             else
             {

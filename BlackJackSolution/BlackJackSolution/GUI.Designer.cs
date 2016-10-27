@@ -221,9 +221,9 @@
             this.amountLabel.ForeColor = System.Drawing.Color.White;
             this.amountLabel.Location = new System.Drawing.Point(308, 52);
             this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(60, 17);
+            this.amountLabel.Size = new System.Drawing.Size(65, 17);
             this.amountLabel.TabIndex = 8;
-            this.amountLabel.Text = "Amount:";
+            this.amountLabel.Text = "Amount *";
             // 
             // MainAccountBLabel
             // 
@@ -417,9 +417,9 @@
             this.LoginCreatePWLabel.ForeColor = System.Drawing.Color.White;
             this.LoginCreatePWLabel.Location = new System.Drawing.Point(56, 146);
             this.LoginCreatePWLabel.Name = "LoginCreatePWLabel";
-            this.LoginCreatePWLabel.Size = new System.Drawing.Size(69, 17);
+            this.LoginCreatePWLabel.Size = new System.Drawing.Size(78, 17);
             this.LoginCreatePWLabel.TabIndex = 4;
-            this.LoginCreatePWLabel.Text = "Password";
+            this.LoginCreatePWLabel.Text = "Password *";
             // 
             // LoginCreateUsernameLabel
             // 
@@ -427,9 +427,9 @@
             this.LoginCreateUsernameLabel.ForeColor = System.Drawing.Color.White;
             this.LoginCreateUsernameLabel.Location = new System.Drawing.Point(56, 69);
             this.LoginCreateUsernameLabel.Name = "LoginCreateUsernameLabel";
-            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(73, 17);
+            this.LoginCreateUsernameLabel.Size = new System.Drawing.Size(82, 17);
             this.LoginCreateUsernameLabel.TabIndex = 3;
-            this.LoginCreateUsernameLabel.Text = "Username";
+            this.LoginCreateUsernameLabel.Text = "Username *";
             // 
             // LoginCreatePWTextBox
             // 
@@ -870,8 +870,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.LoginPanel);
-            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.GamePanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI";
             this.Text = "Blackjack";
