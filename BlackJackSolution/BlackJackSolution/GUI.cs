@@ -165,7 +165,7 @@ namespace BlackJackSolution
                 Console.WriteLine("ClearCards error " + eCC.Message);
             }
         }
-        public void DisplayMyCards(List<string> list) //måste fixa om hur suit och value läses
+        public void DisplayMyCards(List<string> list)
         {
             try {
                 string picture;
