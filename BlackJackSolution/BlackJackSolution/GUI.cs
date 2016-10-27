@@ -575,9 +575,10 @@ namespace BlackJackSolution
         {
             if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
             {
-                if (double.TryParse(MainAccountFundsTF.Text) == true)
+                //double funds = double.Parse(MainAccountFundsTF.Text);
+                if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
                 {
-                    string check = control.AddFunds(Double.Parse(MainAccountFundsTF.Text));
+                    string check = control.AddFunds(double.Parse(MainAccountFundsTF.Text));
                     if (check.Equals("True"))
                     {
                         MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
@@ -588,14 +589,14 @@ namespace BlackJackSolution
                     }
                     else
                     {
-                        MainInfoLabel.Text = "Could not add funds: " + check;
+                        MainInfoLabel.Text = "Could not add funds: " + "\n" + check;
                     }
                     MainAccountBLabel.Text = control.GetBalance().ToString();
                     MainAccountFundsTF.Clear();
                 }
                 else
                 {
-                    MainInfoLabel.Text = "Make sure you enter correct information. Input must be a number, please try again.";
+                    MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
                 }
             }
             else
