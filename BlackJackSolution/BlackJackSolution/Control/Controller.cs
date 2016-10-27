@@ -260,16 +260,10 @@ namespace BlackJackSolution.Control
                 
             }
         }
-        public bool GetUserStatus()
+        public string GetUserStatus()
         {
-            if (user.getAstatus().Equals("VIP"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            string status = user.getAstatus();
+            return status;
         }
         public void HitBtnPush()
         {

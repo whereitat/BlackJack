@@ -113,9 +113,35 @@ namespace BlackJackSolution
                 clearCards();
                 InfoLabel.Text = "";
                 MainInfoLabel.Text = "";
-                if (control.GetBalance() <= 50000)
+                if (control.GetUserStatus().Equals("VIP"))
                 {
+                    MainTableThreePictureBox.Visible = true;
+                    MainTableTwoPictureBox.Visible = true;
+                    MainTableOnePictureBox.Visible = true;
+                }
+                else if (control.GetUserStatus().Equals("STANDARD"))
+                {
+                    if (control.GetBalance() > 500)
+                    {
+                        MainTableTwoPictureBox.Visible = true;
+                        MainTableOnePictureBox.Visible = true;
+                        MainTableThreePictureBox.Visible = false;
+                    }
+                    else
+                    {
+                        MainInfoLabel.Text = "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                        MainTableTwoPictureBox.Visible = false;
+                        MainTableOnePictureBox.Visible = false;
+                        MainTableThreePictureBox.Visible = false;
+                    }
+                }
+                else
+                {
+                    MainInfoLabel.Text = "Hello Bank";
+                    MainTableTwoPictureBox.Visible = false;
+                    MainTableOnePictureBox.Visible = false;
                     MainTableThreePictureBox.Visible = false;
+                    Console.WriteLine("User status dålig");
                 }
             }
             catch(Exception eLB)
@@ -445,27 +471,50 @@ namespace BlackJackSolution
                     LoginInfoLabel.Text = "";
                     MainAccountBLabel.Text = control.GetBalance().ToString();
 
-                    MainTableOnePictureBox.Visible = true;
                     System.Resources.ResourceManager rm = BlackJackSolution.Properties.Resources.ResourceManager;
                     Bitmap picSt = (Bitmap)rm.GetObject("Standard_Table_Btn");
                     MainTableOnePictureBox.Image = picSt;
                     MainTableOnePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableOnePictureBox.BringToFront();
 
-                    MainTableTwoPictureBox.Visible = true;
                     Bitmap picSt2 = (Bitmap)rm.GetObject("Standard_Table_Btn");
                     MainTableTwoPictureBox.Image = picSt2;
                     MainTableTwoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableTwoPictureBox.BringToFront();
-
-                    MainTableThreePictureBox.Visible = true;
+                    
                     Bitmap picVIP = (Bitmap)rm.GetObject("VIP_Table_Btn");
                     MainTableThreePictureBox.Image = picVIP;
                     MainTableThreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MainTableThreePictureBox.BringToFront();
-                    if (control.GetUserStatus() == false)
+                    if (control.GetUserStatus().Equals("VIP"))
                     {
+                        MainTableThreePictureBox.Visible = true;
+                        MainTableTwoPictureBox.Visible = true;
+                        MainTableOnePictureBox.Visible = true;
+                    }
+                    else if (control.GetUserStatus().Equals("STANDARD"))
+                    {
+                        if(control.GetBalance() > 500)
+                        {
+                            MainTableTwoPictureBox.Visible = true;
+                            MainTableOnePictureBox.Visible = true;
+                            MainTableThreePictureBox.Visible = false;
+                        }
+                        else
+                        {
+                            MainInfoLabel.Text = "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                            MainTableTwoPictureBox.Visible = false;
+                            MainTableOnePictureBox.Visible = false;
+                            MainTableThreePictureBox.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        MainInfoLabel.Text = "Hello Bank";
+                        MainTableTwoPictureBox.Visible = false;
+                        MainTableOnePictureBox.Visible = false;
                         MainTableThreePictureBox.Visible = false;
+                        Console.WriteLine("User status dålig");
                     }
                 }
                 else
@@ -670,9 +719,35 @@ namespace BlackJackSolution
                     if (check.Equals("True"))
                     {
                         MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
-                        if (control.GetBalance() >= 50000)
+                        if (control.GetUserStatus().Equals("VIP"))
                         {
                             MainTableThreePictureBox.Visible = true;
+                            MainTableTwoPictureBox.Visible = true;
+                            MainTableOnePictureBox.Visible = true;
+                        }
+                        else if (control.GetUserStatus().Equals("STANDARD"))
+                        {
+                            if (control.GetBalance() > 500)
+                            {
+                                MainTableTwoPictureBox.Visible = true;
+                                MainTableOnePictureBox.Visible = true;
+                                MainTableThreePictureBox.Visible = false;
+                            }
+                            else
+                            {
+                                MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                                MainTableTwoPictureBox.Visible = false;
+                                MainTableOnePictureBox.Visible = false;
+                                MainTableThreePictureBox.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MainInfoLabel.Text = "Hello Bank";
+                            MainTableTwoPictureBox.Visible = false;
+                            MainTableOnePictureBox.Visible = false;
+                            MainTableThreePictureBox.Visible = false;
+                            Console.WriteLine("User status dålig");
                         }
                     }
                     else
@@ -705,9 +780,35 @@ namespace BlackJackSolution
                         if (check.Equals("True"))
                         {
                             MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
-                            if (control.GetBalance() < 50000)
+                            if (control.GetUserStatus().Equals("VIP"))
                             {
+                                MainTableThreePictureBox.Visible = true;
+                                MainTableTwoPictureBox.Visible = true;
+                                MainTableOnePictureBox.Visible = true;
+                            }
+                            else if (control.GetUserStatus().Equals("STANDARD"))
+                            {
+                                if (control.GetBalance() > 500)
+                                {
+                                    MainTableTwoPictureBox.Visible = true;
+                                    MainTableOnePictureBox.Visible = true;
+                                    MainTableThreePictureBox.Visible = false;
+                                }
+                                else
+                                {
+                                    MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account" + "\n" + "Please add funds to enter a table" + "\n" + "A minimum of 500 is required";
+                                    MainTableTwoPictureBox.Visible = false;
+                                    MainTableOnePictureBox.Visible = false;
+                                    MainTableThreePictureBox.Visible = false;
+                                }
+                            }
+                            else
+                            {
+                                MainInfoLabel.Text = "Hello Bank";
+                                MainTableTwoPictureBox.Visible = false;
+                                MainTableOnePictureBox.Visible = false;
                                 MainTableThreePictureBox.Visible = false;
+                                Console.WriteLine("User status dålig");
                             }
                         }
                         else
