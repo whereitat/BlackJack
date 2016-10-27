@@ -232,8 +232,14 @@ namespace BlackJackSolution.Control
                     {
                         picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
                         picList.Add(picture);
-                    }  
-                }
+                    }
+                    else if (myHand.handCards[i].getValue() == 14)
+                    {
+                        picture = "_" + myHand.handCards[i].getValue() + "_" + myHand.handCards[i].getSuit();
+                        picList.Add(picture);
+                    }
+
+            }
             return picList;
         }
         public void GetUser(string uname, string pw)
