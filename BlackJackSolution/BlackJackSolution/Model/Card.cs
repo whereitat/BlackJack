@@ -9,8 +9,8 @@ namespace BlackJackSolution.Model
     public class Card
     {
         private int value;
-        private String cardId;
-        private String suit;
+        private string cardId;
+        private string suit;
 
         public Card()
         {
@@ -24,19 +24,19 @@ namespace BlackJackSolution.Model
         {
             return this.value;
         }
-        public void setCardId(String id)
+        public void setCardId(string id)
         {
             this.cardId = id;
         }
-        public String getCardId()
+        public string getCardId()
         {
             return this.cardId;
         }
-        public void SetSuit(String s)
+        public void SetSuit(string s)
         {
             this.suit = s;
         }
-        public String getSuit()
+        public string getSuit()
         {
             return this.suit;
         }

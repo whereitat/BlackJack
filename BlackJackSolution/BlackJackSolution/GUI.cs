@@ -623,6 +623,7 @@ namespace BlackJackSolution
                 {
                     string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
                     if (control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
+                    {
                         if (check.Equals("True"))
                         {
                             MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
@@ -635,6 +636,7 @@ namespace BlackJackSolution
                         {
                             MainInfoLabel.Text = "Could not withdraw funds: " + check;
                         }
+                    }
                     else
                     {
                         MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";

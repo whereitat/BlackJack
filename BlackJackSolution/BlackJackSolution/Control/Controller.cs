@@ -90,7 +90,7 @@ namespace BlackJackSolution.Control
             }
             else
             {
-                Console.WriteLine("Fel" + gameId);
+                Console.WriteLine("Fel " + gameId);
             }
         }
         public string Crypt(string input)
