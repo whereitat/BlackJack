@@ -96,7 +96,8 @@ namespace BlackJackSolution
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error : " + ex.Message);
+                InfoLabel.Text = "Could not deal";
+                Console.WriteLine("Deal Error : " + ex.Message);
             }
         }
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -107,6 +108,8 @@ namespace BlackJackSolution
                 GamePanel.Hide();
                 MainPanel.Show();
                 MainAccountBLabel.Text = control.GetBalance().ToString();
+                clearCards();
+                InfoLabel.Text = "";
                 if (control.GetBalance() <= 50000)
                 {
                     MainTableThreePictureBox.Visible = false;
@@ -114,7 +117,8 @@ namespace BlackJackSolution
             }
             catch(Exception eLB)
             {
-                //Fattas
+                MainInfoLabel.Text = "Could not delete account";
+                Console.WriteLine("Delete ERROR: " + eLB.Message);
             }
         }
         public void clearCards()
@@ -566,10 +570,17 @@ namespace BlackJackSolution
 
         private void MainAccountDeleteBtn_Click(object sender, EventArgs e)
         {
-            
-            MainPanel.Hide();
-            LoginPanel.Show();
-            //Oklart
+            string check = control.DeleteAccount();
+            if (check.Equals("True"))
+            {
+                MainPanel.Hide();
+                LoginPanel.Show();
+                LoginInfoLabel.Text = "Account deleted";
+            }
+            else
+            {
+                MainInfoLabel.Text = "Could not delete account: " + check;
+            }
         }
         private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {
