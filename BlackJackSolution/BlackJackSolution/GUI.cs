@@ -110,6 +110,7 @@ namespace BlackJackSolution
                 MainAccountBLabel.Text = control.GetBalance().ToString();
                 clearCards();
                 InfoLabel.Text = "";
+                MainInfoLabel.Text = "";
                 if (control.GetBalance() <= 50000)
                 {
                     MainTableThreePictureBox.Visible = false;
@@ -117,8 +118,8 @@ namespace BlackJackSolution
             }
             catch(Exception eLB)
             {
-                MainInfoLabel.Text = "Could not delete account";
-                Console.WriteLine("Delete ERROR: " + eLB.Message);
+                InfoLabel.Text = "Could not leave, you are trapped";
+                Console.WriteLine("Leave ERROR: " + eLB.Message);
             }
         }
         public void clearCards()
@@ -142,7 +143,7 @@ namespace BlackJackSolution
             }
             catch(Exception eCC)
             {
-                //Fattas
+                Console.WriteLine("Clearcards error " + eCC.Message);
             }
         }
         public void displayMyCards(List<string> list) //måste fixa om hur suit och value läses
@@ -485,6 +486,8 @@ namespace BlackJackSolution
             control.InitiateTable(0);
             MaxBetBtn.Text = control.GetMaxBet().ToString();
             MinBetBtn.Text = control.GetMinBet().ToString();
+            MaxBetBtn.Show();
+            MinBetBtn.Show();
             GameBalanceLabel.Text = control.GetBalance().ToString();
         }
         private void MainTableTwoPictureBox_Click(object sender, EventArgs e)
@@ -494,6 +497,8 @@ namespace BlackJackSolution
             control.InitiateTable(1);
             MaxBetBtn.Text = control.GetMaxBet().ToString();
             MinBetBtn.Text = control.GetMinBet().ToString();
+            MaxBetBtn.Show();
+            MinBetBtn.Show();
             GameBalanceLabel.Text = control.GetBalance().ToString();
         }
         private void MainTableThreePictureBox_Click(object sender, EventArgs e)
@@ -503,6 +508,8 @@ namespace BlackJackSolution
             control.InitiateTable(2);
             MaxBetBtn.Text = control.GetMaxBet().ToString();
             MinBetBtn.Text = control.GetMinBet().ToString();
+            MaxBetBtn.Show();
+            MinBetBtn.Show();
             GameBalanceLabel.Text = control.GetBalance().ToString();
         }
 
@@ -513,28 +520,64 @@ namespace BlackJackSolution
 
         private void MinBetBtn_Click(object sender, EventArgs e)
         {
-            bet = control.GetMinBet();
-            MinBetBtn.Hide();
-            MaxBetBtn.Hide();
-            BetLabel.Hide();
-            clearCards();
-            InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
-            double bal = Double.Parse(GameBalanceLabel.Text);
-            bal -= bet;
-            GameBalanceLabel.Text = bal.ToString();
+            try
+            {
+                bet = control.GetMinBet();
+                if (control.GetBalance() < Convert.ToInt32(bet))
+                {
+                    InfoLabel.Text = "You do not have enough funds to bet this amount";
+                    MaxBetBtn.Hide();
+                    MinBetBtn.Hide();
+                    DealButton.Hide();
+                }
+                else
+                {
+                    MinBetBtn.Hide();
+                    MaxBetBtn.Hide();
+                    BetLabel.Hide();
+                    DealButton.Show();
+                    clearCards();
+                    InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
+                    double bal = Double.Parse(GameBalanceLabel.Text);
+                    bal -= bet;
+                    GameBalanceLabel.Text = bal.ToString();
+                }
+            }
+            catch (Exception eMinB)
+            {
+                InfoLabel.Text = "Could not bet this amount";
+                Console.WriteLine("minBET ERROR: " + eMinB.Message);
+            }
         }
 
         private void MaxBetBtn_Click(object sender, EventArgs e)
         {
-            bet = control.GetMaxBet();
-            MinBetBtn.Hide();
-            MaxBetBtn.Hide();
-            BetLabel.Hide();
-            clearCards();
-            InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
-            double bal = Double.Parse(GameBalanceLabel.Text);
-            bal -= bet;
-            GameBalanceLabel.Text = bal.ToString();
+            try
+            {
+                bet = control.GetMaxBet();
+                if (control.GetBalance() < Convert.ToInt32(bet))
+                {
+                    InfoLabel.Text = "You do not have enough funds to bet this amount";
+                    MaxBetBtn.Hide();
+                }
+                else
+                {
+                    MinBetBtn.Hide();
+                    MaxBetBtn.Hide();
+                    BetLabel.Hide();
+                    DealButton.Show();
+                    clearCards();
+                    InfoLabel.Text = "You bet: " + bet + " press Deal to start game";
+                    double bal = Double.Parse(GameBalanceLabel.Text);
+                    bal -= bet;
+                    GameBalanceLabel.Text = bal.ToString();
+                }
+            }
+            catch(Exception eMaxB)
+            {
+                InfoLabel.Text = "Could not bet this amount";
+                Console.WriteLine("MAXBET ERROR: " + eMaxB.Message);
+            }
         }
 
         private void LoginCreateCreateBtn_Click(object sender, EventArgs e)
