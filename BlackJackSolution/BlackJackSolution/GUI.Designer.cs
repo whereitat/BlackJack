@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.MainAccountDeleteLabel = new System.Windows.Forms.Label();
             this.MainInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.MainInfoLabel = new System.Windows.Forms.Label();
-            this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
-            this.MainAccountDeleteLabel = new System.Windows.Forms.Label();
             this.MainAccountDeleteBtn = new System.Windows.Forms.Button();
+            this.MainAccountGroupBox = new System.Windows.Forms.GroupBox();
             this.MainFundsGB = new System.Windows.Forms.GroupBox();
+            this.amountLabel = new System.Windows.Forms.Label();
             this.MainAccountBLabel = new System.Windows.Forms.Label();
             this.MainAccountBalanceLabel = new System.Windows.Forms.Label();
             this.MainAccountWithdrawBtn = new System.Windows.Forms.Button();
@@ -91,7 +92,6 @@
             this.DealerPictureBox3 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox2 = new System.Windows.Forms.PictureBox();
             this.DealerPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.amountLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.MainInfoGroupBox.SuspendLayout();
             this.MainAccountGroupBox.SuspendLayout();
@@ -139,6 +139,17 @@
             this.MainPanel.Size = new System.Drawing.Size(960, 585);
             this.MainPanel.TabIndex = 0;
             // 
+            // MainAccountDeleteLabel
+            // 
+            this.MainAccountDeleteLabel.AutoSize = true;
+            this.MainAccountDeleteLabel.ForeColor = System.Drawing.Color.White;
+            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(44, 520);
+            this.MainAccountDeleteLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
+            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(81, 13);
+            this.MainAccountDeleteLabel.TabIndex = 3;
+            this.MainAccountDeleteLabel.Text = "Delete Account";
+            // 
             // MainInfoGroupBox
             // 
             this.MainInfoGroupBox.Controls.Add(this.MainInfoLabel);
@@ -161,30 +172,6 @@
             this.MainInfoLabel.Size = new System.Drawing.Size(0, 13);
             this.MainInfoLabel.TabIndex = 0;
             // 
-            // MainAccountGroupBox
-            // 
-            this.MainAccountGroupBox.Controls.Add(this.MainFundsGB);
-            this.MainAccountGroupBox.ForeColor = System.Drawing.Color.White;
-            this.MainAccountGroupBox.Location = new System.Drawing.Point(47, 268);
-            this.MainAccountGroupBox.Margin = new System.Windows.Forms.Padding(2);
-            this.MainAccountGroupBox.Name = "MainAccountGroupBox";
-            this.MainAccountGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.MainAccountGroupBox.Size = new System.Drawing.Size(433, 244);
-            this.MainAccountGroupBox.TabIndex = 3;
-            this.MainAccountGroupBox.TabStop = false;
-            this.MainAccountGroupBox.Text = "Account Options";
-            // 
-            // MainAccountDeleteLabel
-            // 
-            this.MainAccountDeleteLabel.AutoSize = true;
-            this.MainAccountDeleteLabel.ForeColor = System.Drawing.Color.White;
-            this.MainAccountDeleteLabel.Location = new System.Drawing.Point(44, 520);
-            this.MainAccountDeleteLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MainAccountDeleteLabel.Name = "MainAccountDeleteLabel";
-            this.MainAccountDeleteLabel.Size = new System.Drawing.Size(81, 13);
-            this.MainAccountDeleteLabel.TabIndex = 3;
-            this.MainAccountDeleteLabel.Text = "Delete Account";
-            // 
             // MainAccountDeleteBtn
             // 
             this.MainAccountDeleteBtn.BackColor = System.Drawing.Color.LawnGreen;
@@ -198,6 +185,19 @@
             this.MainAccountDeleteBtn.Text = "Delete";
             this.MainAccountDeleteBtn.UseVisualStyleBackColor = false;
             this.MainAccountDeleteBtn.Click += new System.EventHandler(this.MainAccountDeleteBtn_Click);
+            // 
+            // MainAccountGroupBox
+            // 
+            this.MainAccountGroupBox.Controls.Add(this.MainFundsGB);
+            this.MainAccountGroupBox.ForeColor = System.Drawing.Color.White;
+            this.MainAccountGroupBox.Location = new System.Drawing.Point(47, 268);
+            this.MainAccountGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MainAccountGroupBox.Name = "MainAccountGroupBox";
+            this.MainAccountGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.MainAccountGroupBox.Size = new System.Drawing.Size(433, 244);
+            this.MainAccountGroupBox.TabIndex = 3;
+            this.MainAccountGroupBox.TabStop = false;
+            this.MainAccountGroupBox.Text = "Account Options";
             // 
             // MainFundsGB
             // 
@@ -216,6 +216,17 @@
             this.MainFundsGB.TabIndex = 1;
             this.MainFundsGB.TabStop = false;
             this.MainFundsGB.Text = "Funds";
+            // 
+            // amountLabel
+            // 
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.ForeColor = System.Drawing.Color.White;
+            this.amountLabel.Location = new System.Drawing.Point(231, 42);
+            this.amountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(46, 13);
+            this.amountLabel.TabIndex = 8;
+            this.amountLabel.Text = "Amount:";
             // 
             // MainAccountBLabel
             // 
@@ -866,17 +877,6 @@
             this.DealerPictureBox1.TabIndex = 1;
             this.DealerPictureBox1.TabStop = false;
             this.DealerPictureBox1.Visible = false;
-            // 
-            // amountLabel
-            // 
-            this.amountLabel.AutoSize = true;
-            this.amountLabel.ForeColor = System.Drawing.Color.White;
-            this.amountLabel.Location = new System.Drawing.Point(231, 42);
-            this.amountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(46, 13);
-            this.amountLabel.TabIndex = 8;
-            this.amountLabel.Text = "Amount:";
             // 
             // GUI
             // 

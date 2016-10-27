@@ -573,23 +573,36 @@ namespace BlackJackSolution
         }
         private void MainAccountFundAddBtn_Click_1(object sender, EventArgs e)
         {
-            string check = control.AddFunds(Double.Parse(MainAccountFundsTF.Text));
-            if (check.Equals("True"))
+            if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
             {
-                MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
-                if (control.GetBalance() >= 50000)
+                if (double.TryParse(MainAccountFundsTF.Text) == true)
                 {
-                    MainTableThreePictureBox.Visible = true;
+                    string check = control.AddFunds(Double.Parse(MainAccountFundsTF.Text));
+                    if (check.Equals("True"))
+                    {
+                        MainInfoLabel.Text = "Added " + MainAccountFundsTF.Text + " to your account";
+                        if (control.GetBalance() >= 50000)
+                        {
+                            MainTableThreePictureBox.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        MainInfoLabel.Text = "Could not add funds: " + check;
+                    }
+                    MainAccountBLabel.Text = control.GetBalance().ToString();
+                    MainAccountFundsTF.Clear();
+                }
+                else
+                {
+                    MainInfoLabel.Text = "Make sure you enter correct information. Input must be a number, please try again.";
                 }
             }
             else
             {
-                MainInfoLabel.Text = "Could not add funds" + check;
+                MainInfoLabel.Text = "Please enter a number, field may not be empty.";
             }
-            MainAccountBLabel.Text = control.GetBalance().ToString();
-            MainAccountFundsTF.Clear();
         }
-
         private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
         {
             string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
@@ -604,7 +617,7 @@ namespace BlackJackSolution
                 }
                 else
                 {
-                    MainInfoLabel.Text = "Could not withdraw funds " + check;
+                    MainInfoLabel.Text = "Could not withdraw funds: " + check;
                 }
             else
             {
@@ -613,7 +626,6 @@ namespace BlackJackSolution
             MainAccountBLabel.Text = control.GetBalance().ToString();
             MainAccountFundsTF.Clear();
         }
-
 
     }
 }
