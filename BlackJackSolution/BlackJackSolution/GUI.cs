@@ -575,7 +575,6 @@ namespace BlackJackSolution
         {
             if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
             {
-                //double funds = double.Parse(MainAccountFundsTF.Text);
                 if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
                 {
                     string check = control.AddFunds(double.Parse(MainAccountFundsTF.Text));
@@ -606,24 +605,40 @@ namespace BlackJackSolution
         }
         private void MainAccountWithdrawBtn_Click_1(object sender, EventArgs e)
         {
-            string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
-            if(control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
-                if (check.Equals("True"))
+
+            if (!string.IsNullOrWhiteSpace(MainAccountFundsTF.Text))
+            {
+                if (double.TryParse(MainAccountFundsTF.Text, out bet) == true)
                 {
-                    MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
-                    if (control.GetBalance() <= 50000)
+                    string check = control.WithdrawFunds(Double.Parse(MainAccountFundsTF.Text));
+                    if (control.GetBalance() >= Double.Parse(MainAccountFundsTF.Text))
+                        if (check.Equals("True"))
+                        {
+                            MainInfoLabel.Text = "Withdrew " + MainAccountFundsTF.Text + " from your account";
+                            if (control.GetBalance() <= 50000)
+                            {
+                                MainTableThreePictureBox.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MainInfoLabel.Text = "Could not withdraw funds: " + check;
+                        }
+                    else
                     {
-                        MainTableThreePictureBox.Visible = false;
+                        MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";
                     }
                 }
                 else
                 {
-                    MainInfoLabel.Text = "Could not withdraw funds: " + check;
+                    MainInfoLabel.Text = "Make sure you enter correct information." + "\n" + "Input must be a number, please try again.";
                 }
+            }
             else
             {
-                MainInfoLabel.Text = "Insufficient funds, make sure the amount is equal to or less than\nyour balance.";
+                MainInfoLabel.Text = "Please enter a number, field may not be empty.";
             }
+
             MainAccountBLabel.Text = control.GetBalance().ToString();
             MainAccountFundsTF.Clear();
         }
