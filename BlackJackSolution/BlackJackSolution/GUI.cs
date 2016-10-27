@@ -401,7 +401,6 @@ namespace BlackJackSolution
                         displayDealerCards(control.GetDealerPictureStrings());
                         control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet - bet * 2));
                         GameBalanceLabel.Text = control.GetBalance().ToString();
-                        //UPDATE SALDO -user +bank
                     }
                 }
                 else
@@ -411,7 +410,6 @@ namespace BlackJackSolution
                     displayDealerCards(control.GetDealerPictureStrings());
                     control.Transaction(Convert.ToInt32(bet), Convert.ToInt32(bet));
                     GameBalanceLabel.Text = control.GetBalance().ToString();
-                    //UPDATE SALDO +user -bank
                 }
                 control.ClearHands();
                 HitButton.Hide();
@@ -424,7 +422,8 @@ namespace BlackJackSolution
                 bet = 0;
             } catch (Exception eSB)
             {
-                //Fattas
+                Console.WriteLine("Standbtn error " + eSB.Message);
+                InfoLabel.Text = "Could not stand";
             }
         }
 
@@ -476,48 +475,81 @@ namespace BlackJackSolution
             }
             catch(Exception loginE)
             {
-
+                Console.WriteLine("Login error " + loginE.Message);
+                LoginInfoLabel.Text = "Could not login with " + LoginUsernameTextBox.Text;
             }
             
         }
 
         private void MainTableOnePictureBox_Click(object sender, EventArgs e)
         {
-            MainPanel.Hide();
-            GamePanel.Show();
-            control.InitiateTable(0);
-            MaxBetBtn.Text = control.GetMaxBet().ToString();
-            MinBetBtn.Text = control.GetMinBet().ToString();
-            MaxBetBtn.Show();
-            MinBetBtn.Show();
-            GameBalanceLabel.Text = control.GetBalance().ToString();
+            try
+            {
+                MainPanel.Hide();
+                GamePanel.Show();
+                control.InitiateTable(0);
+                MaxBetBtn.Text = control.GetMaxBet().ToString();
+                MinBetBtn.Text = control.GetMinBet().ToString();
+                MaxBetBtn.Show();
+                MinBetBtn.Show();
+                GameBalanceLabel.Text = control.GetBalance().ToString();
+            }
+            catch (Exception eMT1)
+            {
+                Console.WriteLine("Main table one error : " + eMT1.Message);
+                MainInfoLabel.Text = "Could not load table";
+            }
         }
         private void MainTableTwoPictureBox_Click(object sender, EventArgs e)
         {
-            MainPanel.Hide();
-            GamePanel.Show();
-            control.InitiateTable(1);
-            MaxBetBtn.Text = control.GetMaxBet().ToString();
-            MinBetBtn.Text = control.GetMinBet().ToString();
-            MaxBetBtn.Show();
-            MinBetBtn.Show();
-            GameBalanceLabel.Text = control.GetBalance().ToString();
+            try
+            {
+                MainPanel.Hide();
+                GamePanel.Show();
+                control.InitiateTable(1);
+                MaxBetBtn.Text = control.GetMaxBet().ToString();
+                MinBetBtn.Text = control.GetMinBet().ToString();
+                MaxBetBtn.Show();
+                MinBetBtn.Show();
+                GameBalanceLabel.Text = control.GetBalance().ToString();
+            }
+            catch (Exception eMT2)
+            {
+                Console.WriteLine("Main table 2 error : " + eMT2.Message);
+                MainInfoLabel.Text = "Could not load table";
+            }
         }
         private void MainTableThreePictureBox_Click(object sender, EventArgs e)
         {
-            MainPanel.Hide();
-            GamePanel.Show();
-            control.InitiateTable(2);
-            MaxBetBtn.Text = control.GetMaxBet().ToString();
-            MinBetBtn.Text = control.GetMinBet().ToString();
-            MaxBetBtn.Show();
-            MinBetBtn.Show();
-            GameBalanceLabel.Text = control.GetBalance().ToString();
+            try
+            {
+                MainPanel.Hide();
+                GamePanel.Show();
+                control.InitiateTable(2);
+                MaxBetBtn.Text = control.GetMaxBet().ToString();
+                MinBetBtn.Text = control.GetMinBet().ToString();
+                MaxBetBtn.Show();
+                MinBetBtn.Show();
+                GameBalanceLabel.Text = control.GetBalance().ToString();
+            }
+            catch (Exception eMT3)
+            {
+                Console.WriteLine("Main table 3 error " + eMT3.Message);
+                MainInfoLabel.Text = "Could not load table";
+            }
         }
 
         private void LoginExitBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            try
+            {
+                Application.Exit();
+            }
+            catch(Exception eExit)
+            {
+                Console.WriteLine("Exit btn error: " + eExit.Message);
+                LoginInfoLabel.Text = "Could not exit";
+            }
         }
 
         private void MinBetBtn_Click(object sender, EventArgs e)
