@@ -25,7 +25,7 @@ namespace BlackJackSolution.DAL
             catch (SqlException e)
             {
                 string ex = Logic.Utils.SqlExceptionUtility(e);
-                Console.WriteLine(e.ToString() + e.Message + " " + ex);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -53,9 +53,10 @@ namespace BlackJackSolution.DAL
                 }
                 return newDeck;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -80,9 +81,10 @@ namespace BlackJackSolution.DAL
                     return value;
                 }
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -108,9 +110,10 @@ namespace BlackJackSolution.DAL
                     return value;
                 }
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -144,9 +147,10 @@ namespace BlackJackSolution.DAL
                 }
                 return result;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -173,9 +177,10 @@ namespace BlackJackSolution.DAL
                 }
                 return value;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -201,9 +206,10 @@ namespace BlackJackSolution.DAL
                 }
                 return value;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -225,9 +231,10 @@ namespace BlackJackSolution.DAL
                 }
                 return gameid;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return 0;
             }
         }
@@ -257,9 +264,10 @@ namespace BlackJackSolution.DAL
                 }
                 return setOfGames;
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -284,9 +292,10 @@ namespace BlackJackSolution.DAL
                     return value;
                 }
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                string ex = Logic.Utils.SqlExceptionUtility(e);
+                Console.WriteLine(ex);
                 return null;
             }
         }
